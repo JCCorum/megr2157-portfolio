@@ -2,11 +2,17 @@
 
 ## Decide
 
-### Homepage Identity
+### Homepage Identity:
 
-### Intentional Customization
+The homepage is intended to provide instructors, engineering colleagues, and potential employers with a clear understanding of the purpose, structure, and characteristics of the portfolio. The course title and banner identify the academic and engineering context of the documented work, while the introductory paragraph explains that the portfolio records engineering design decisions and the reasoning used to support them. The Analyze, Decide, and Communicate section defines the organizational framework used throughout the individual assignments, allowing readers to predict the possible contents within each page or section. The progression outline provides additional context for how the assignments develop throughout the Sophomore Design course. Together, these elements allow a reader to understand the purpose and organization of the portfolio before reviewing any individual assignment.
 
-### Documentation Standard
+### Intentional Customization:
+
+The "**Semester Arc**" section on the homepage was changed to "**Progression Outline for Sophomore Design**" to better represent the section purpose of summarizing the progression of engineering design stages unique to the Sophomore Design course. By specifying the commonly used term for the course along with terminology related to summarization, the new section title eliminates the unnecessary ambiguity in the original title. With the elimination of said ambiguity instructors, engineering colleagues, and potential employers will have a clearer understanding of both the section's purpose and the purpose of the portfolio as a whole.
+
+### Documentation Standard:
+
+I will document the principle engineering concepts, assumptions, calculations, design choices, supporting evidence, and results for every assignment with sufficient depth and detail for a technically informed reader to comprehend and replicate my reasoning without additional context. 
 
 ## Objective
 
