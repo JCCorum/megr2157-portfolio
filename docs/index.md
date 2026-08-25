@@ -16,7 +16,7 @@ Most assignment pages are organized around:
 
 Use the navigation on the left to move between assignments.
 
-## Semester arc
+## Progression Outline for Sophomore Design 
 
 - **Act I (Weeks 1–7):** Building vocabulary through the bracket sequence.
 - **Act II (Weeks 8–11):** Surveying the machine-element landscape and formally comparing options.
