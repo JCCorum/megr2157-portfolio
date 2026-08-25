@@ -117,3 +117,5 @@ where:
 ##### Design Decision:
 
 The inventors of the Phillips head geometry decided to develop a pointed tip formed by four tapered blades arranged symmetrically about a central core rather than using a single flat surface of engagement. The implementation of this four-bladed tip increased the number of engagement surfaces between the driver and the corresponding cavity within the screw/fastener distributing the transmitted torque among an increased number of contact planes compared to other alternatives. According to the patent, the tapered shape of the blades increases thickness radially towards the central core, which decreases the chance of blade failure due to side loading.
+
+*The communication requirements for this assignment are documented in the **About Me** section of the portfolio homepage.*
