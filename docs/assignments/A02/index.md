@@ -55,3 +55,5 @@ Mistakes and Design Iterations:
 ## Engineering Lessons Learned:
 
 ## Assignment Time:
+
+### This Assignment took me 18 hours.
