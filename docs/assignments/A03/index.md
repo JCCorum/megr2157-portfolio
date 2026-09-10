@@ -1,60 +1,34 @@
-# A3 – Parametric and FEA Bar Design
+# A3 – Parametric Bar Design and FEA
 
 ## Objective
 
-## Design Requirements and Known Parameters
+## Design Requirements and Selected Parameters
 
 ## Analyze
 
-### Axial Deflection Model
+### Parametric Design
 
-#### Knowns and Unknowns
+### SOLIDWORKS Parametric Model
 
-#### Symbolic Solution
-
-#### Selected Design Parameters
-
-#### Numerical Solution
-
-### Parametric CAD Model
-
-#### CAD Variables and Equations
-
-#### Final Bar Geometry
+### Bar Mass Properties
 
 ### Finite Element Analysis
 
-#### Material Properties
+#### FEA Boundary Conditions and Loading
 
-#### Boundary Conditions and Loading
-
-#### Mesh
-
-#### Deflection Results
+#### Displacement Results
 
 #### von Mises Stress Results
 
-#### Safety Factor
-
 ## Decide
 
-### Load Selection
+### Bar Geometry Selection
 
-### Material Modulus Selection
-
-### Cross-Section Selection
-
-### Final Geometry Selection
+### Material Selection
 
 ## Communicate
 
-### Analytical vs. FEA Deflection Comparison
-
-### Percent Difference
-
-### Interpretation of Results
-
-### Stress Concentration – Hypothetical Pin Hole
+### Parametric and FEA Comparison
 
 ### CAD File Download
 
