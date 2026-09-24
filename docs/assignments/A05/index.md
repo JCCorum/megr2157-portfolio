@@ -303,7 +303,7 @@ Feature E demonstrated the sensitivity of the design to the assumed load distrib
 
 ## Assignment Time
 
-**Total time: [ENTER ACTUAL TIME] hours**
+**Total time: 26 hours**
 
 ## References
 
