@@ -205,15 +205,15 @@ Stress governed Features A, B, C, and E under the selected analytical models. Fe
 
 ## CAD Model:
 
-The final analytical dimensions were used to construct the bracket geometry in SOLIDWORKS.
+The final bracket geometry was modeled in SOLIDWORKS using the dimensions obtained from the stress and stiffness analyses of Features A through E. The completed model reflects the final selected feature sizes used for the bracket design.
 
-<!-- Add completed CAD screenshot here -->
+![Completed SOLIDWORKS bracket model](images/bracket.jpg)
+
+*Figure 7. Completed SOLIDWORKS model of the designed bracket.*
 
 ### CAD File Download:
 
-The completed SOLIDWORKS model can be downloaded below.
-
-[**Download A5 Bracket SOLIDWORKS Part**](files/Bracket.SLDPRT)
+[Download the completed SOLIDWORKS bracket file](files/Bracket.SLDPRT)
 
 ## Mistakes and Design Iterations:
 
