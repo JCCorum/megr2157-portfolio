@@ -289,7 +289,7 @@ This page records the investigation and results completed to date and will be up
 
 ## Assignment Time
 
-Time spent: **[Enter actual hours spent on A7 to date]**
+Time spent: **26 hours**
 
 ## CAD File Downloads
 
