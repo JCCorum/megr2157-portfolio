@@ -44,7 +44,7 @@ The objective of this project is to conceptually design a mechanically driven te
 
 The preliminary design began with the assignment constraints, possible material properties, and a list of unknown geometric dimensions. The two screws were modeled as identical, synchronously rotating members carrying equal loads. Materials were treated as homogeneous and isotropic. For the preliminary nominal axial-stress calculation, local thread-root stress concentrations, self-weight, misalignment, and inertial loading were neglected.
 
-**Nomenclature:** Ø_maj denotes the major/nominal diameter; Ø_R = Ø_min is the minor/root diameter; Ø_p denotes the pitch diameter. These are distinct dimensions.
+**Nomenclature:** Ø<sub>maj</sub> denotes the major/nominal diameter; Ø<sub>R</sub> = Ø<sub>min</sub> is the minor/root diameter; Ø<sub>p</sub> denotes the pitch diameter. These are distinct dimensions.
 
 ![Jason's initial knowns, unknowns, and assumptions](images/A10_01_Design_Knowns_Unknowns_Assumptions.jpg)
 
@@ -54,27 +54,19 @@ The preliminary design began with the assignment constraints, possible material 
 
 The specified load is assumed to divide equally between both leadscrews:
 
-$$
-P=\frac{\sum P}{N_s}=\frac{2000\ \mathrm{N}}{2}=1000\ \mathrm{N}
-$$
+<p align="center"><strong>P = (ΣP) / N<sub>s</sub> = (2,000 N) / 2 = 1,000 N</strong></p>
 
 For a nominal solid circular cross section at the root diameter:
 
-$$
-\sigma_n=\frac{P}{A_{cs}},\qquad A_{cs}=\frac{\pi\varnothing_{\min}^{2}}{4}
-$$
+<p align="center"><strong>σ<sub>n</sub> = P / A<sub>cs</sub> &nbsp;&nbsp; ; &nbsp;&nbsp; A<sub>cs</sub> = πØ<sub>min</sub><sup>2</sup> / 4</strong></p>
 
 Using the yield-strength-based allowable stress,
 
-$$
-\sigma_{\mathrm{allow}}=\frac{\sigma_Y}{SF}
-$$
+<p align="center"><strong>σ<sub>allow</sub> = σ<sub>Y</sub> / SF</strong></p>
 
 and requiring nominal axial stress to remain below the allowable value gives:
 
-$$
-\boxed{\varnothing_{\min}\geq\sqrt{\frac{4P(SF)}{\pi\sigma_Y}}}
-$$
+<p align="center"><strong>Ø<sub>min</sub> ≥ √[4P(SF) / (πσ<sub>Y</sub>)]</strong></p>
 
 ### 2.3 Material Research
 
@@ -100,9 +92,7 @@ The McMaster-Carr catalog provides material classifications, tensile strengths, 
 
 The most restrictive provisional axial-stress requirement was:
 
-$$
-\boxed{\varnothing_{\min,\mathrm{axial}}=0.19536\ \mathrm{in}}
-$$
+<p align="center"><strong>Ø<sub>min,axial</sub> = 0.19536 in</strong></p>
 
 ![Jason's axial-stress FBD, material research, and diameter calculations](images/A10_02_Leadscrew_FBD_Axial_Stress_and_Materials.jpg)
 
@@ -116,28 +106,19 @@ $$
 
 Because a leadscrew may act as a slender compression member, Euler buckling was investigated as a conservative separate failure mode. The preliminary model uses **pinned–pinned** end restraints and an effective-length factor of **K = 1.0**.
 
-$$
-P_{cr}=\frac{\pi^2EI}{(K l_u)^2}
-$$
+<p align="center"><strong>P<sub>cr</sub> = π<sup>2</sup>EI / (K l<sub>u</sub>)<sup>2</sup></strong></p>
 
 For a solid circular cross section:
 
-$$
-I=\frac{\pi\varnothing_{\min}^{4}}{64}
-$$
+<p align="center"><strong>I = πØ<sub>min</sub><sup>4</sup> / 64</strong></p>
 
 The required critical buckling load satisfies:
 
-$$
-P_{cr}\geq P(SF)
-$$
+<p align="center"><strong>P<sub>cr</sub> ≥ P(SF)</strong></p>
 
 Solving for minimum root diameter:
 
-$$
-\boxed{\varnothing_{\min,\mathrm{buckling}}\geq
-\sqrt[4]{\frac{64P(SF)K^2l_u^2}{\pi^3E}}}
-$$
+<p align="center"><strong>Ø<sub>min,buckling</sub> ≥ [64P(SF)K<sup>2</sup>l<sub>u</sub><sup>2</sup> / (π<sup>3</sup>E)]<sup>1/4</sup></strong></p>
 
 Assumed values: **P = 1,000 N per screw**, **SF = 4**, **E = 29 × 10⁶ psi**, **K = 1.0**.
 
@@ -154,17 +135,13 @@ Assumed values: **P = 1,000 N per screw**, **SF = 4**, **E = 29 × 10⁶ psi**, 
 
 The longer unsupported span is more restrictive:
 
-$$
-\boxed{\varnothing_{\min,\mathrm{buckling}}=0.43819\ \mathrm{in}\quad(l_u=24\ \mathrm{in})}
-$$
+<p align="center"><strong>Ø<sub>min,buckling</sub> = 0.43819 in &nbsp; (l<sub>u</sub> = 24 in)</strong></p>
 
 ### 3.3 Leadscrew Selection Based on Buckling
 
 The *Machinery's Handbook*, 32nd edition, Table 2b, gives a minimum limiting external root diameter of approximately **0.4570 in** for the **5/8"-8 Class 2G Acme** thread.
 
-$$
-\varnothing_{R,\min}=0.4570\ \mathrm{in}>0.43819\ \mathrm{in}
-$$
+<p align="center"><strong>Ø<sub>R,min</sub> = 0.4570 in &gt; 0.43819 in</strong></p>
 
 The selected thread therefore satisfies the preliminary Euler buckling screening condition under the pinned–pinned, 24-inch unsupported-length assumption. The estimated buckling safety factor is approximately **4.73** for the assumed load of 1,000 N per screw.
 
@@ -207,31 +184,21 @@ The downloaded supplier model provides geometry for the assembly. The complete p
 
 The selected leadscrew is single-start, so lead equals pitch:
 
-$$
-L=p=\frac{1}{8}\ \mathrm{in/rev}=3.175\ \mathrm{mm/rev}
-$$
+<p align="center"><strong>L = p = (1/8) in/rev = 3.175 mm/rev</strong></p>
 
 With synchronized screw rotation and negligible backlash and slip, the kinematic relation is:
 
-$$
-|\vec v|=Ln\quad\Rightarrow\quad\boxed{n=\frac{|\vec v|}{L}}
-$$
+<p align="center"><strong>|v| = Ln &nbsp; ⇒ &nbsp; n = |v| / L</strong></p>
 
 The limiting rotational speeds are:
 
-$$
-\boxed{n_{\min}=\frac{1}{3.175}=0.3150\ \mathrm{rpm}}
-$$
+<p align="center"><strong>n<sub>min</sub> = 1 / 3.175 = 0.3150 rpm</strong></p>
 
-$$
-\boxed{n_{\max}=\frac{50}{3.175}=15.748\ \mathrm{rpm}}
-$$
+<p align="center"><strong>n<sub>max</sub> = 50 / 3.175 = 15.748 rpm</strong></p>
 
 The numerical difference between the limits is:
 
-$$
-\Delta n=n_{\max}-n_{\min}=15.433\ \mathrm{rpm}
-$$
+<p align="center"><strong>Δn = n<sub>max</sub> − n<sub>min</sub> = 15.433 rpm</strong></p>
 
 Each screw must rotate at approximately **0.3150–15.748 rpm** to produce the specified crosshead travel speed.
 
@@ -243,24 +210,15 @@ The selected leadscrew carries **P = 1,000 N**, has **L = 3.175 mm/rev**, and is
 
 The required torque for one screw is:
 
-$$
-\boxed{T_d=\frac{PL}{2\pi\eta}}
-$$
+<p align="center"><strong>T<sub>d</sub> = PL / (2πη)</strong></p>
 
-$$
-T_d=\frac{(1000\ \mathrm{N})(3.175\ \mathrm{mm/rev})}{2\pi(0.25)}
-$$
+<p align="center"><strong>T<sub>d</sub> = [(1,000 N)(3.175 mm/rev)] / [2π(0.25)]</strong></p>
 
-$$
-\boxed{T_{d,\max}=2021.267\ \mathrm{N\,mm}=2.021\ \mathrm{N\,m}}
-$$
+<p align="center"><strong>T<sub>d,max</sub> = 2,021.267 N·mm = 2.021 N·m</strong></p>
 
 For both identical leadscrews:
 
-$$
-\boxed{\sum T_{d,\max}=\frac{(2000\ \mathrm{N})(3.175\ \mathrm{mm/rev})}{2\pi(0.25)}
-=4042.535\ \mathrm{N\,mm}=4.043\ \mathrm{N\,m}}
-$$
+<p align="center"><strong>ΣT<sub>d,max</sub> = [(2,000 N)(3.175 mm/rev)] / [2π(0.25)] = 4,042.535 N·mm = 4.043 N·m</strong></p>
 
 Two independent drives would each need to deliver the per-screw torque; a common 1:1 drive must transmit the combined screw torque plus any additional drivetrain losses.
 
@@ -313,21 +271,15 @@ Tai developed the crosshead as a simply supported beam with a centrally applied 
 
 For a simply supported beam with a central applied force:
 
-$$
-R_A=R_B=\frac{P}{2},\qquad M_{\max}=\frac{PL}{4}
-$$
+<p align="center"><strong>R<sub>A</sub> = R<sub>B</sub> = P / 2 &nbsp;&nbsp; ; &nbsp;&nbsp; M<sub>max</sub> = PL / 4</strong></p>
 
 For a rectangular cross section of width **b** and height **h**:
 
-$$
-I=\frac{bh^3}{12},\qquad c=\frac{h}{2},\qquad \sigma_{\max}=\frac{M_{\max}c}{I}
-$$
+<p align="center"><strong>I = bh<sup>3</sup> / 12 &nbsp;&nbsp; ; &nbsp;&nbsp; c = h / 2 &nbsp;&nbsp; ; &nbsp;&nbsp; σ<sub>max</sub> = M<sub>max</sub>c / I</strong></p>
 
 Combining the relations with the safety factor gives:
 
-$$
-\boxed{h\geq\sqrt{\frac{3PL(SF)}{2b\sigma_Y}}}
-$$
+<p align="center"><strong>h ≥ √[3PL(SF) / (2bσ<sub>Y</sub>)]</strong></p>
 
 Using the preliminary values, Tai obtained **h ≈ 0.0170 m (0.669 in)**.
 
@@ -339,9 +291,7 @@ Using the preliminary values, Tai obtained **h ≈ 0.0170 m (0.669 in)**.
 
 The theoretical central deflection for a simply supported beam with a centered load is:
 
-$$
-\delta=\frac{PL^3}{48EI},\qquad I=\frac{bh^3}{12}
-$$
+<p align="center"><strong>δ = PL<sup>3</sup> / (48EI) &nbsp;&nbsp; ; &nbsp;&nbsp; I = bh<sup>3</sup> / 12</strong></p>
 
 Tai's submitted handwritten page reports a deflection of **0.000026 m**. That reported value needs independent verification before asserting that the **0.1 mm** deflection limit is met. With the recorded dimensions, a direct substitution into the beam formula gives approximately **0.275 mm at the 2 kN service load**, or approximately **1.10 mm if the factor of safety is also applied to the deflection load**. Both exceed the stated 0.1 mm limit, so the crosshead thickness and/or structural model requires revision before final design validation.
 
@@ -387,22 +337,15 @@ Gavin's handwritten design work lists the thread pitch as **0.125 in**, the mode
 
 The simplified bending analysis uses the flexure relationship:
 
-$$
-\sigma_b=\frac{Mc}{I}
-$$
+<p align="center"><strong>σ<sub>b</sub> = Mc / I</strong></p>
 
 The submitted calculation reports:
 
-$$
-\boxed{\sigma_b\approx549.575\ \mathrm{psi}}
-$$
+<p align="center"><strong>σ<sub>b</sub> ≈ 549.575 psi</strong></p>
 
 Using the selected provisional material yield strength:
 
-$$
-SF_{\mathrm{actual}}=\frac{\sigma_Y}{\sigma_b}
-=\frac{20{,}000}{549.575}\approx\boxed{36.39}
-$$
+<p align="center"><strong>SF<sub>actual</sub> = σ<sub>Y</sub> / σ<sub>b</sub> = 20,000 / 549.575 ≈ 36.39</strong></p>
 
 The submitted estimate exceeds the assigned minimum safety factor of 4. This is a preliminary calculation based on the reported thread-load distribution, number of engaged threads, and material assumption; these details should be checked against the final physical assembly and the actual product specification.
 
