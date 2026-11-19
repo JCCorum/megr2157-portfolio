@@ -4,7 +4,8 @@
 **Course:** MEGR 2156 — Sophomore Design  
 **Assignment:** A10 — Tensile Tester, Part 1  
 **Team Members:** Jason Corum, Tai Podvojsky, Gavin Sanchez  
-**Documentation:** Team project; individual contributions identified by section
+**Documentation:** Team project; individual contributions identified by section  
+**CAD package status:** Complete Pack and Go archive received; ZIP integrity checked and assembly opening verified by the student. Final mechanical design verification remains open.
 
 ---
 
@@ -198,7 +199,7 @@ The selected thread therefore satisfies the preliminary Euler buckling screening
 
 **CAD download:** [McMaster 98935A914 leadscrew (.SLDPRT)](files/A10_McMaster_98935A914_Carbon_Steel_Acme_Lead_Screw.SLDPRT)
 
-The downloaded supplier model provides geometry for the assembly. Thread compatibility with the selected nut and flange and the actual screw-end support arrangement must still be verified.
+The downloaded supplier model provides geometry for the assembly. The complete packaged assembly and all included component files are linked in Section 10. Final screw-end support conditions, mechanical load path, and clearances still require independent engineering checks.
 
 ---
 
@@ -428,15 +429,56 @@ The nut thread fit, required quantity, flange mounting-hole pattern, and CAD mod
 
 ---
 
-## 10. CAD Assembly — Gavin Sanchez and Tai Podvojsky
+## 10. CAD Assembly and Pack and Go Verification — Gavin Sanchez, Tai Podvojsky, and Jason Corum
 
-Gavin assembled the selected commercial components and the crosshead into a conceptual tensile tester in SOLIDWORKS. Tai developed the crosshead CAD geometry. The assembly includes two leadscrews, mounting hardware, and T-slotted framing rails.
+Gavin developed the overall SOLIDWORKS assembly using the selected commercial parts, while Tai modeled the crosshead. Jason coordinated recovery of the missing components and organized the complete set of CAD files for the portfolio. The model includes two leadscrews, two modified bronze flange nuts, mounting screws, crosshead, and T-slotted framing.
 
-**Download the team's [SOLIDWORKS A10 assembly (.SLDASM)](https://github.com/TaiPodUNCC/megr2157-portfolio/raw/refs/heads/main/Real_A10_Assembly.SLDASM).**
+### 10.1 Complete Downloadable SOLIDWORKS Assembly
 
-**Download the [selected leadscrew SOLIDWORKS model (.SLDPRT)](files/A10_McMaster_98935A914_Carbon_Steel_Acme_Lead_Screw.SLDPRT).**
+**[Download the complete A10 SOLIDWORKS assembly package (.zip)](files/A10_Complete_Assembly.zip)**
 
-The assembly download is linked to the team's repository as identified in the submitted PDF. The leadscrew model link above uses the existing A10 `files/` folder in this portfolio. SOLIDWORKS may also require the separately referenced part files to open the assembly without missing-component warnings.
+This archive is the **preferred download** for anyone wishing to inspect or open the full assembly. It contains one `.SLDASM` file and the six unique `.SLDPRT` files required by the package. The filename of the assembly inside the ZIP is `Real_A10_Assembly.SLDASM`.
+
+### 10.2 Packaged CAD Component Inventory
+
+The following filenames are **exactly as packaged** in the verified ZIP; the quantities describe component occurrences shown in the earlier SOLIDWORKS assembly tree, not additional copies of each part file.
+
+| Component | Instances in assembly tree | Actual filename inside ZIP |
+| --- | ---: | --- |
+| Crosshead (team-designed) | 1 | `Cross Head.SLDPRT` |
+| Carbon-steel RH Acme leadscrew, 98935A914 | 2 | `A10_McMaster_98935A914_Carbon_Steel_Acme_Lead_Screw.SLDPRT` |
+| Modified 932 bronze Acme flange nut, 95120A119 | 2 | `95120A119_932 Bearing Bronze Acme Flange Nut (1).SLDPRT` |
+| 316 stainless-steel socket-head screw, 90666A013 | 4 | `90666A013_Super-Corrosion-Resistant 316 Stainless Steel Socket Head Screw (1).SLDPRT` |
+| T-slotted framing rail, 4658N33 | 2 | `4658N33_T-Slotted Framing Rail.SLDPRT` |
+| T-slotted framing component, 47065T023 | 4 | `47065T023_T-Slotted Framing.SLDPRT` |
+
+The six unique part files together with the assembly are included in **one ZIP**. Each component is stored once; SOLIDWORKS creates multiple component instances in the assembly as required.
+
+### 10.3 Recovering Missing References and Modified Components
+
+The initial assembly was difficult to reopen because some native components were missing or did not match the component revisions used to construct the assembly. After recovering the initial part files, multiple concentric and coincident mates remained unresolved. During manual inspection, the team identified that the originally supplied bronze flange-nut part did not contain the mounting holes required by the socket-head screws. Gavin supplied the **modified part models**, allowing the correct component revisions to be used.
+
+A new copy was assembled using those revisions and then packaged through **SOLIDWORKS File > Pack and Go > Save to Zip File**. The student extracted the ZIP and confirmed that the packaged assembly could be opened successfully.
+
+**Important modeling distinction:** The flange-nut CAD in this archive has been **modified for this team's assembly** and should not be treated as an unmodified, manufacturer-certified McMaster part. The bolt-hole locations, fastener sizes, and manufacturing feasibility of these modifications should be documented and checked before fabrication.
+
+### 10.4 Verification Results and Remaining Checks
+
+| Verification item | Result |
+| --- | --- |
+| ZIP archive integrity | **Passed:** no damaged ZIP entries detected |
+| Assembly model file present | **Yes:** `Real_A10_Assembly.SLDASM` |
+| Six unique native part files present | **Yes** |
+| Required component categories from prior Find References list | **All six represented by filenames** |
+| New files compared with previously incomplete package | **Updated assembly and component versions detected** |
+| Assembly reopening after extraction | **Confirmed by student in SOLIDWORKS** |
+| Mate rebuild and no-error status | **Student-side verification required**; not independently testable here |
+| Interference, clearance, and motion studies | **Not yet independently verified** |
+| Crosshead stress/deflection compliance | **Not established** by the assembly file |
+
+**Verification limitation:** File-integrity testing can establish that the archive is readable and the expected files are included, but does not inspect the parametric geometry or validate mate relationships. A SOLIDWORKS rebuild, interference detection, dimensional inspection, and an engineering review of the complete load path remain necessary before calling the design fully validated.
+
+For an overview of the crosshead geometry used in the assembly, see Figures 8–10 in Section 8. A final overall assembly screenshot may be added as additional documentation after the assembly is reopened in SOLIDWORKS.
 
 ---
 
@@ -454,7 +496,7 @@ The following bill of materials reproduces the **quantities and prices reported 
 | 6 | 1 | Crosshead (fabricated / estimated) | $30.00 | $30.00 | Designed component |
 | | | **Reported total** | | **$387.84** | |
 
-**Bill-of-materials verification:** The submitted list includes **one** bronze nut even though the design specifies **two** leadscrews. The listed 2-ft framing subtotal is **$76.42**, whereas 2 × $38.12 = **$76.24**. The 316 screw cost is also based on a pack purchase rather than quantity × unit price. These submitted values have been preserved for traceability; quantities and totals should be reconciled before procurement.
+**Bill-of-materials verification:** The submitted PDF lists **one** bronze flange nut, whereas the packaged assembly contains **two nut instances**. The ZIP also identifies the actual framing part models as **4658N33** and **47065T023**, which differ from the **4658N31** part number cited in the original bill of materials; therefore, the earlier rail prices cannot be assumed to describe the modeled parts. The listed 2-ft framing subtotal is **$76.42**, although 2 × $38.12 = **$76.24**. The screw cost reflects a pack purchase rather than four individual items. The reported **$387.84** estimate is retained as a record of the submitted PDF, **not a verified final procurement total**. Quantities, supplier part numbers, modified-part costs, and subtotals must be reconciled before purchasing.
 
 ---
 
@@ -474,6 +516,10 @@ Tai reported spending approximately **3 hours** on his assigned portions. He gai
 
 Gavin reported spending approximately **3 hours** on the assignment. His main difficulty was developing an appropriate bending-stress model for a threaded flange nut rather than treating it as a conventional flat beam. The final simplified expression included pitch and an assumed number of engaged threads, which made it possible to estimate thread bending stress and a preliminary safety factor.
 
+### Team — Component Reference Recovery
+
+When the original assembly references and mates failed, troubleshooting the geometry revealed a mismatch between the socket-head mounting screws and the original flange-nut CAD model. Recovering the modified nut and fastener models, then rebuilding and packaging the assembly with Pack and Go, demonstrated why native CAD files must be collected as a coherent set rather than individually renamed or copied without verifying their references.
+
 ### Time Spent
 
 | Team member | Reported or recorded time |
@@ -490,7 +536,7 @@ Gavin reported spending approximately **3 hours** on the assignment. His main di
 1. [McMaster-Carr — Carbon Steel Acme Lead Screw, 98935A914](https://www.mcmaster.com/98935A914/).
 2. [McMaster-Carr — 932 Bearing Bronze Acme Flange Nut, 95120A119](https://www.mcmaster.com/95120A119/).
 3. [McMaster-Carr — Stainless Socket-Head Screws, 90666A013](https://www.mcmaster.com/90666A013/).
-4. [McMaster-Carr — T-Slotted Framing, 4658N31](https://www.mcmaster.com/products/4658n31/).
+4. McMaster-Carr — T-slotted framing component IDs appearing in the packaged assembly: [4658N33](https://www.mcmaster.com/4658N33/) and [47065T023](https://www.mcmaster.com/47065T023/). Supplier listings and prices should be rechecked.
 5. Oberg et al., *Machinery's Handbook*, 31st edition, Industrial Press, 2020, assigned leadscrew reference material.
 6. Oberg et al., *Machinery's Handbook*, 32nd edition, Table 2b, p. 2061 (as consulted for Acme thread limiting dimensions).
 7. [MechaniCalc — Column Buckling](https://mechanicalc.com/reference/column-buckling).
@@ -507,10 +553,12 @@ Gavin reported spending approximately **3 hours** on the assignment. His main di
 - [x] Bronze flange-nut stress calculation and part selection documented.
 - [x] Crosshead preliminary bending analysis, sketch, and CAD images included.
 - [x] Team's reported bill of materials and supplier links included.
-- [x] Download links for the identified leadscrew and team assembly supplied.
-- [x] Verify crosshead deflection and redesign if necessary.
-- [x] Check actual lead screw support conditions, screw loading, and combined stresses.
-- [x] Reconcile bronze nut quantities, framing subtotals, and purchased component costs.
-- [x] Confirm that all SOLIDWORKS part dependencies are available with the assembly.
-- [x] Confirm final screw/nut fit and complete an interference/alignment check.
-- [x] Confirm identical team documentation and final Canvas submission requirements.
+- [x] Direct leadscrew CAD link and complete packaged assembly ZIP download link supplied.
+- [ ] Verify crosshead deflection and redesign if necessary.
+- [ ] Check actual lead screw support conditions, screw loading, and combined stresses.
+- [ ] Reconcile bronze nut quantity (two modeled), frame part numbers (4658N33 and 47065T023), framing subtotals, and purchased component costs.
+- [x] Confirm all six expected distinct part files are present in the uploaded Pack and Go ZIP.
+- [x] Reopen extracted packaged assembly in SOLIDWORKS (student verified).
+- [ ] Confirm mate errors are fully cleared after rebuild and capture an overview screenshot.
+- [ ] Verify modified bronze flange-nut mounting holes, fastener fit, and complete an interference/alignment check.
+- [ ] Confirm identical team documentation and final Canvas submission requirements.
