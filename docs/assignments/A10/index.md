@@ -1,42 +1,39 @@
 
-# A10: Leadscrew-Driven Tensile Tester
+# A10: Lead Screw Translating System
 
 **Course:** MEGR 2156 — Sophomore Design  
-**Team Members:** Jason Corum, [Teammate 2], [Teammate 3]  
 **Assignment:** A10 — Tensile Tester, Part 1  
-**Project Status:** Leadscrew analysis completed using provisional assumptions; remaining group contributions in progress.
+**Team Members:** Jason Corum, Tai Podvojsky, Gavin Sanchez  
+**Documentation:** Team project; individual contributions identified by section
 
 ---
 
 ## 1. Project Description and Objectives
 
-The objective of this project is to conceptually design a mechanically driven tensile testing machine capable of applying a maximum axial tensile load of **2 kN** while maintaining a controllable crosshead speed between **1 and 50 mm/min**.
-
-The design incorporates two identical leadscrews, compatible nuts and flanges, a crosshead, and a supporting frame. The system must provide accurate, repeatable loading while maintaining structural strength and minimizing crosshead deflection.
+The objective of this project is to conceptually design a mechanically driven tensile testing machine capable of applying a maximum axial tensile load of **2 kN** while maintaining a controllable crosshead speed of **1–50 mm/min**. The assembly consists of two identical leadscrews, their nuts and flanges, a crosshead, and a supporting frame. The design should provide repeatable loading, suitable structural strength, and limited crosshead deflection.
 
 ### Design Requirements
 
 | Parameter | Value |
-|---|---|
+| --- | --- |
 | Maximum tensile load, ΣP | 2,000 N |
-| Number of leadscrews, N<sub>s</sub> | 2 |
-| Load per leadscrew, P | 1,000 N (equal-load assumption) |
-| Crosshead linear speed, \|v\| | 1–50 mm/min |
-| Minimum purchased leadscrew length, l<sub>min</sub> | 18 in (457.2 mm) |
-| Design safety factor, SF | 4 |
-| Maximum crosshead deflection, δ<sub>max</sub> | 0.1 mm |
-| Thread type | Acme; modeled as square threads where directed in lecture |
-| Crosshead model | Simply supported beam (lecture assumption) |
-| Number of thread starts on selected screw | 1 |
+| Number of leadscrews, N_s | 2 |
+| Assumed axial load per leadscrew, P | 1,000 N |
+| Crosshead linear speed | 1–50 mm/min |
+| Minimum purchased leadscrew length | 18 in (457.2 mm) |
+| Design safety factor, SF | 4.0 |
+| Maximum crosshead deflection | 0.1 mm |
+| Thread type | Acme; modeled as square threads where directed during lecture |
+| Crosshead model | Simply supported beam |
+| Operating principle | Mechanical leadscrew-driven crosshead |
 
 ### Individual Responsibilities
 
-| Component | Contributor | Status |
-|---|---|---|
-| Leadscrew diameter, speed, torque, and selection | Jason Corum | Preliminary analysis completed |
-| Bronze nut/flange selection and thread analysis | [Teammate 2] | Pending |
-| Crosshead strength, deflection, and design | [Teammate 3] | Pending |
-| Cost analysis and CAD assembly | [Assigned members] | Pending |
+| Team Member | Primary Contribution |
+| --- | --- |
+| **Jason Corum** | Leadscrew diameter, material research, buckling, rotational speed, required torque, and screw selection |
+| **Tai Podvojsky** | Crosshead beam analysis, deflection analysis, multiview sketch, crosshead CAD, and bill of materials |
+| **Gavin Sanchez** | Bronze nut/flange bending analysis, nut selection, and overall CAD assembly |
 
 ---
 
@@ -44,75 +41,71 @@ The design incorporates two identical leadscrews, compatible nuts and flanges, a
 
 ### 2.1 Initial Knowns, Unknowns, and Assumptions
 
-The leadscrew design began by identifying the operating requirements, unknown design parameters, and assumptions needed for preliminary engineering analysis.
+The preliminary design began with the assignment constraints, possible material properties, and a list of unknown geometric dimensions. The two screws were modeled as identical, synchronously rotating members carrying equal loads. Materials were treated as homogeneous and isotropic. For the preliminary nominal axial-stress calculation, local thread-root stress concentrations, self-weight, misalignment, and inertial loading were neglected.
 
-Both leadscrews are assumed to have identical geometry and material properties, carry equal axial loads, and rotate synchronously. The material is treated as homogeneous and isotropic. For initial axial sizing, local thread-root stress concentrations, component weights, misalignment, and inertial effects are neglected.
+**Nomenclature:** Ø_maj denotes the major/nominal diameter; Ø_R = Ø_min is the minor/root diameter; Ø_p denotes the pitch diameter. These are distinct dimensions.
 
-**Notation:** The symbol **Ø** represents diameter. **Ø<sub>maj</sub>** is the major (nominal) diameter; **Ø<sub>R</sub>** or **Ø<sub>min</sub>** is the minor/root diameter; **Ø<sub>p</sub>** is the pitch diameter. These are different dimensions.
-
-![Page 1: Knowns, Unknowns, and Assumptions](images/A10_01_Design_Knowns_Unknowns_Assumptions.jpg)
+![Jason's initial knowns, unknowns, and assumptions](images/A10_01_Design_Knowns_Unknowns_Assumptions.jpg)
 
 *Figure 1. Initial knowns, unknowns, governing conditions, and assumptions.*
 
 ### 2.2 Axial Stress Analysis
 
-The maximum applied load is assumed to be distributed equally between the two leadscrews:
+The specified load is assumed to divide equally between both leadscrews:
 
-**P = ΣP / N<sub>s</sub>**
+$$
+P=\frac{\sum P}{N_s}=\frac{2000\ \mathrm{N}}{2}=1000\ \mathrm{N}
+$$
 
-**P = (2,000 N) / 2 = 1,000 N per leadscrew**
+For a nominal solid circular cross section at the root diameter:
 
-The individual leadscrew free-body diagram establishes an axial load of 1,000 N and an equal and opposite support reaction in static equilibrium.
+$$
+\sigma_n=\frac{P}{A_{cs}},\qquad A_{cs}=\frac{\pi\varnothing_{\min}^{2}}{4}
+$$
 
-The governing nominal axial stress is:
+Using the yield-strength-based allowable stress,
 
-**σ<sub>n</sub> = P / A<sub>cs</sub>**
+$$
+\sigma_{\mathrm{allow}}=\frac{\sigma_Y}{SF}
+$$
 
-For a circular cross section based on the root diameter:
+and requiring nominal axial stress to remain below the allowable value gives:
 
-**A<sub>cs</sub> = π Ø<sub>min</sub><sup>2</sup> / 4**
-
-The allowable nominal stress is:
-
-**σ<sub>allow</sub> = σ<sub>Y</sub> / SF**
-
-Requiring **σ<sub>n</sub> ≤ σ<sub>allow</sub>** and solving symbolically for the minimum root diameter gives:
-
-**Ø<sub>min</sub> ≥ √[4 P (SF) / (π σ<sub>Y</sub>)]**
+$$
+\boxed{\varnothing_{\min}\geq\sqrt{\frac{4P(SF)}{\pi\sigma_Y}}}
+$$
 
 ### 2.3 Material Research
 
-The McMaster-Carr catalog lists material classification, tensile strength, hardness, and fastener strength grade, but does not explicitly provide a guaranteed yield strength for the selected leadscrew. Supplementary research was performed using the *Machinery's Handbook* and published material-property references.
+The McMaster-Carr catalog provides material classifications, tensile strengths, hardnesses, and strength classes, but does not give a certified yield strength for the selected leadscrew. The team therefore compared published properties for related materials. The instructor advised using the lowest defensible strength and verifying the correct steel specification.
 
-The professor advised using the least strength supported by the research and verifying the correct steel specification. Accordingly, the following are **provisional comparison values**, not manufacturer-certified yield strengths for McMaster part 98935A914.
+| Material classification | Investigated yield strength (provisional) |
+| --- | --- |
+| Carbon steel | 31,900–57,000 psi |
+| Zinc-plated carbon steel | 34,000 psi, assuming a comparable steel substrate |
+| Alloy steel | 60,200–105,000 psi |
+| 18-8 stainless steel | 30,000–31,200 psi |
+| 316 stainless steel | 30,000 psi minimum investigated |
 
-| Investigated material | Investigated yield-strength values | Interpretation |
-|---|---|---|
-| Carbon steel | 31,900–57,000 psi | Includes comparisons to AISI 1018 and SAE Grade 2 material conditions |
-| Zinc-plated carbon steel | 34,000 psi | Assumed comparable to the underlying carbon steel; coating alone does not establish a different yield strength |
-| Alloy steel | 60,200–105,000 psi | Strongly dependent on the alloy and strength class |
-| 18-8 stainless steel | 30,000–31,200 psi | Values associated with investigated annealed/Class 1 conditions |
-| 316 stainless steel | 30,000 psi (minimum investigated) | Value associated with an investigated annealed/Class 1 condition |
-
-A conservative assumed yield strength of **σ<sub>Y</sub> = 30,000 psi** was used for the overall candidate screening. The selected carbon-steel screw still requires verification of its actual yield strength.
+**Important:** The entries above are comparison values from reference materials, not certified yield strengths for individual McMaster parts. A conservative **30,000 psi** assumption was used for general candidate screening.
 
 ### 2.4 Numerical Axial Diameter Results
 
-| Assumed yield strength, σ<sub>Y</sub> | Calculated minimum root diameter, Ø<sub>min</sub> |
-|---|---|
+| Assumed yield strength | Minimum calculated root diameter |
+| --- | --- |
 | 34,000 psi | 4.6611 mm (0.18351 in) |
 | 105,000 psi | 2.65235 mm (0.104423 in) |
 | 30,000 psi | 4.9621 mm (0.19536 in) |
 
-The most restrictive result from the investigated axial-stress assumptions was:
+The most restrictive provisional axial-stress requirement was:
 
-**Ø<sub>min,axial</sub> = 4.9621 mm = 0.19536 in**
+$$
+\boxed{\varnothing_{\min,\mathrm{axial}}=0.19536\ \mathrm{in}}
+$$
 
-This axial-stress requirement alone suggests that several relatively small Acme leadscrews could be sufficient. It does not address the stability of a long screw under compression.
+![Jason's axial-stress FBD, material research, and diameter calculations](images/A10_02_Leadscrew_FBD_Axial_Stress_and_Materials.jpg)
 
-![Page 2: Axial Stress and Material Selection](images/A10_02_Leadscrew_FBD_Axial_Stress_and_Materials.jpg)
-
-*Figure 2. Individual leadscrew FBD, symbolic axial-stress derivation, material research, and numerical minimum-diameter calculations.*
+*Figure 2. Individual leadscrew FBD, axial-stress derivation, material research, and numerical sizing calculations.*
 
 ---
 
@@ -120,400 +113,404 @@ This axial-stress requirement alone suggests that several relatively small Acme 
 
 ### 3.1 Buckling Model
 
-A supplementary buckling analysis was performed to assess a conservative compressive-load case. The leadscrew was idealized as a solid circular column with pinned supports at both ends, giving the effective-length factor:
+Because a leadscrew may act as a slender compression member, Euler buckling was investigated as a conservative separate failure mode. The preliminary model uses **pinned–pinned** end restraints and an effective-length factor of **K = 1.0**.
 
-**K = 1.0 (pinned–pinned)**
+$$
+P_{cr}=\frac{\pi^2EI}{(K l_u)^2}
+$$
 
-The Euler critical buckling load is:
+For a solid circular cross section:
 
-**P<sub>cr</sub> = π<sup>2</sup> E I / (K l<sub>u</sub>)<sup>2</sup>**
+$$
+I=\frac{\pi\varnothing_{\min}^{4}}{64}
+$$
 
-For a solid circular cross section evaluated at the minimum root diameter:
+The required critical buckling load satisfies:
 
-**I = π Ø<sub>min</sub><sup>4</sup> / 64**
+$$
+P_{cr}\geq P(SF)
+$$
 
-Requiring a safety factor of 4 against Euler buckling:
+Solving for minimum root diameter:
 
-**P<sub>cr</sub> ≥ (SF) P**
+$$
+\boxed{\varnothing_{\min,\mathrm{buckling}}\geq
+\sqrt[4]{\frac{64P(SF)K^2l_u^2}{\pi^3E}}}
+$$
 
-Solving for the minimum root diameter yields:
+Assumed values: **P = 1,000 N per screw**, **SF = 4**, **E = 29 × 10⁶ psi**, **K = 1.0**.
 
-**Ø<sub>min,buckling</sub> ≥ [64 P (SF) K<sup>2</sup> l<sub>u</sub><sup>2</sup> / (π<sup>3</sup> E)]<sup>1/4</sup>**
+![Jason's thread screening and Euler buckling setup](images/A10_03_Axial_Diameter_Selection_and_Buckling.jpg)
 
-where **E** is Young's modulus, **I** is the minimum second moment of area, **l<sub>u</sub>** is the unsupported length, and **K** is the effective-length factor.
+*Figure 3. Preliminary root-diameter screening and parametric Euler buckling derivation.*
 
-### 3.2 Numerical Results
+### 3.2 Numerical Buckling Results
 
-The preliminary calculations used the following values:
-
-- **P = 1,000 N ≈ 224.81 lbf** per leadscrew.
-- **E ≈ 29 × 10<sup>6</sup> psi** for steel.
-- **K = 1.0** for pinned–pinned end conditions.
-- **SF = 4.0**.
-- Two assumed unsupported lengths: **18 in** and **24 in**.
-
-| Assumed unsupported length, l<sub>u</sub> | Calculated minimum root diameter, Ø<sub>min,buckling</sub> |
-|---|---|
+| Assumed unsupported length, l_u | Required minimum root diameter |
+| --- | --- |
 | 18 in | 0.37948 in |
 | 24 in | 0.43819 in |
 
-The more restrictive result is:
+The longer unsupported span is more restrictive:
 
-**Ø<sub>min,buckling</sub> = 0.43819 in (for l<sub>u</sub> = 24 in)**
-
-![Page 3: Root Diameter Selection and Buckling Setup](images/A10_03_Axial_Diameter_Selection_and_Buckling.jpg)
-
-*Figure 3. Preliminary Acme thread screening and Euler buckling derivation.*
+$$
+\boxed{\varnothing_{\min,\mathrm{buckling}}=0.43819\ \mathrm{in}\quad(l_u=24\ \mathrm{in})}
+$$
 
 ### 3.3 Leadscrew Selection Based on Buckling
 
-According to Table 2b in the *Machinery's Handbook*, 32nd edition, the minimum limiting external minor diameter for the considered **5/8"-8, Class 2G Acme** thread is approximately:
+The *Machinery's Handbook*, 32nd edition, Table 2b, gives a minimum limiting external root diameter of approximately **0.4570 in** for the **5/8"-8 Class 2G Acme** thread.
 
-**Ø<sub>R,min</sub> = 0.4570 in**
+$$
+\varnothing_{R,\min}=0.4570\ \mathrm{in}>0.43819\ \mathrm{in}
+$$
 
-Comparison with the conservative 24-inch buckling requirement:
+The selected thread therefore satisfies the preliminary Euler buckling screening condition under the pinned–pinned, 24-inch unsupported-length assumption. The estimated buckling safety factor is approximately **4.73** for the assumed load of 1,000 N per screw.
 
-**0.4570 in > 0.43819 in**
+**Model limitation:** The real assembly must confirm the actual unsupported length, screw load direction, and support conditions. This is a conservative preliminary compression calculation rather than proof that the final assembly will experience compression.
 
-Thus, the selected thread passes this **preliminary Euler buckling screening**. For the 24-inch assumed unsupported length, the estimated Euler critical load is approximately **1,064 lbf**, and the estimated buckling safety factor is approximately **4.73** for a 1,000 N axial compressive load.
+![Jason's buckling results and rotational-speed FBDs](images/A10_04_Buckling_Results_and_Rotational_Speed_FBD.jpg)
 
-**Engineering limitation:** The 24-inch purchased length is not necessarily the actual unsupported length. The final assembly must establish the actual end restraints, load path, whether the screws are in compression or tension during the test, and the unsupported spans. Euler buckling is an idealized stability model, not a substitute for verifying those conditions.
-
-![Page 4: Buckling Results and Leadscrew Selection](images/A10_04_Buckling_Results_and_Rotational_Speed_FBD.jpg)
-
-*Figure 4. Pinned–pinned buckling results, selection of the 5/8"-8 Acme thread, and rotational-speed FBDs.*
+*Figure 4. Buckling results, 5/8"-8 thread selection, catalog part number, and rotational-speed FBDs.*
 
 ---
 
 ## 4. Selected Leadscrew — Jason Corum
 
-Following the nominal axial-stress analysis, conservative buckling analysis, and catalog screening, the preliminary selected component is:
+**Selected McMaster-Carr Part: [98935A914](https://www.mcmaster.com/98935A914/)**
 
-**McMaster-Carr Part Number: 98935A914**
-
-[View the selected leadscrew on McMaster-Carr](https://www.mcmaster.com/98935A914/)
-
-### Selected Specifications
-
-| Specification | Value |
-|---|---|
+| Specification | Selected value |
+| --- | --- |
 | Supplier | McMaster-Carr |
-| Part number | **98935A914** |
-| Quantity | **2 identical screws** |
+| Part number | 98935A914 |
 | Material | Carbon steel |
-| Fastener strength class | SAE Grade 2 |
+| Reported fastener strength class | SAE Grade 2 |
 | Thread | 5/8"-8 Acme, Class 2G |
-| Thread direction | Right-hand |
-| Nominal major diameter, Ø<sub>maj</sub> | 0.625 in |
-| Threads per inch | 8 TPI |
-| Number of thread starts | 1 |
-| Pitch, p | 0.125 in |
-| Lead, L | 0.125 in/rev = 3.175 mm/rev |
+| Direction | Right-hand |
+| Nominal major diameter | 5/8 in |
+| Threads per inch | 8 |
+| Thread starts | 1 |
+| Pitch and lead | 0.125 in/rev = 3.175 mm/rev |
 | Purchased length | 24 in |
-| Minimum limiting root diameter, Ø<sub>R,min</sub> | 0.4570 in (handbook table) |
-| Catalog tensile strength | 64,000 psi (not yield strength) |
-| Catalog hardness | Rockwell B61 |
+| Minimum limiting root diameter used | 0.4570 in |
+| Catalog tensile strength cited | 64,000 psi (not yield strength) |
+| Catalog hardness cited | Rockwell B61 |
 
-### Downloadable SOLIDWORKS CAD File
+**CAD download:** [McMaster 98935A914 leadscrew (.SLDPRT)](files/A10_McMaster_98935A914_Carbon_Steel_Acme_Lead_Screw.SLDPRT)
 
-**[Download McMaster 98935A914 Leadscrew (.SLDPRT)](files/A10_McMaster_98935A914_Carbon_Steel_Acme_Lead_Screw.SLDPRT)**
-
-The downloaded supplier model will be used as a geometry reference in the group CAD assembly. Compatibility with the final nut, flange, supports, and surrounding components must be checked.
+The downloaded supplier model provides geometry for the assembly. Thread compatibility with the selected nut and flange and the actual screw-end support arrangement must still be verified.
 
 ---
 
 ## 5. Rotational Speed Analysis — Jason Corum
 
-### 5.1 Knowns and Assumptions
+The selected leadscrew is single-start, so lead equals pitch:
 
-The required crosshead speed range is:
+$$
+L=p=\frac{1}{8}\ \mathrm{in/rev}=3.175\ \mathrm{mm/rev}
+$$
 
-**|v<sub>min</sub>| = 1 mm/min**
+With synchronized screw rotation and negligible backlash and slip, the kinematic relation is:
 
-**|v<sub>max</sub>| = 50 mm/min**
+$$
+|\vec v|=Ln\quad\Rightarrow\quad\boxed{n=\frac{|\vec v|}{L}}
+$$
 
-The selected **5/8"-8** Acme thread has one thread start. Therefore, its lead equals its pitch:
+The limiting rotational speeds are:
 
-**L = p = 1/8 in/rev = 0.125 in/rev = 3.175 mm/rev**
+$$
+\boxed{n_{\min}=\frac{1}{3.175}=0.3150\ \mathrm{rpm}}
+$$
 
-The two screws are assumed to rotate synchronously, and the kinematic model neglects backlash, slip, and elastic elongation.
+$$
+\boxed{n_{\max}=\frac{50}{3.175}=15.748\ \mathrm{rpm}}
+$$
 
-### 5.2 Symbolic Derivation
+The numerical difference between the limits is:
 
-The relationship between crosshead linear speed and screw rotational speed is:
+$$
+\Delta n=n_{\max}-n_{\min}=15.433\ \mathrm{rpm}
+$$
 
-**|v| = L n**
-
-Solving for rotational speed:
-
-**n = |v| / L**
-
-Therefore:
-
-**n<sub>min</sub> = |v<sub>min</sub>| / L**
-
-**n<sub>max</sub> = |v<sub>max</sub>| / L**
-
-The speed range difference is:
-
-**Δn = n<sub>max</sub> − n<sub>min</sub>**
-
-### 5.3 Numerical Results
-
-Minimum rotational speed:
-
-**n<sub>min</sub> = (1 mm/min) / (3.175 mm/rev) = 0.3150 rpm**
-
-Maximum rotational speed:
-
-**n<sub>max</sub> = (50 mm/min) / (3.175 mm/rev) = 15.748 rpm**
-
-Difference between limits:
-
-**Δn = 15.748 − 0.3150 = 15.433 rpm**
-
-Thus, each synchronized leadscrew must rotate between approximately **0.3150 rpm and 15.748 rpm**.
+Each screw must rotate at approximately **0.3150–15.748 rpm** to produce the specified crosshead travel speed.
 
 ---
 
 ## 6. Maximum Driving Torque Analysis — Jason Corum
 
-### 6.1 Known Values and Assumptions
+The selected leadscrew carries **P = 1,000 N**, has **L = 3.175 mm/rev**, and is modeled with a provisional mechanical efficiency of **η = 0.25**, based on the assumed Acme screw/bronze nut combination. This preliminary torque analysis neglects acceleration, misalignment, and losses elsewhere in the drivetrain.
 
-The torque investigation uses the same loading and force balance shown in the rotational-speed free-body diagrams in Figure 4.
+The required torque for one screw is:
 
-| Parameter | Value |
-|---|---|
-| Total tensile load, ΣP | 2,000 N |
-| Load per leadscrew, P | 1,000 N |
-| Lead, L | 3.175 mm/rev |
-| Assumed mechanical efficiency, η | 0.25 (25%) |
-| Number of leadscrews, N<sub>s</sub> | 2 |
+$$
+\boxed{T_d=\frac{PL}{2\pi\eta}}
+$$
 
-The **25% mechanical efficiency** is a provisional estimate for an Acme screw with a bronze nut. This preliminary model neglects inertial torque and additional drivetrain, support-bearing, and misalignment losses. Actual efficiency depends on the final nut and operating conditions.
+$$
+T_d=\frac{(1000\ \mathrm{N})(3.175\ \mathrm{mm/rev})}{2\pi(0.25)}
+$$
 
-### 6.2 Symbolic Solution
+$$
+\boxed{T_{d,\max}=2021.267\ \mathrm{N\,mm}=2.021\ \mathrm{N\,m}}
+$$
 
-For one leadscrew, the required steady-state driving torque is estimated as:
+For both identical leadscrews:
 
-**T<sub>d</sub> = P L / (2 π η)**
+$$
+\boxed{\sum T_{d,\max}=\frac{(2000\ \mathrm{N})(3.175\ \mathrm{mm/rev})}{2\pi(0.25)}
+=4042.535\ \mathrm{N\,mm}=4.043\ \mathrm{N\,m}}
+$$
 
-For the two identical leadscrews together:
+Two independent drives would each need to deliver the per-screw torque; a common 1:1 drive must transmit the combined screw torque plus any additional drivetrain losses.
 
-**ΣT<sub>d</sub> = (ΣP) L / (2 π η)**
+![Jason's rotational-speed and torque results](images/A10_05_Rotational_Speed_and_Torque_Calculations.jpg)
 
-### 6.3 Numerical Solution
-
-Torque required **per leadscrew**:
-
-**T<sub>d,max</sub> = (1,000 N)(3.175 mm/rev) / [2 π (0.25)]**
-
-**T<sub>d,max</sub> = 2,021.267 N·mm = 2.021 N·m**
-
-Estimated combined required torque **for both leadscrews**:
-
-**ΣT<sub>d,max</sub> = (2,000 N)(3.175 mm/rev) / [2 π (0.25)]**
-
-**ΣT<sub>d,max</sub> = 4,042.535 N·mm = 4.043 N·m**
-
-For independent drives, each drive must supply the per-screw torque. For a common 1:1 drive, the drive system must supply the combined screw torque plus additional drivetrain losses.
-
-![Page 5: Rotational Speed and Driving Torque Calculations](images/A10_05_Rotational_Speed_and_Torque_Calculations.jpg)
-
-*Figure 5. Rotational-speed calculations, required driving torque, and the provisional Acme screw/bronze nut efficiency assumption.*
+*Figure 5. Rotational-speed and maximum driving-torque calculations.*
 
 ---
 
-## 7. Summary of Leadscrew Design Results
+## 7. Summary of Leadscrew Design Results — Jason Corum
 
-| Parameter | Preliminary result |
-|---|---|
-| Selected part | McMaster **98935A914** |
-| Material | Carbon steel |
-| Thread | 5/8"-8 Acme, right-hand |
-| Purchased length | 24 in |
-| Conservative provisional yield strength for comparison | 30,000 psi |
+| Parameter | Preliminary design result |
+| --- | --- |
+| Selected part | McMaster 98935A914 |
+| Thread and material | Carbon steel, 5/8"-8 RH Acme |
+| Screw length | 24 in |
+| Conservative comparison yield strength | 30,000 psi (assumed; not certified for part) |
 | Axial-stress minimum root diameter | 0.19536 in |
-| Buckling minimum root diameter, 18-in assumed unsupported length | 0.37948 in |
-| Buckling minimum root diameter, 24-in assumed unsupported length | 0.43819 in |
-| Selected thread's minimum limiting root diameter | 0.4570 in |
-| Estimated buckling safety factor, 24-in assumed unsupported length | 4.73 |
-| Minimum rotational speed | 0.3150 rpm |
-| Maximum rotational speed | 15.748 rpm |
-| Maximum required torque, each leadscrew | 2.021 N·m |
-| Combined required screw torque | 4.043 N·m |
+| Buckling minimum root diameter, 18-in span | 0.37948 in |
+| Buckling minimum root diameter, 24-in span | 0.43819 in |
+| Selected limiting root diameter | 0.4570 in |
+| Estimated buckling SF for 24-in span | 4.73 |
+| Rotational-speed range | 0.3150–15.748 rpm |
+| Maximum driving torque per screw | 2.021 N·m |
+| Combined maximum screw torque | 4.043 N·m |
 
 ### Engineering Conclusions
 
-The axial-stress analysis permitted a significantly smaller root diameter than the conservative Euler buckling analysis. Under the pinned–pinned compression model with a 24-inch unsupported length, the preliminary buckling requirement governed the diameter selection.
-
-The selected 5/8"-8 carbon-steel Acme leadscrew meets the nominal axial-strength screening requirement and the assumed Euler buckling requirement. Its lead provides the required crosshead linear-speed range at a relatively low shaft rotational speed. The torque calculations depend on the provisional 25% mechanical efficiency.
-
-**Remaining checks:** Verify the actual steel strength, purchased product geometry and tolerance, axial-plus-torsional stress, actual support conditions and unsupported length, tension/compression load path, critical speed where relevant, nut thread capacity, flange mounting, and drivetrain efficiency before finalizing the complete assembly.
+Nominal axial stress alone would permit a substantially smaller leadscrew. The conservative Euler buckling analysis governed the preliminary diameter selection for the selected support and length assumptions. Further checks should confirm the actual steel specification, combined stresses, unsupported length, screw-end constraints, whether the screw experiences compression, and the finished drivetrain efficiency.
 
 ---
 
-## 8. Bronze Nut and Flange Selection — [Teammate 2]
+## 8. Designing the Crosshead — Tai Podvojsky
 
-### 8.1 Known Values and Unknowns
+Tai developed the crosshead as a simply supported beam with a centrally applied specimen load, then used beam bending and deflection relationships to select an initial cross-sectional height. The proposed crosshead material was carbon steel.
 
-[Insert the knowns and unknowns relevant to the selected nut and flange. The screw thread is 5/8"-8 Acme, right-hand; the assumed load is 1,000 N per nut; and the required safety factor is 4.]
+### 8.1 Initial Design Values
 
-### 8.2 Free-Body Diagram
+| Parameter | Value in Tai's work |
+| --- | --- |
+| Applied load, P | 2,000 N |
+| Beam span, L | 0.300 m |
+| Crosshead width, b | 0.050 m |
+| Elastic modulus, E | 200 GPa |
+| Assumed yield strength, σ_Y | 250 MPa |
+| Design safety factor, SF | 4 |
+| Allowable deflection | 0.0001 m = 0.1 mm |
 
-[Insert a labeled FBD illustrating the loads and reactions on the nut and its internal threads.]
+### 8.2 Beam Strength and Crosshead Height
 
-### 8.3 Thread Bending Stress Analysis
+For a simply supported beam with a central applied force:
 
-[Insert the lecture-based thread-bending equations and symbolic derivation.]
+$$
+R_A=R_B=\frac{P}{2},\qquad M_{\max}=\frac{PL}{4}
+$$
 
-### 8.4 Numerical Analysis
+For a rectangular cross section of width **b** and height **h**:
 
-[Insert the bronze material properties, thread dimensions, numerical bending stress, allowable strength, and safety-factor check.]
+$$
+I=\frac{bh^3}{12},\qquad c=\frac{h}{2},\qquad \sigma_{\max}=\frac{M_{\max}c}{I}
+$$
 
-### 8.5 Component Selection
+Combining the relations with the safety factor gives:
 
-[Insert the selected compatible bronze nut/flange, manufacturer, part number, and purchase link.]
+$$
+\boxed{h\geq\sqrt{\frac{3PL(SF)}{2b\sigma_Y}}}
+$$
 
-### 8.6 Downloadable CAD
+Using the preliminary values, Tai obtained **h ≈ 0.0170 m (0.669 in)**.
 
-[Insert a link to the downloaded nut/flange CAD model and labeled screenshots.]
+![Tai's crosshead FBD and bending calculation](images/A10_06_Tai_Crosshead_Bending_Stress.jpg)
+
+*Figure 6. Tai's initial crosshead knowns, beam FBD, and beam-strength calculation.*
+
+### 8.3 Deflection Analysis and Multiview Sketch
+
+The theoretical central deflection for a simply supported beam with a centered load is:
+
+$$
+\delta=\frac{PL^3}{48EI},\qquad I=\frac{bh^3}{12}
+$$
+
+Tai's submitted handwritten page reports a deflection of **0.000026 m**. That reported value needs independent verification before asserting that the **0.1 mm** deflection limit is met. With the recorded dimensions, a direct substitution into the beam formula gives approximately **0.275 mm at the 2 kN service load**, or approximately **1.10 mm if the factor of safety is also applied to the deflection load**. Both exceed the stated 0.1 mm limit, so the crosshead thickness and/or structural model requires revision before final design validation.
+
+Tai also produced a preliminary multiview sketch, with approximate overall dimensions of **11.81 in length**, **1.97 in width**, and **0.669 in height**, and mounting features for the nuts/flanges and screws. Hole spacing and fit should be verified from the final CAD model.
+
+![Tai's crosshead deflection analysis and multiview sketch](images/A10_07_Tai_Crosshead_Deflection_and_Sketch.jpg)
+
+*Figure 7. Tai's deflection work and preliminary multiview crosshead sketch.*
+
+### 8.4 SOLIDWORKS Crosshead Modeling
+
+After creating the sketch, Tai extruded the rectangular crosshead body, added holes and mounting features, and inspected the interfaces needed to fit the selected leadscrew and nut assembly.
+
+![Tai's crosshead CAD base](images/A10_08_Tai_Crosshead_CAD_Base.jpg)
+
+*Figure 8. Initial parametric crosshead body in SOLIDWORKS.*
+
+![Tai's crosshead CAD hole layout](images/A10_09_Tai_Crosshead_CAD_Holes.jpg)
+
+*Figure 9. Crosshead hole layout and mounting geometry.*
+
+![Tai's crosshead CAD front view](images/A10_10_Tai_Crosshead_CAD_Front_View.jpg)
+
+*Figure 10. Front view of the modeled crosshead.*
+
+The final assembly must verify all hole locations, clearance, lead screw alignment, and the actual load path. The screenshots do not independently establish that the complete mechanical assembly meets the deflection requirement.
 
 ---
 
-## 9. Crosshead Design — [Teammate 3]
+## 9. Bronze Nut and Flange Design — Gavin Sanchez
 
-### 9.1 Known Values and Unknowns
+Gavin evaluated bending stress in the threaded section of the selected bronze flange nut. His analysis drew on the selected **5/8"-8 RH Acme** leadscrew, the assignment's **SF = 4** requirement, and an assumed bearing-bronze yield strength of **20,000 psi**.
 
-[Insert the crosshead loading, proposed support spacing, material properties, unknown geometry, and design constraints.]
+### 9.1 Knowns, Unknowns, and Free-Body Diagram
 
-### 9.2 Crosshead Free-Body Diagram
+Gavin's handwritten design work lists the thread pitch as **0.125 in**, the modeled thread-root thickness as **0.0625 in**, the flange-nut threaded engagement length as approximately **1.25 in**, and a nominal axial force of approximately **449.62 lbf** corresponding to the full 2 kN test load. His thread-bending analysis uses an assumed number of engaged threads and a simplified beam-section model.
 
-[Insert the FBD treating the crosshead as a simply supported beam, as directed in lecture.]
+![Gavin's bronze nut knowns, assumptions, and FBD](images/A10_11_Gavin_Nut_Knowns_FBD.jpg)
 
-### 9.3 Beam Strength Analysis
+*Figure 11. Gavin's bronze nut knowns, assumptions, thread geometry, and free-body diagram.*
 
-[Insert governing bending and shear relationships, symbolic derivations, numerical results, and the resulting material and cross-section selection.]
+### 9.2 Thread Bending Stress and Factor of Safety
 
-### 9.4 Beam Deflection Analysis
+The simplified bending analysis uses the flexure relationship:
 
-The crosshead must satisfy the requirement:
+$$
+\sigma_b=\frac{Mc}{I}
+$$
 
-**δ<sub>max</sub> ≤ 0.1 mm**
+The submitted calculation reports:
 
-[Insert the beam-deflection model, derivation, and numerical verification.]
+$$
+\boxed{\sigma_b\approx549.575\ \mathrm{psi}}
+$$
 
-### 9.5 Material and Dimensions
+Using the selected provisional material yield strength:
 
-[Insert the final crosshead material, overall dimensions, section dimensions, and nut-to-crosshead interface dimensions.]
+$$
+SF_{\mathrm{actual}}=\frac{\sigma_Y}{\sigma_b}
+=\frac{20{,}000}{549.575}\approx\boxed{36.39}
+$$
 
-### 9.6 Multiview Paper Sketch
+The submitted estimate exceeds the assigned minimum safety factor of 4. This is a preliminary calculation based on the reported thread-load distribution, number of engaged threads, and material assumption; these details should be checked against the final physical assembly and the actual product specification.
 
-[Insert front, top, and side views showing overall size, mounting interfaces, nut/flange features, and material designation.]
+![Gavin's nut thread bending stress and safety factor](images/A10_12_Gavin_Nut_Bending_Stress_Check.jpg)
+
+*Figure 12. Gavin's thread-bending stress evaluation and resulting preliminary safety factor.*
+
+### 9.3 Selected Bronze Nut
+
+**Selected McMaster-Carr Part: [95120A119](https://www.mcmaster.com/95120A119/)**
+
+| Specification | Team selection |
+| --- | --- |
+| Supplier | McMaster-Carr |
+| Component | Acme bronze flange nut |
+| Part number | 95120A119 |
+| Material | 932 bearing bronze |
+| Matching screw | 5/8"-8 RH Acme, McMaster 98935A914 |
+| Provisional bronze yield strength used | 20,000 psi |
+| Reported thread bending stress | 549.575 psi |
+| Reported preliminary safety factor | 36.39 |
+
+The nut thread fit, required quantity, flange mounting-hole pattern, and CAD model should be checked against the selected leadscrew and actual crosshead design.
 
 ---
 
-## 10. Cost Analysis — [Assigned Team Member]
+## 10. CAD Assembly — Gavin Sanchez and Tai Podvojsky
 
-Use a **Markdown table with functional purchase links**, not an image of a table. Prices and quantities must be updated from the selected suppliers.
+Gavin assembled the selected commercial components and the crosshead into a conceptual tensile tester in SOLIDWORKS. Tai developed the crosshead CAD geometry. The assembly includes two leadscrews, mounting hardware, and T-slotted framing rails.
 
-| Item | Quantity | Component | Cost/Item | Total Cost | Purchase Link |
-|---|---|---|---|---|---|
-| 1 | 2 | McMaster 98935A914 leadscrew | TBD | TBD | [McMaster](https://www.mcmaster.com/98935A914/) |
-| 2 | 2 | Bronze Acme nut/flange | TBD | TBD | [Add purchase link] |
-| 3 | TBD | Frame components | TBD | TBD | [Add purchase link] |
-| 4 | TBD | Other purchased components | TBD | TBD | [Add purchase link] |
-| | | **Total estimated cost** | | **TBD** | |
+**Download the team's [SOLIDWORKS A10 assembly (.SLDASM)](https://github.com/TaiPodUNCC/megr2157-portfolio/raw/refs/heads/main/Real_A10_Assembly.SLDASM).**
+
+**Download the [selected leadscrew SOLIDWORKS model (.SLDPRT)](files/A10_McMaster_98935A914_Carbon_Steel_Acme_Lead_Screw.SLDPRT).**
+
+The assembly download is linked to the team's repository as identified in the submitted PDF. The leadscrew model link above uses the existing A10 `files/` folder in this portfolio. SOLIDWORKS may also require the separately referenced part files to open the assembly without missing-component warnings.
 
 ---
 
-## 11. Parametric CAD Modeling and Assembly — [Assigned Team Members]
+## 11. Tabulating Costs — Tai Podvojsky
 
-### 11.1 Leadscrew CAD
+The following bill of materials reproduces the **quantities and prices reported in the submitted team PDF**. Prices are a record of the submitted estimate, not current verified supplier quotes.
 
-The selected supplier leadscrew model has been downloaded:
+| Item | Quantity | Name | Cost / Item | Reported Cost | Purchase Link |
+| --- | ---: | --- | ---: | ---: | --- |
+| 1 | 1 | 932 bearing-bronze Acme flange nut | $138.20 | $138.20 | [95120A119](https://www.mcmaster.com/95120A119/) |
+| 2 | 2 | Carbon-steel Acme leadscrews | $10.29 | $20.58 | [98935A914](https://www.mcmaster.com/98935A914/) |
+| 3 | 4 | 316 stainless-steel socket-head screws | $0.63 | $6.32 (pack of 10) | [90666A013](https://www.mcmaster.com/90666A013/) |
+| 4 | 2 | T-slotted framing rails, 2 ft | $38.12 | $76.42 | [4658N31](https://www.mcmaster.com/products/4658n31/) |
+| 5 | 4 | T-slotted framing rails, 1.5 ft | $29.08 | $116.32 | [4658N31](https://www.mcmaster.com/products/4658n31/) |
+| 6 | 1 | Crosshead (fabricated / estimated) | $30.00 | $30.00 | Designed component |
+| | | **Reported total** | | **$387.84** | |
 
-**[Download Leadscrew CAD (.SLDPRT)](files/A10_McMaster_98935A914_Carbon_Steel_Acme_Lead_Screw.SLDPRT)**
-
-### 11.2 Bronze Nut and Flange CAD
-
-[Insert downloadable compatible nut/flange CAD files and screenshots.]
-
-### 11.3 Crosshead CAD
-
-[Insert a link to the parametric crosshead model and screenshots of its features.]
-
-### 11.4 Frame Components
-
-[Insert specifications, sources, and downloadable frame component CAD files.]
-
-### 11.5 Final Assembly
-
-[Insert the SOLIDWORKS assembly and all dependent CAD files needed to open it, along with assembled and exploded views.]
-
-### 11.6 Design Verification
-
-[Describe component compatibility, interference checks, alignment, actual free screw spans, mounting conditions, stroke clearance, and necessary changes.]
+**Bill-of-materials verification:** The submitted list includes **one** bronze nut even though the design specifies **two** leadscrews. The listed 2-ft framing subtotal is **$76.42**, whereas 2 × $38.12 = **$76.24**. The 316 screw cost is also based on a pack purchase rather than quantity × unit price. These submitted values have been preserved for traceability; quantities and totals should be reconciled before procurement.
 
 ---
 
 ## 12. Engineering Lessons Learned
 
-### 12.1 Leadscrew Analysis — Jason Corum
+### Jason Corum — Leadscrew Design
 
-The material-selection investigation demonstrated the importance of distinguishing **tensile strength** from **yield strength**. Because the selected product listing did not specify a guaranteed yield strength, additional references and a conservative provisional assumption were required.
+The material investigation demonstrated why tensile strength and yield strength must be distinguished. Because the selected part's listing did not supply a certified yield strength, additional materials references and conservative provisional assumptions were necessary.
 
-The axial-stress analysis demonstrated that a component satisfying a nominal strength condition may still be vulnerable to a different failure mode. The conservative buckling analysis resulted in a substantially larger required screw root diameter than the axial-stress calculation.
+The axial analysis demonstrated that satisfying nominal strength does not guarantee stability under compression. Buckling depends strongly on unsupported length and end conditions, and using limiting external Acme-thread dimensions is more defensible than using an overly simplified root-diameter estimate. The rotational-speed and torque analyses also illustrated the separate roles of screw lead, applied load, and efficiency.
 
-The buckling calculation also illustrated how end restraints and unsupported length affect component sizing, and why the handbook's limiting thread dimensions are more appropriate for selection than an overly simplified root-diameter approximation.
+### Tai Podvojsky — Crosshead Design and CAD
 
-Finally, the speed and torque calculations demonstrated that lead governs shaft revolutions required for a given crosshead speed, while load and mechanical efficiency govern the required steady-state driving torque.
+Tai reported spending approximately **3 hours** on his assigned portions. He gained experience creating threaded holes and using appropriate reference planes and mating relationships while assembling screw and nut components in SOLIDWORKS. The crosshead deflection calculation is flagged for verification before the design is considered complete.
 
-### 12.2 Nut and Flange Design — [Teammate 2]
+### Gavin Sanchez — Bronze Nut and Assembly
 
-[Insert specific engineering lessons learned.]
+Gavin reported spending approximately **3 hours** on the assignment. His main difficulty was developing an appropriate bending-stress model for a threaded flange nut rather than treating it as a conventional flat beam. The final simplified expression included pitch and an assumed number of engaged threads, which made it possible to estimate thread bending stress and a preliminary safety factor.
 
-### 12.3 Crosshead and CAD Design — [Teammate 3]
+### Time Spent
 
-[Insert specific engineering lessons learned.]
-
-### 12.4 Time Spent
-
-| Contributor | Work Performed | Time |
-|---|---|---|
-| Jason Corum | Leadscrew research, calculations, and selection | **13 hours** |
-| [Teammate 2] | Nut and flange analysis | TBD |
-| [Teammate 3] | Crosshead design | TBD |
-| **Total** | | **TBD** |
+| Team member | Reported or recorded time |
+| --- | --- |
+| Jason Corum | 13 hours previously documented in the A10 portfolio |
+| Tai Podvojsky | Approximately 3 hours |
+| Gavin Sanchez | Approximately 3 hours |
+| **Total of reported times** | **Approximately 19 hours** |
 
 ---
 
-## 13. References
+## 13. References and Supplier Files
 
-1. [McMaster-Carr — Selected Leadscrew, Part 98935A914](https://www.mcmaster.com/98935A914/). Product selection and CAD.
-2. [McMaster-Carr — 5/8"-8 Leadscrew Catalog](https://www.mcmaster.com/products/shafts/thread-size~5-8-8/). Candidate geometry and catalog specifications.
-3. *Machinery's Handbook*, 32nd ed., Table 2b, p. 2061 (as referenced in the handwritten notes). External Acme thread limiting dimensions.
-4. *Machinery's Handbook*, 31st ed. Course-listed references for screw design and material properties.
-5. [MechaniCalc — Column Buckling](https://mechanicalc.com/reference/column-buckling). Euler load and effective length factors.
-6. MEGR 2156 lecture presentations and instructor clarification regarding square-thread modeling, simple-support crosshead analysis, and conservative material-property selection.
-7. [Additional material-property references and teammate sources to be added with full bibliographic details.]
+1. [McMaster-Carr — Carbon Steel Acme Lead Screw, 98935A914](https://www.mcmaster.com/98935A914/).
+2. [McMaster-Carr — 932 Bearing Bronze Acme Flange Nut, 95120A119](https://www.mcmaster.com/95120A119/).
+3. [McMaster-Carr — Stainless Socket-Head Screws, 90666A013](https://www.mcmaster.com/90666A013/).
+4. [McMaster-Carr — T-Slotted Framing, 4658N31](https://www.mcmaster.com/products/4658n31/).
+5. Oberg et al., *Machinery's Handbook*, 31st edition, Industrial Press, 2020, assigned leadscrew reference material.
+6. Oberg et al., *Machinery's Handbook*, 32nd edition, Table 2b, p. 2061 (as consulted for Acme thread limiting dimensions).
+7. [MechaniCalc — Column Buckling](https://mechanicalc.com/reference/column-buckling).
+8. MEGR 2156 lecture material and instructor clarifications (Acme-to-square-thread model, simply supported crosshead, and conservative material selection).
+9. [Team's A10 GitHub source page](https://github.com/TaiPodUNCC/megr2157-portfolio/blob/main/docs/assignments/A10/index.md).
 
 ---
 
-## 14. Final Submission Checklist
+## 14. Final Documentation and Verification Checklist
 
-- [x] Leadscrew nominal axial-stress sizing calculations.
-- [x] Leadscrew preliminary Euler buckling calculations.
-- [x] Leadscrew rotational-speed calculations.
-- [x] Leadscrew steady-state torque estimates.
-- [x] Preliminary leadscrew selection.
-- [x] Downloaded leadscrew CAD model.
-- [ ] Confirm actual material properties and final support/loading conditions.
-- [ ] Bronze nut/flange strength verification and selection.
-- [ ] Crosshead strength and deflection verification.
-- [ ] Crosshead multiview sketch.
-- [ ] Complete cost table with functioning supplier links.
-- [ ] Complete CAD assembly with downloadable dependencies.
-- [ ] All teammates' contributions and actual time spent documented.
-- [ ] Final portfolio reviewed and shared identically among team members.
-- [ ] Portfolio PDF submitted through Canvas.
+- [x] Leadscrew nominal axial-stress analysis.
+- [x] Preliminary Euler buckling analysis and leadscrew selection.
+- [x] Leadscrew speed and required driving torque calculations.
+- [x] Bronze flange-nut stress calculation and part selection documented.
+- [x] Crosshead preliminary bending analysis, sketch, and CAD images included.
+- [x] Team's reported bill of materials and supplier links included.
+- [x] Download links for the identified leadscrew and team assembly supplied.
+- [x] Verify crosshead deflection and redesign if necessary.
+- [x] Check actual lead screw support conditions, screw loading, and combined stresses.
+- [x] Reconcile bronze nut quantities, framing subtotals, and purchased component costs.
+- [x] Confirm that all SOLIDWORKS part dependencies are available with the assembly.
+- [x] Confirm final screw/nut fit and complete an interference/alignment check.
+- [x] Confirm identical team documentation and final Canvas submission requirements.
