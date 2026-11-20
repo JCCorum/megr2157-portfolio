@@ -475,7 +475,7 @@ This portfolio documents the **preliminary analytical design** and its associate
 
 ---
 
-**Time spent on A7 to date:** [20.5 hours]
+**Time spent on A9 to date:** [20.5 hours]
 
 ## 10. Engineering Lessons Learned
 
