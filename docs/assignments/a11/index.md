@@ -972,13 +972,32 @@ The latest STEP export was inspected to verify the main motor assembly, bracket,
 
 These checks establish nominal CAD geometry and clearances, not a manufactured, assembled, or experimentally validated mechanism.
 
+
 ### 5.8 Native SOLIDWORKS Assembly Files
 
-**[TODO: Add the final native SOLIDWORKS Pack and Go ZIP link after uploading the completed assembly to GitHub.]**
+The motor mounting assembly and its individual components are available below.
 
-The native package should contain the parent `.SLDASM` file and all dependent `.SLDPRT` files so the assembly can be opened and edited without missing external references.
+**Main Assembly:**
 
-A STEP export may also be supplied as a neutral-format reference, but it does not replace the editable native assembly.
+- [Complete Motor Mount Assembly](cad/blmr5100k-100-b___blvd-krd.SLDASM)
+
+**Individual Components:**
+
+- [Motor Component 1](cad/blmr5100k-100-b___blvd-krd_01.SLDPRT)
+- [Motor Component 2](cad/blmr5100k-100-b___blvd-krd_02.SLDPRT)
+- [Motor Mounting Bracket](cad/Bracket.SLDPRT)
+- [Shaft Coupler](cad/A11_Shaft_Coupler.SLDPRT)
+- [Acme Leadscrew](cad/98935A914_Carbon%20Steel%20Acme%20Lead%20Screw.SLDPRT)
+- [40-4080 Frame Extrusion](cad/8020-40-4080%20X%20200.SLDPRT)
+- [Parallel Key](cad/parallel_din.sldprt)
+- [Frame Mounting Screws](cad/socket%20button%20head%20cap%20screw_am.sldprt)
+- [Motor Mounting Screws](cad/socket%20head%20cap%20screw_iso.sldprt)
+- [Coupler Set Screw](cad/socket%20set%20screw%20flat%20point_am.sldprt)
+
+The native SOLIDWORKS files preserve the original component
+names and editable geometry. All components should be downloaded
+into the same folder before opening the parent assembly.
+
 
 **[TODO: Insert the final complete motor mounting assembly screenshot]**
 
