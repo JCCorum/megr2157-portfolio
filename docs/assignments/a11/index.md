@@ -5,58 +5,70 @@
 **Assignment:** A11 — Tensile Tester, Part 2  
 **Team Members:** Jason Corum, Tai Podvojsky, Gavin Sanchez  
 **Documentation:** Team project; individual contributions identified by section  
-**CAD Status:** Motor, bracket, and coupler assembly completed and geometrically checked. Full team integration and remaining design verifications are pending.
+**Status:** Jason's motor selection, preliminary bracket and coupler analyses, CAD development, and individual bill of materials are complete. Remaining team contributions are identified by section.
 
 ---
 
 ## 1. Project Description and Objectives
 
-The objective of this project is to continue the design of the dual-leadscrew tensile testing machine developed in A10. The machine must apply a maximum axial tensile load of **2,000.000 N** while maintaining a controllable crosshead speed of **1.000–50.000 mm/min**.
+The objective of A11 is to continue the development of the dual-leadscrew tensile testing machine designed in A10. The machine must apply a maximum axial tensile load of **2,000 N** while maintaining a controllable crosshead speed of **1–50 mm/min**.
 
-A10 established the leadscrew selection, preliminary required torque and rotational speed, crosshead concept, bronze flange nuts, and initial supporting frame. A11 focuses on selecting the motor system, designing its mounting bracket and shaft coupler, analyzing the supporting frame, and developing the remaining mechanical support components.
+A10 established the leadscrew selection, preliminary driving torque, required rotational speed, crosshead concept, bronze flange nuts, and initial supporting frame.
 
-The proposed machine uses two identical motor-driven leadscrews. Each motor drives one leadscrew, and the two screws must rotate synchronously to maintain the crosshead's alignment during operation.
+A11 builds on those results by selecting the drive motors, designing motor mounting brackets and shaft couplers, developing the supporting frame and floating bearing mounts, and integrating the components into the complete machine.
+
+The proposed design uses two identical motor-driven leadscrews. Each motor drives one leadscrew, and the screws must rotate synchronously to maintain crosshead alignment.
 
 ### 1.1 Design Requirements
 
 | Parameter | Value |
 | --- | --- |
-| Maximum tensile load | 2,000.000 N |
-| Number of leadscrews | 2 |
-| Number of motors | 2 |
-| Axial load per leadscrew | 1,000.000 N |
-| Crosshead linear speed | 1.000–50.000 mm/min |
+| Maximum tensile load, ΣP | 2,000.000 N |
+| Number of leadscrews, N<sub>s</sub> | 2 |
+| Number of motors, N<sub>M</sub> | 2 |
+| Assumed load per leadscrew, P<sub>s</sub> | 1,000.000 N |
+| Crosshead speed | 1.000–50.000 mm/min |
 | Minimum leadscrew length | 18.000 in |
 | Selected leadscrew length | 24.000 in |
-| Required safety factor | 4.000 |
-| Leadscrew thread | 5/8"-8 RH Acme |
-| Frame construction | T-slotted aluminum extrusion |
-| Motor selection | DC motor, stepper motor, or gearmotor |
-| Motor mount | Four-hole mounting arrangement |
-| Motor mount alignment | Coaxial with leadscrew |
-| Service accessibility | Allow assembly and maintenance |
-| Reaction resistance | Resist operational torque and reaction forces |
-| Engineering labor rate | $35.000/hour |
+| Required safety factor, SF | 4.000 |
+| Motor selection categories | DC, stepper, or gearmotor |
+| Motor mounting arrangement | Four mounting holes |
+| Motor alignment | Coaxial with leadscrew |
+| Frame construction | T-slotted aluminum framing |
+| Engineering labor rate | $35.00/hour |
+| Assignment design restriction | No electronics or software; purely mechanical |
 
-The original assignment also specifies a purely mechanical design without electronics or software. The selected motor system uses an external electronic driver. This is a documented design-interpretation deviation that requires instructor approval or clarification before claiming complete compliance with that requirement.
+**Assignment interpretation:** The selected brushless DC motor requires an external electronic driver. The instructor was contacted about this restriction, but clarification was not received. The motor selection is documented with this unresolved compliance limitation; instructor approval is not assumed.
 
 ### 1.2 Individual Responsibilities
 
 | Team Member | Primary Contribution |
 | --- | --- |
-| **Jason Corum** | Motor selection, torque/speed verification, motor mounting bracket, bracket bearing-stress analysis, shaft coupler, and motor assembly CAD |
-| **Tai Podvojsky** | [TODO: Insert assigned A11 responsibilities and completed work] |
-| **Gavin Sanchez** | [TODO: Insert assigned A11 responsibilities and completed work] |
+| **Jason Corum** | Motor selection, required speed and torque verification, motor mounting bracket, bracket bearing-stress analysis, shaft coupler, motor assembly CAD, and bill of materials |
+| **Tai Podvojsky** | [TODO: Insert Tai's confirmed A11 responsibilities and completed work] |
+| **Gavin Sanchez** | [TODO: Insert Gavin's confirmed A11 responsibilities and completed work, including frame connections and assembly integration] |
 
-The remaining group sections include the frame design, frame FEA, floating bearing support, final assembly integration, and bill of materials. Their exact individual ownership should be confirmed before final submission.
+The remaining team sections provide space for the frame analysis, finite element results, clamp design, floating bearing support, and final assembly verification.
 
 ### 1.3 Relationship to A10
 
-The selected A10 leadscrew is **McMaster-Carr 98935A914**, a carbon-steel 5/8"-8 right-hand Acme screw with a purchased length of 24.000 in.
+The selected A10 leadscrew is:
 
-The leadscrew selection, initial strength calculations, and preliminary torque analysis are documented in the [A10 project portfolio](../A10/index.md).
+**[McMaster-Carr 98935A914 — Carbon Steel 5/8"-8 RH Acme Leadscrew](https://www.mcmaster.com/98935A914/)**
 
-A11 uses the A10 torque and speed requirements as the foundation for motor selection.
+| Specification | Selected value |
+| --- | --- |
+| Material | Carbon steel |
+| Nominal major diameter | 15.875 mm |
+| Thread | 5/8"-8 RH Acme |
+| Thread starts | 1 |
+| Pitch | 3.175 mm |
+| Lead, L<sub>s</sub> | 3.175 mm/rev |
+| Purchased length | 609.600 mm |
+| Axial load per screw | 1,000.000 N |
+| Assumed efficiency, η<sub>s</sub> | 0.250 |
+
+The screw selection, nominal axial-stress analysis, preliminary buckling analysis, and required torque calculations are documented in the [A10 Lead Screw Translating System portfolio](../A10/index.md).
 
 ---
 
@@ -64,44 +76,32 @@ A11 uses the A10 torque and speed requirements as the foundation for motor selec
 
 ### 2.1 Initial Knowns, Unknowns, and Assumptions
 
-The motor selection began by identifying the required rotational speed, torque, available mounting space, electrical characteristics, and manufacturer's documentation requirements.
+The motor selection began by determining the torque and rotational speed required by the A10 leadscrew system.
 
-The preliminary model assumes:
+Candidate motors were investigated based on output speed, continuous torque capability, gearbox reduction, manufacturer documentation, mounting geometry, and available CAD models.
+
+The preliminary analysis assumes:
 
 - Two identical motors drive two identical leadscrews.
-- Both leadscrews share the specimen load equally.
-- The motors operate in steady state during the nominal loading analysis.
-- The leadscrews rotate synchronously.
-- The leadscrew efficiency remains constant over the preliminary operating range.
-- Transmission losses outside the leadscrew are initially neglected.
-- The axial leadscrew loads are supported by separate thrust bearings and the frame, rather than by the motor output shafts.
-- The manufacturer's published gearhead output ratings apply to the selected motor and gearhead combination.
+- The applied tensile load is shared equally between the leadscrews.
+- Both leadscrews rotate synchronously.
+- The selected Acme screw and nut combination has an assumed mechanical efficiency of 0.250.
+- The initial torque calculation represents steady-state operation.
+- Acceleration, misalignment, and additional transmission losses are neglected in the preliminary screw torque equation.
+- Axial thrust is carried through the appropriate leadscrew bearings and frame supports, rather than directly by the motor output shafts.
+- Manufacturer-rated gearbox torque is used for the motor selection rather than maximum instantaneous torque.
 
-The selected leadscrew parameters are:
+![Motor selection knowns and assumptions](images/A11-1.jpg)
 
-| Parameter | Value |
-| --- | --- |
-| Supplier | McMaster-Carr |
-| Leadscrew part number | 98935A914 |
-| Material | Carbon steel |
-| Thread | 5/8"-8 RH Acme |
-| Number of starts | 1 |
-| Major diameter | 15.875 mm |
-| Pitch | 3.175 mm |
-| Lead, L<sub>s</sub> | 3.175 mm/rev |
-| Selected leadscrew length | 609.600 mm |
-| Axial load per leadscrew, P<sub>s</sub> | 1,000.000 N |
-| Assumed leadscrew efficiency, η<sub>s</sub> | 0.250 |
-
-![Motor selection knowns, unknowns, and assumptions](images/A11-1.jpg)
-
-*Figure 1. Motor selection knowns, unknowns, selected components, and general design assumptions.*
+*Figure 1. Jason's initial motor-selection knowns, unknowns, assumptions, and selected component specifications.*
 
 ### 2.2 Required Leadscrew Rotational Speed
 
-For a single-start leadscrew, the lead equals the pitch.
+For the selected single-start Acme leadscrew, the lead equals the pitch:
 
-The relationship between crosshead linear speed and leadscrew rotational speed is:
+<p align="center"><strong>L<sub>s</sub> = 3.175 mm/rev</strong></p>
+
+The relationship between linear crosshead speed and leadscrew rotational speed is:
 
 <p align="center">n<sub>s</sub> = |v<sub>CH</sub>| / L<sub>s</sub></p>
 
@@ -109,72 +109,68 @@ At the minimum required crosshead speed:
 
 <p align="center">n<sub>s,min</sub> = 1.000 / 3.175</p>
 
-<p align="center"><strong>n<sub>s,min</sub> ≈ 0.315 rpm</strong></p>
+<p align="center"><strong>n<sub>s,min</sub> = 0.315 rpm</strong></p>
 
 At the maximum required crosshead speed:
 
 <p align="center">n<sub>s,max</sub> = 50.000 / 3.175</p>
 
-<p align="center"><strong>n<sub>s,max</sub> ≈ 15.748 rpm</strong></p>
+<p align="center"><strong>n<sub>s,max</sub> = 15.748 rpm</strong></p>
 
 Therefore, each leadscrew must operate over approximately:
 
-<p align="center"><strong>n<sub>s</sub> = [0.315, 15.748] rpm</strong></p>
+<p align="center"><strong>0.315 ≤ n<sub>s</sub> ≤ 15.748 rpm</strong></p>
 
-The selected motor and transmission must accommodate the complete speed range.
+### 2.3 Required Leadscrew Driving Torque
 
-### 2.3 Required Leadscrew Torque
+The preliminary maximum driving torque for one leadscrew is:
 
-The preliminary torque requirement was established in A10 using the selected lead, axial load, and assumed leadscrew efficiency.
+<p align="center">T<sub>s</sub> = P<sub>s</sub>L<sub>s</sub> / (2πη<sub>s</sub>)</p>
 
-<p align="center">T<sub>s</sub> = (P<sub>s</sub> · L<sub>s</sub>) / (2π · η<sub>s</sub>)</p>
+Using the selected load, lead, and assumed efficiency:
 
-Substituting:
+<p align="center">T<sub>s</sub> = (1,000.000 × 3.175) / (2π × 0.250)</p>
 
-<p align="center">T<sub>s</sub> = (1000.000 · 3.175) / (2π · 0.250)</p>
-
-<p align="center"><strong>T<sub>s,max</sub> ≈ 2.021 N·m</strong></p>
+<p align="center"><strong>T<sub>s,max</sub> = 2,021.267 N·mm = 2.021 N·m</strong></p>
 
 The specified design safety factor is:
 
 <p align="center"><strong>SF = 4.000</strong></p>
 
-The target motor output torque becomes:
+The target motor output torque is:
 
-<p align="center">T<sub>M,target</sub> = SF · T<sub>s,max</sub></p>
+<p align="center">T<sub>M,target</sub> = SF × T<sub>s,max</sub></p>
 
-<p align="center">T<sub>M,target</sub> = 4.000 · T<sub>s,max</sub></p>
+<p align="center">T<sub>M,target</sub> = 4.000 × 2.021267...</p>
 
-Using the unrounded A10 torque result:
+<p align="center"><strong>T<sub>M,target</sub> = 8.085 N·m</strong></p>
 
-<p align="center"><strong>T<sub>M,target</sub> ≈ 8.085 N·m</strong></p>
-
-This target applies to each motor because each motor drives one leadscrew.
+Each motor must provide at least the required nominal driving torque with the specified safety-factor margin.
 
 ### 2.4 Motor Candidate Investigation
 
-Several motor and gearhead combinations were investigated before the final selection.
+Several manufacturers and motor systems were evaluated before selecting the final configuration.
 
-The main selection difficulties were achieving the required low rotational speed, maintaining sufficient torque throughout the working range, finding compatible gearheads, and obtaining manufacturer documentation and CAD models.
+The primary difficulties were achieving the unusually low required output speed, maintaining adequate continuous torque, and obtaining documentation for the exact motor and gearbox configuration.
 
-| Candidate or Manufacturer | Investigation Outcome |
+| Manufacturer or Candidate | Investigation Result |
 | --- | --- |
-| Bodine Electric gearmotor | Rejected because the documented minimum output speed exceeded the required minimum |
-| Crouzet DCmind gearmotor | Rejected because its minimum achievable output speed exceeded the required minimum |
-| Novanta MDrive | Rejected after investigating available gear reduction and operating requirements |
-| Applied Motion Products | Considered as a fallback, but exact configuration verification and assembly documentation remained insufficient |
-| Parvalux Electric Motors | Investigated multiple candidates; documentation and low-speed verification remained unresolved |
-| Dunkermotoren | Investigated motor and planetary gearbox combinations; interface and configuration issues remained |
-| Neugart | Investigated planetary gearboxes; adapter and configuration availability complicated verification |
-| Oriental Motor | Selected motor, gearhead, and driver combination with usable manufacturer documentation and CAD |
+| Bodine Electric | Investigated gearmotor combinations; minimum output speed was unsuitable for the selected candidate |
+| Crouzet DCmind | Investigated low-speed DC gearmotors; selected candidate could not achieve the required minimum speed |
+| Novanta MDrive | Investigated motor and gear-reduction options; not selected |
+| Applied Motion Products | Investigated integrated motor candidates; documentation and configuration issues remained |
+| Parvalux Electric Motors | Investigated DC gearmotor combinations; verification remained incomplete |
+| Dunkermotoren | Investigated motor and planetary gearbox combinations |
+| Neugart | Investigated reduction gearboxes and mechanical adapters |
+| Oriental Motor | Selected motor, gearhead, and driver configuration with applicable manufacturer specifications and CAD |
 
-The investigation demonstrated that a nominally sufficient motor torque rating does not necessarily mean the motor can operate at the required minimum speed.
+The investigation demonstrated that sufficient nominal torque alone was not enough to establish suitability. The motor also had to operate at approximately 0.315 rpm at the gearbox output.
 
 ### 2.5 Selected Motor, Gearhead, and Driver
 
-**Selected manufacturer: [Oriental Motor](https://www.orientalmotor.com/)**
+**Manufacturer:** Oriental Motor
 
-**Selected configuration: BLMR5100K-GFV-B / GFV5G100 / BLVD-KRD**
+**Selected configuration:** BLMR5100K-GFV-B / GFV5G100 / BLVD-KRD
 
 [Official Oriental Motor Product Page](https://catalog.orientalmotor.com/en-us/item/100-120w-brushless-dc-motor-speed-control-systems/100w-blv-r-series-brushless-dc-motors/blmr5100k-gfv-b-gfv5g100-blvd-krd)
 
@@ -184,116 +180,120 @@ The investigation demonstrated that a nominally sufficient motor torque rating d
 | Gearhead model | GFV5G100 |
 | Driver model | BLVD-KRD |
 | Motor type | Brushless DC |
-| Rated power | 100.000 W |
-| Gear reduction ratio | 100:1 |
-| Published output speed range | 0.010–40.000 rpm |
-| Rated motor rotational speed | 3,000.000 rpm |
-| Rated output torque | 27.400 N·m |
-| Published peak torque | 54.000 N·m |
-| Nominal supply options | 24.000 / 48.000 VDC |
-| Selected nominal supply | 48.000 VDC |
+| Rated motor power | 100.000 W |
+| Gear reduction ratio, i<sub>G</sub> | 100:1 |
+| Published gearbox output-speed range | 0.010–40.000 rpm |
+| Rated motor speed | 3,000.000 rpm |
+| Permissible continuous gearbox torque | 27.400 N·m |
+| Maximum instantaneous gearbox torque | 40.000 N·m |
+| Selected nominal supply voltage | 48.000 VDC |
 | Rated current at 48 VDC | 2.600 A |
-| Recorded maximum current | 10.000 A |
+| Maximum recorded input current | 10.000 A |
 | Motor and gearhead mass | 2.400 kg |
-| External driver mass | 0.120 kg |
-| Output shaft diameter | 18.000 mm |
-| Output shaft connection | Keyed |
-| Mounting-hole diameter | 8.500 mm |
-| Mounting-hole spacing | 73.540 × 73.540 mm |
+| Separate driver mass | 0.120 kg |
+| Gearbox output shaft | Ø18.000 mm, keyed |
+| Motor mounting-hole diameter | Ø8.500 mm |
+| Motor mounting-hole pattern | 73.540 × 73.540 mm |
 
-The BLVD-KRD is an **external driver**, not an integrated motor controller. Its mounting location will be determined during the complete system integration.
+The selected driver is external to the motor and gearhead assembly. Its final structural mounting location is separate from the motor mounting bracket.
 
-The motor's published ratings were used for the preliminary selection. Continuous torque delivery, acceleration characteristics, controller configuration, and synchronized operation across the complete working range remain integration considerations.
+The nominal electrical specifications are recorded for motor selection and documentation purposes. The external power supply and optional control accessories are outside the current assignment BOM scope.
 
-### 2.6 Motor Speed Verification
+### 2.6 Gearbox Speed Verification
 
-The selected gear reduction is:
+The selected reduction ratio is:
 
 <p align="center"><strong>i<sub>G</sub> = 100.000</strong></p>
 
-The rotor speed is related to the gearbox output speed by:
+The corresponding motor rotor speed is:
 
-<p align="center">n<sub>Mr</sub> = i<sub>G</sub> · n<sub>M</sub></p>
+<p align="center">n<sub>Mr</sub> = i<sub>G</sub>n<sub>s</sub></p>
 
-At the minimum required leadscrew speed:
+For the minimum leadscrew speed:
 
-<p align="center">n<sub>Mr,min</sub> = 100.000 · n<sub>s,min</sub></p>
+<p align="center">n<sub>Mr,min</sub> = 100.000 × (1.000 / 3.175)</p>
 
-<p align="center"><strong>n<sub>Mr,min</sub> ≈ 31.496 rpm</strong></p>
+<p align="center"><strong>n<sub>Mr,min</sub> = 31.496 rpm</strong></p>
 
-At the maximum required leadscrew speed:
+For the maximum leadscrew speed:
 
-<p align="center">n<sub>Mr,max</sub> = 100.000 · n<sub>s,max</sub></p>
+<p align="center">n<sub>Mr,max</sub> = 100.000 × (50.000 / 3.175)</p>
 
-Using the unrounded leadscrew speeds:
+<p align="center"><strong>n<sub>Mr,max</sub> = 1,574.803 rpm</strong></p>
 
-<p align="center"><strong>n<sub>Mr,max</sub> ≈ 1574.803 rpm</strong></p>
-
-The required output-speed interval lies within the manufacturer's stated speed range.
+The required gearbox output-speed range is within the manufacturer's published output-speed capability.
 
 ### 2.7 Motor Torque Verification
 
-The selected gearhead has a published rated output torque of:
+The manufacturer's permissible continuous torque for the selected 100 W, 100:1 configuration is:
 
 <p align="center"><strong>T<sub>M,rated</sub> = 27.400 N·m</strong></p>
 
-The nominal ratio of rated motor output torque to the calculated leadscrew driving torque is:
+The nominal torque ratio is:
 
 <p align="center">SF<sub>TM</sub> = T<sub>M,rated</sub> / T<sub>s,max</sub></p>
 
-<p align="center">SF<sub>TM</sub> = 27.400 / T<sub>s,max</sub></p>
+Substituting:
 
-Using the unrounded leadscrew torque:
+<p align="center">SF<sub>TM</sub> = 27.400 / 2.021267...</p>
 
-<p align="center"><strong>SF<sub>TM</sub> ≈ 13.556 ≥ 4.000</strong></p>
+<p align="center"><strong>SF<sub>TM</sub> = 13.556 ≥ 4.000</strong></p>
 
-The published rated torque exceeds the nominal driving torque by more than the required safety-factor margin.
+The rated gearbox output torque exceeds the preliminary leadscrew torque requirement by more than the specified factor of safety.
 
-**Verification limitation:** This comparison uses the published rated gearbox torque. It is not a substitute for confirming continuous torque capability at every operating speed under the final controller settings and thermal conditions.
+The manufacturer's maximum instantaneous torque is **40.000 N·m** for the selected configuration. This higher value is not substituted for the continuous torque rating.
 
-The published peak torque of 54.000 N·m is recorded separately and is not substituted for the continuous rated torque.
+![Motor selection numerical calculations](images/A11-2.jpg)
 
-![Motor selection equations and numerical results](images/A11-2.jpg)
+*Figure 2. Motor rotational-speed requirements, driving-torque calculations, and preliminary motor selection results.*
 
-*Figure 2. Motor selection equations, required operating speeds, torque comparison, and preliminary bracket assumptions.*
+### 2.8 Manufacturer Speed–Torque Characteristics
 
-### 2.8 Selected Driver and Electrical Interface
+The manufacturer's speed–torque graph identifies the continuous-duty and limited-duty regions for the 100 W BLV Series R Type motor.
 
-The selected BLVD-KRD driver provides the external electronic interface for the brushless DC gearmotor.
+![Oriental Motor speed-torque curve](images/A11_Motor_Speed_Torque_Curve.jpg)
 
-| Driver parameter | Value |
-| --- | --- |
-| Model | BLVD-KRD |
-| Driver mass | 0.120 kg |
-| CAD envelope | 65.000 × 80.160 × 31.300 mm |
-| Preliminary mounting pattern | Approximately 55.000 × 65.000 mm |
-| Selected motor supply | 48.000 VDC |
-| Final driver mounting position | To be determined |
-| Synchronized dual-drive control | To be determined during integration |
+*Figure 3. Manufacturer speed–torque characteristics for the 100 W BLV Series R Type motor, including its continuous-duty region. Source: Oriental Motor, BLV Series R Type catalog, p. 24.*
 
-The driver has not been added to the individual motor mounting bracket assembly. Its final position should allow ventilation, wiring access, maintenance, and integration with the remaining frame structure.
+At motor speeds up to approximately 3,000 rpm, the graph identifies a continuous motor-shaft torque rating of approximately 0.319 N·m.
 
-Because the assignment's purely mechanical restriction was intentionally relaxed during candidate selection, this control architecture must be documented as a design deviation requiring instructor clarification.
+The required rotor-speed interval is:
+
+<p align="center"><strong>31.496 ≤ n<sub>Mr</sub> ≤ 1,574.803 rpm</strong></p>
+
+This interval lies within the graph's continuous-duty speed region.
+
+The manufacturer's corresponding gearbox specifications confirm the permissible torque after the selected 100:1 reduction.
+
+![Oriental Motor gearhead permissible torque](images/A11_Gearhead_Permissible_Torque.jpg)
+
+*Figure 4. Manufacturer parallel-shaft gearhead specifications showing 27.400 N·m permissible continuous torque and 40.000 N·m maximum instantaneous torque for the 100 W motor with 100:1 gear reduction. Source: Oriental Motor, BLV Series R Type catalog.*
+
+The manufacturer lists a permissible continuous gearbox torque of 27.400 N·m for motor speeds from 1–3,000 rpm.
+
+Therefore, the selected motor and gearhead satisfy the preliminary speed and rated-torque requirements.
+
+**Verification limitations:** The comparison uses the manufacturer's rated motor and gearbox performance. It does not independently verify thermal operation under the final machine duty cycle, drive synchronization, or controller configuration. A manufacturer-certified efficiency value for the complete gearhead combination was not established.
 
 ---
 
 ## 3. Motor Mounting Bracket Design — Jason Corum
 
-### 3.1 Design Requirements and Material Selection
+### 3.1 Material Selection and Design Requirements
 
-The motor mounting bracket must connect the selected gearmotor to the supporting frame while maintaining alignment between the gearbox output shaft and the leadscrew.
+The motor mounting bracket connects the selected gearmotor to the supporting structural frame while maintaining the alignment of the motor output shaft and leadscrew.
 
-It must also provide adequate service access and resist the operating torque reaction.
+The bracket must accommodate four motor mounting holes, frame attachment hardware, the gearbox locating boss, and sufficient space for installation and maintenance.
 
-The selected bracket material is **ASTM A36 steel**, modeled with an approximate yield strength of:
+**Selected material:** ASTM A36 steel
 
-<p align="center"><strong>σ<sub>YMB</sub> ≈ 250.000 MPa</strong></p>
+The preliminary analysis uses an assumed material yield strength of:
 
-A practical plate thickness of 6.350 mm was selected for the preliminary design.
+<p align="center"><strong>σ<sub>YMB</sub> = 250.000 MPa</strong></p>
 
-### 3.2 Final Bracket Geometry
+### 3.2 Final Preliminary Bracket Geometry
 
-| Feature | Final selected dimension |
+| Feature | Selected value |
 | --- | --- |
 | Material | ASTM A36 steel |
 | Width, W<sub>MB</sub> | 120.000 mm |
@@ -303,18 +303,15 @@ A practical plate thickness of 6.350 mm was selected for the preliminary design.
 | Motor mounting pattern | 73.540 × 73.540 mm |
 | Frame mounting holes | 4 × Ø9.000 mm |
 | Frame mounting pattern | 40.000 × 140.000 mm |
-| Gearbox locating-boss clearance | Ø40.000 mm, through |
+| Gearbox clearance hole | Ø40.000 mm |
 | Gearbox locating-boss diameter | Ø39.000 mm |
-| Nominal radial clearance | 0.500 mm |
-| Gearbox output shaft diameter | Ø18.000 mm |
+| Nominal radial boss clearance | 0.500 mm |
 
-The selected bracket is a rectangular plate with two four-hole mounting patterns and a central shaft-clearance opening offset to match the actual gearbox output shaft.
+The motor mounting-hole pattern is positioned relative to the center of the manufacturer's gearbox mounting interface.
 
 ### 3.3 Motor Mounting-Hole Locations
 
-The centroid of the motor mounting-hole pattern is defined as the local origin.
-
-The four hole coordinates are:
+Using the center of the motor mounting-hole pattern as the coordinate origin:
 
 | Hole | X (mm) | Y (mm) |
 | --- | ---: | ---: |
@@ -323,27 +320,19 @@ The four hole coordinates are:
 | C<sub>M</sub> | +36.770 | -36.770 |
 | D<sub>M</sub> | -36.770 | -36.770 |
 
-Therefore:
+The nominal half-spacings are:
 
 <p align="center"><strong>a<sub>M</sub> = b<sub>M</sub> = 36.770 mm</strong></p>
 
-The bolt-group radius is:
+The mounting bolt-group radius is:
 
 <p align="center">r<sub>M</sub> = √(a<sub>M</sub><sup>2</sup> + b<sub>M</sub><sup>2</sup>)</p>
 
-<p align="center"><strong>r<sub>M</sub> ≈ 52.001 mm</strong></p>
-
-The gearbox output shaft is offset from the motor mounting-pattern center.
-
-Its position in the adopted assembly coordinate system is:
-
-<p align="center"><strong>O<sub>s</sub> = (0.000, +18.000) mm</strong></p>
+<p align="center"><strong>r<sub>M</sub> = 52.001 mm</strong></p>
 
 ### 3.4 Frame Mounting-Hole Locations
 
-The bracket is mounted to two vertical 40-4080 aluminum extrusion members.
-
-The four frame mounting-hole locations are:
+The frame mounting pattern uses four holes positioned around the bracket's central reference.
 
 | Hole | X (mm) | Y (mm) |
 | --- | ---: | ---: |
@@ -352,112 +341,89 @@ The four frame mounting-hole locations are:
 | C<sub>F</sub> | +20.000 | -70.000 |
 | D<sub>F</sub> | -20.000 | -70.000 |
 
-Therefore:
+The half-spacings are:
 
 <p align="center"><strong>a<sub>F</sub> = 20.000 mm</strong></p>
 
 <p align="center"><strong>b<sub>F</sub> = 70.000 mm</strong></p>
 
-The corresponding bolt-group radius is:
+The corresponding frame bolt-group radius is:
 
 <p align="center">r<sub>F</sub> = √(a<sub>F</sub><sup>2</sup> + b<sub>F</sub><sup>2</sup>)</p>
 
-<p align="center"><strong>r<sub>F</sub> ≈ 72.801 mm</strong></p>
+<p align="center"><strong>r<sub>F</sub> = 72.801 mm</strong></p>
 
-### 3.5 Bracket and Bearing Free-Body Diagrams
+### 3.5 Free-Body Diagrams and Applied Torque
 
-The bracket analysis uses a simplified bolt-group model.
+The bracket was analyzed using a simplified four-bolt moment-reaction model.
 
-The motor and gearbox assembly is represented as a rigid body applying its weight and operational torque reaction through the mounting system.
+The motor and gearhead apply a reaction torque to their mounting bolts. This torque is then transferred through the bracket-to-frame connection.
 
-The bracket transfers these reactions to the frame.
+The selected design torque is the manufacturer's rated gearbox output torque:
 
-The analysis distinguishes:
+<p align="center"><strong>T<sub>MB</sub> = 27.400 N·m = 27,400.000 N·mm</strong></p>
 
-1. Motor-to-bracket connections.
-2. Bracket-to-frame connections.
-3. Individual bolt-hole bearing reactions.
-4. The separate thrust-bearing load path for the leadscrew.
+![Motor mounting bracket FBDs](images/A11-3.jpg)
 
-The selected nominal design torque is the motor's published rated gearbox output torque:
+*Figure 5. Motor-to-bracket and bracket-to-frame free-body diagrams, bolt-hole coordinates, applied reactions, and bearing-stress model.*
 
-<p align="center"><strong>T<sub>MB</sub> = 27.400 N·m</strong></p>
+### 3.6 Bolt-Group Reaction Equations
 
-![Motor mount side view and bolt-group free-body diagrams](images/A11-3.jpg)
-
-*Figure 3. Motor mounting bracket side view, bolt-hole bearing representation, motor-to-bracket FBD, bracket-to-frame FBD, and bolt coordinates.*
-
-### 3.6 Governing Equations — Bolt Group Reaction Forces
-
-For four equally spaced mounting bolts subjected to a torque about the central axis, the simplified tangential reaction magnitude per bolt is:
+For four symmetrically positioned bolts transmitting a torque about the bolt-group centroid, the simplified tangential reaction magnitude per bolt is:
 
 <p align="center">|R⃗<sub>b</sub>| = T<sub>MB</sub> / (4r)</p>
 
-The corresponding Cartesian reaction components are:
+The Cartesian components can be expressed as:
 
-<p align="center">R<sub>b,ix</sub> = (T<sub>MB</sub> · y<sub>i</sub>) / (4r<sup>2</sup>)</p>
+<p align="center">R<sub>b,ix</sub> = T<sub>MB</sub>y<sub>i</sub> / (4r<sup>2</sup>)</p>
 
-<p align="center">R<sub>b,iy</sub> = -(T<sub>MB</sub> · x<sub>i</sub>) / (4r<sup>2</sup>)</p>
+<p align="center">R<sub>b,iy</sub> = −T<sub>MB</sub>x<sub>i</sub> / (4r<sup>2</sup>)</p>
 
-The signs depend on the selected coordinate axes and the applied torque direction shown in the FBDs.
+The signs depend on the applied torque direction and coordinate convention.
 
-For the motor-to-bracket connection:
+For the motor mounting bolts:
 
 <p align="center">|R⃗<sub>bM</sub>| = T<sub>MB</sub> / (4r<sub>M</sub>)</p>
 
-For the bracket-to-frame connection:
+For the frame mounting bolts:
 
 <p align="center">|R⃗<sub>bF</sub>| = T<sub>MB</sub> / (4r<sub>F</sub>)</p>
 
-### 3.7 Motor-to-Bracket Reaction Forces
+### 3.7 Motor-to-Bracket Reactions
 
-Using:
+The magnitude of the nominal tangential reaction at each motor mounting bolt is:
 
-<p align="center"><strong>T<sub>MB</sub> = 27,400.000 N·mm</strong></p>
+<p align="center">|R⃗<sub>bM</sub>| = 27,400.000 / (4 × 52.000633...)</p>
 
-and:
+<p align="center"><strong>|R⃗<sub>bM</sub>| = 131.729 N</strong></p>
 
-<p align="center"><strong>r<sub>M</sub> ≈ 52.001 mm</strong></p>
+Because the motor bolt pattern is square, the corresponding Cartesian component magnitudes are equal:
 
-the nominal reaction magnitude per mounting bolt is:
+<p align="center"><strong>|R<sub>bM,ix</sub>| = |R<sub>bM,iy</sub>| = 93.147 N</strong></p>
 
-<p align="center">|R⃗<sub>bM</sub>| = 27,400.000 / (4r<sub>M</sub>)</p>
+### 3.8 Bracket-to-Frame Reactions
 
-<p align="center"><strong>|R⃗<sub>bM</sub>| ≈ 131.729 N</strong></p>
+The nominal reaction magnitude at each frame mounting bolt is:
 
-For the symmetrical motor mounting pattern:
+<p align="center">|R⃗<sub>bF</sub>| = 27,400.000 / (4 × 72.801099...)</p>
 
-<p align="center"><strong>|R<sub>bM,ix</sub>| ≈ 93.145 N</strong></p>
+<p align="center"><strong>|R⃗<sub>bF</sub>| = 94.092 N</strong></p>
 
-<p align="center"><strong>|R<sub>bM,iy</sub>| ≈ 93.145 N</strong></p>
+The corresponding component magnitudes are:
 
-### 3.8 Bracket-to-Frame Reaction Forces
+<p align="center"><strong>|R<sub>bF,ix</sub>| = 90.472 N</strong></p>
 
-For the frame mounting pattern:
+<p align="center"><strong>|R<sub>bF,iy</sub>| = 25.849 N</strong></p>
 
-<p align="center"><strong>r<sub>F</sub> ≈ 72.801 mm</strong></p>
+### 3.9 Nominal Bolt-Hole Bearing Stress
 
-The nominal reaction magnitude per frame mounting bolt is:
+For the simplified bearing model, the projected contact area is:
 
-<p align="center">|R⃗<sub>bF</sub>| = 27,400.000 / (4r<sub>F</sub>)</p>
+<p align="center">A<sub>b</sub> = Ø<sub>b</sub>t<sub>MB</sub></p>
 
-<p align="center"><strong>|R⃗<sub>bF</sub>| ≈ 94.092 N</strong></p>
+Using the nominal M8 bolt diameter:
 
-The reaction-component magnitudes are:
-
-<p align="center"><strong>|R<sub>bF,ix</sub>| ≈ 90.472 N</strong></p>
-
-<p align="center"><strong>|R<sub>bF,iy</sub>| ≈ 25.849 N</strong></p>
-
-### 3.9 Bolt-Hole Bearing-Stress Analysis
-
-The simplified projected bearing area is:
-
-<p align="center">A<sub>b</sub> = Ø<sub>b</sub> · t<sub>MB</sub></p>
-
-Using the nominal M8 fastener diameter and selected bracket thickness:
-
-<p align="center">A<sub>b</sub> = 8.000 · 6.350</p>
+<p align="center">A<sub>b</sub> = 8.000 × 6.350</p>
 
 <p align="center"><strong>A<sub>b</sub> = 50.800 mm<sup>2</sup></strong></p>
 
@@ -467,25 +433,27 @@ The nominal bearing stress is:
 
 For the motor mounting holes:
 
-<p align="center">σ<sub>MB,M</sub> = |R⃗<sub>bM</sub>| / 50.800</p>
+<p align="center">σ<sub>MB,M</sub> = 131.729 / 50.800</p>
 
-<p align="center"><strong>σ<sub>MB,M</sub> ≈ 2.593 MPa</strong></p>
+<p align="center"><strong>σ<sub>MB,M</sub> = 2.593 MPa</strong></p>
 
 For the frame mounting holes:
 
 <p align="center">σ<sub>MB,F</sub> = 94.092 / 50.800</p>
 
-<p align="center"><strong>σ<sub>MB,F</sub> ≈ 1.852 MPa</strong></p>
+<p align="center"><strong>σ<sub>MB,F</sub> = 1.852 MPa</strong></p>
 
-The governing nominal bearing stress is therefore:
+The motor mounting-hole bearing stress governs the simplified analysis:
 
-<p align="center">σ<sub>MB,max</sub> = max[σ<sub>MB,M</sub>, σ<sub>MB,F</sub>]</p>
+<p align="center"><strong>σ<sub>MB,max</sub> = 2.593 MPa</strong></p>
 
-<p align="center"><strong>σ<sub>MB,max</sub> ≈ 2.593 MPa</strong></p>
+![Bracket reaction and bearing equations](images/A11-4.jpg)
 
-### 3.10 Minimum Required Bracket Thickness
+*Figure 6. Parametric bolt reactions, projected bearing-area relationships, and minimum-thickness equations.*
 
-Using a yield-strength-based allowable nominal bearing stress:
+### 3.10 Minimum Bracket Thickness
+
+The allowable nominal bearing stress is:
 
 <p align="center">σ<sub>MB,allow</sub> = σ<sub>YMB</sub> / SF</p>
 
@@ -493,539 +461,735 @@ Using a yield-strength-based allowable nominal bearing stress:
 
 <p align="center"><strong>σ<sub>MB,allow</sub> = 62.500 MPa</strong></p>
 
-Rearranging the bearing-stress equation:
+Rearranging the nominal bearing-stress equation:
 
-<p align="center">t<sub>MB,min</sub> = (|R⃗<sub>b</sub>| · SF) / (Ø<sub>b</sub> · σ<sub>YMB</sub>)</p>
+<p align="center">t<sub>MB,min</sub> = |R⃗<sub>b</sub>|SF / (Ø<sub>b</sub>σ<sub>YMB</sub>)</p>
 
 For the motor mounting holes:
 
-<p align="center"><strong>t<sub>MB,Mmin</sub> ≈ 0.263 mm</strong></p>
+<p align="center"><strong>t<sub>MB,Mmin</sub> = 0.263 mm</strong></p>
 
 For the frame mounting holes:
 
-<p align="center"><strong>t<sub>MB,Fmin</sub> ≈ 0.188 mm</strong></p>
+<p align="center"><strong>t<sub>MB,Fmin</sub> = 0.188 mm</strong></p>
 
-The governing theoretical minimum is:
+The governing theoretical value is:
 
 <p align="center">t<sub>MB,min</sub> = max[0.263, 0.188]</p>
 
-<p align="center"><strong>t<sub>MB,min</sub> ≈ 0.263 mm</strong></p>
+<p align="center"><strong>t<sub>MB,min</sub> = 0.263 mm</strong></p>
 
-A much thicker practical plate was selected:
+The practical selected plate thickness is:
 
 <p align="center"><strong>t<sub>MB</sub> = 6.350 mm</strong></p>
 
 ### 3.11 Nominal Bearing-Stress Safety Factor
 
-The simplified bearing-stress safety factor is:
+The nominal bearing safety factor is:
 
 <p align="center">SF<sub>MB,actual</sub> = σ<sub>YMB</sub> / σ<sub>MB,max</sub></p>
 
 Using unrounded intermediate results:
 
-<p align="center"><strong>SF<sub>MB,actual</sub> ≈ 96.410 ≥ 4.000</strong></p>
+<p align="center"><strong>SF<sub>MB,actual</sub> = 96.410 ≥ 4.000</strong></p>
 
-The selected bracket therefore exceeds the specified safety factor under the simplified nominal bearing-stress model.
+The selected plate therefore exceeds the required safety-factor margin under the simplified bearing-stress model.
 
-**Model limitation:** This result does not establish the bracket's complete structural safety factor. The simplified model does not independently evaluate plate bending, deflection, bolt shear and tension, thread failure, edge tearing, fatigue, vibration, or local stress concentrations.
+**Model limitation:** This calculation evaluates nominal bolt-hole bearing stress caused by the applied torque reaction. It does not independently establish the safety factors against plate bending, deflection, bolt shear and tension, edge tearing, thread failure, fatigue, or local stress concentrations.
 
-The assignment requires precise alignment without excessive deflection but does not specify a numerical bracket deflection limit. Final alignment and stiffness should be assessed through the completed machine assembly and any additional validation required by the instructor.
+![Bracket numerical solutions](images/A11-5.jpg)
 
-![Bracket governing equations and torque reactions](images/A11-4.jpg)
+*Figure 7. Final bracket bearing-stress results, minimum required thickness, nominal bearing safety factor, and initial coupler analysis.*
 
-*Figure 4. Parametric bracket bearing equations, reaction-force calculations, and safety-factor relationships.*
+### 3.12 Bracket Design Revision
 
-![Bracket numerical solutions and coupler setup](images/A11-5.jpg)
+The original bracket had the following dimensions:
 
-*Figure 5. Bracket bearing-stress results, minimum thickness comparison, actual nominal safety factor, and coupler analysis setup.*
+| Parameter | Initial value |
+| --- | --- |
+| Width | 120.000 mm |
+| Length | 160.000 mm |
+| Thickness | 6.350 mm |
+| Frame hole pattern | 40.000 × 120.000 mm |
 
-### 3.12 Bracket Design Revision for Service Access
+During CAD assembly, the preliminary frame uprights interfered with the motor mounting-bolt service envelope.
 
-The initial bracket design was:
+The frame mounting-hole half-length was increased:
 
-- Width: 120.000 mm.
-- Length: 160.000 mm.
-- Thickness: 6.350 mm.
-- Frame pattern: 40.000 × 120.000 mm.
+<p align="center">b<sub>F</sub>: 60.000 mm → 70.000 mm</p>
 
-After inserting the two 40-4080 frame extrusions, the preliminary assembly revealed that the uprights obstructed the space needed for the motor mounting bolts.
+The bracket length was increased:
 
-The frame mounting-hole half-length was increased from:
+<p align="center">L<sub>MB</sub>: 160.000 mm → 180.000 mm</p>
 
-<p align="center">b<sub>F</sub> = 60.000 mm</p>
+The updated mounting arrangement provides approximately **6.730 mm nominal clearance** between the motor mounting-bolt head envelope and the nearest support-member envelope.
 
-to:
+This revision improved service access without changing the manufacturer's motor mounting pattern.
 
-<p align="center"><strong>b<sub>F</sub> = 70.000 mm</strong></p>
+### 3.13 Bracket CAD Development
 
-The bracket length was increased to:
+The final preliminary bracket model includes:
 
-<p align="center"><strong>L<sub>MB</sub> = 180.000 mm</strong></p>
-
-The new arrangement provides a nominal clearance of:
-
-<p align="center"><strong>c<sub>head</sub> = 6.730 mm</strong></p>
-
-between the Ø13.000 mm motor bolt-head envelope and the nearest frame envelope.
-
-The change improves assembly and maintenance accessibility without modifying the motor mounting-hole pattern or gearbox clearance opening.
-
-The updated frame mounting reactions and bearing stresses were recalculated using the new bolt-group radius.
-
-### 3.13 Bracket SOLIDWORKS Model
-
-The final preliminary bracket CAD model includes:
-
-- 120.000 × 180.000 mm rectangular plate.
-- 6.350 mm thickness.
+- 120.000 × 180.000 × 6.350 mm steel plate.
 - Four Ø8.500 mm motor mounting holes.
 - Four Ø9.000 mm frame mounting holes.
-- Ø40.000 mm gearbox locating-boss clearance opening.
-- Revised 40.000 × 140.000 mm frame mounting pattern.
+- A Ø40.000 mm through-hole for the gearbox locating boss.
+- The revised 40.000 × 140.000 mm frame mounting pattern.
 
-**[TODO: Insert final bracket CAD screenshot]**
+The gearbox locating boss, mounting bolts, principal clearances, and support alignment were checked during assembly development.
 
-*Figure 6. Final preliminary motor mounting bracket with all mounting holes and shaft clearance opening.*
+The completed bracket is included in the native SOLIDWORKS assembly package described in Section 5.
 
 ---
 
 ## 4. Shaft Coupler Design — Jason Corum
 
-### 4.1 Design Requirements
+### 4.1 Design Requirements and Material Selection
 
-The coupler connects the motor gearbox output shaft to the selected leadscrew.
+The shaft coupler transmits torque from the motor gearbox output shaft to the selected Acme leadscrew.
 
-The proposed coupler must transmit the operating torque while maintaining the alignment of the two shafts.
+The selected motor output shaft has a nominal diameter of 18.000 mm, while the leadscrew has a nominal major diameter of 15.875 mm.
 
-The preliminary design uses a **one-piece hollow cylindrical sleeve with stepped bores**, designed around the different motor and leadscrew diameters.
+A custom stepped-bore hollow cylindrical coupler was designed.
 
-The simplified stress analysis considers pure torsion and neglects local stress concentrations from keyways, set screws, and other retention features.
+**Selected material:** ASTM A36 steel
 
-### 4.2 Coupler Knowns and Assumptions
-
-| Parameter | Value |
+| Parameter | Selected value |
 | --- | --- |
-| Selected material | ASTM A36 steel |
-| Assumed yield strength | 250.000 MPa |
-| Required safety factor | 4.000 |
+| Assumed material yield strength | 250.000 MPa |
 | Design torque, T<sub>C</sub> | 27.400 N·m |
-| Motor shaft diameter | 18.000 mm |
-| Leadscrew nominal diameter | 15.875 mm |
+| Safety factor, SF | 4.000 |
+| Motor-side bore | Ø18.000 mm |
+| Leadscrew-side bore | Ø15.875 mm |
+| Selected outside diameter | Ø34.000 mm |
+| Overall length | 60.000 mm |
 | Motor-side engagement | 25.000 mm |
 | Leadscrew-side engagement | 25.000 mm |
-| Shaft-tip separation | 10.000 mm |
-| Overall coupler length | 60.000 mm |
-| Selected outer diameter | 34.000 mm |
+| Nominal shaft-tip separation | 10.000 mm |
 
-The coupler is designed for the motor's rated output torque rather than only the calculated leadscrew driving torque.
+The coupler was sized for the manufacturer's rated gearbox output torque rather than the smaller nominal leadscrew driving torque.
 
-### 4.3 Coupler Free-Body Diagram
+### 4.2 Simplified Coupler Free-Body Diagram
 
-The simplified FBD includes the input torque from the motor, resisting torque from the leadscrew, and torsional shear stress acting on the cylindrical coupler section.
+The preliminary coupler model considers the applied motor torque and the opposing leadscrew resistance.
 
 For static torque equilibrium:
 
-<p align="center">Σ<sub>N</sub>[M<sub>z</sub>] = T<sub>M</sub> - T<sub>s</sub> = 0 N·m</p>
+<p align="center">Σ<sub>N</sub>[M<sub>z</sub>] = T<sub>M</sub> − T<sub>s</sub> = 0</p>
 
 Therefore:
 
 <p align="center"><strong>T<sub>M</sub> = T<sub>s</sub> = T<sub>C</sub></strong></p>
 
-The radius at the outer surface of the coupler is:
+The stress calculation treats the coupler as a hollow circular shaft in pure torsion and neglects local effects from keyways, set screws, and other attachment features.
 
-<p align="center">r<sub>C,out</sub> = Ø<sub>C,out</sub> / 2</p>
-
-The maximum nominal torsional shear stress occurs at the outer radius.
-
-### 4.4 Polar Second Moment of Area
+### 4.3 Polar Second Moment of Area
 
 For a hollow circular section:
 
-<p align="center">J<sub>C</sub> = (π / 32) · (Ø<sub>C,out</sub><sup>4</sup> - Ø<sub>C,in</sub><sup>4</sup>)</p>
+<p align="center">J<sub>C</sub> = π(Ø<sub>C,out</sub><sup>4</sup> − Ø<sub>C,in</sub><sup>4</sup>) / 32</p>
 
 The polar section modulus is:
 
 <p align="center">Z<sub>C</sub> = J<sub>C</sub> / r<sub>C,out</sub></p>
 
-The nominal torsional shear stress is:
+The maximum nominal torsional shear stress is:
 
-<p align="center">τ<sub>C</sub> = (T<sub>C</sub> · r<sub>C</sub>) / J<sub>C</sub></p>
+<p align="center">τ<sub>C,max</sub> = T<sub>C</sub>r<sub>C,out</sub> / J<sub>C</sub></p>
 
-At the outside surface:
+Equivalently:
 
-<p align="center">τ<sub>C,max</sub> = (T<sub>C</sub> · Ø<sub>C,out</sub>) / (2J<sub>C</sub>)</p>
+<p align="center"><strong>τ<sub>C,max</sub> = 16T<sub>C</sub>Ø<sub>C,out</sub> / [π(Ø<sub>C,out</sub><sup>4</sup> − Ø<sub>C,in</sub><sup>4</sup>)]</strong></p>
 
-Combining these expressions gives:
-
-<p align="center"><strong>τ<sub>C,max</sub> = (16 · T<sub>C</sub> · Ø<sub>C,out</sub>) / [π · (Ø<sub>C,out</sub><sup>4</sup> - Ø<sub>C,in</sub><sup>4</sup>)]</strong></p>
-
-### 4.5 Allowable Shear Stress
+### 4.4 Allowable Shear Stress
 
 The preliminary calculation uses the simplified shear-yield approximation:
 
 <p align="center">τ<sub>YC</sub> ≈ σ<sub>YC</sub> / 2</p>
 
-<p align="center">τ<sub>YC</sub> ≈ 250.000 / 2</p>
+Using the assumed yield strength:
 
-<p align="center"><strong>τ<sub>YC</sub> ≈ 125.000 MPa</strong></p>
+<p align="center">τ<sub>YC</sub> = 250.000 / 2</p>
 
-The allowable torsional shear stress is:
+<p align="center"><strong>τ<sub>YC</sub> = 125.000 MPa</strong></p>
+
+Applying the required safety factor:
 
 <p align="center">τ<sub>C,allow</sub> = τ<sub>YC</sub> / SF</p>
 
-<p align="center"><strong>τ<sub>C,allow</sub> ≈ 31.250 MPa</strong></p>
+<p align="center">τ<sub>C,allow</sub> = 125.000 / 4.000</p>
 
-This approximation is used consistently with the handwritten preliminary analysis; it is not a substitute for a full combined-stress or fatigue evaluation.
+<p align="center"><strong>τ<sub>C,allow</sub> = 31.250 MPa</strong></p>
 
-### 4.6 Minimum Coupler Outside Diameter
+### 4.5 Minimum Outside Diameter
 
-The motor-side bore of 18.000 mm is the larger of the two internal diameters and therefore governs the preliminary hollow-section sizing.
+The motor-side Ø18.000 mm bore is the larger internal diameter and governs the preliminary sizing.
 
-The diameter requirement is:
+The outside diameter must satisfy:
 
-<p align="center">(16 · T<sub>C</sub> · Ø<sub>C,out</sub>) / [π · (Ø<sub>C,out</sub><sup>4</sup> - Ø<sub>C,in</sub><sup>4</sup>)] ≤ τ<sub>C,allow</sub></p>
+<p align="center">16T<sub>C</sub>Ø<sub>C,out</sub> / [π(Ø<sub>C,out</sub><sup>4</sup> − Ø<sub>C,in</sub><sup>4</sup>)] ≤ τ<sub>C,allow</sub></p>
 
 At the limiting condition:
 
-<p align="center">π · τ<sub>C,allow</sub> · (Ø<sub>C,outmin</sub><sup>4</sup> - Ø<sub>C,in</sub><sup>4</sup>) - 16 · T<sub>C</sub> · Ø<sub>C,outmin</sub> = 0</p>
-
-Substituting the selected design values:
-
-<p align="center">π · 31.250 · (Ø<sub>C,outmin</sub><sup>4</sup> - 18.000<sup>4</sup>) - 16 · 27400.000 · Ø<sub>C,outmin</sub> = 0</p>
+<p align="center">π τ<sub>C,allow</sub>(Ø<sub>C,out,min</sub><sup>4</sup> − Ø<sub>C,in</sub><sup>4</sup>) − 16T<sub>C</sub>Ø<sub>C,out,min</sub> = 0</p>
 
 The resulting nonlinear fourth-degree equation was solved numerically using the Newton–Raphson method.
 
-<p align="center"><strong>Ø<sub>C,outmin</sub> ≈ 21.130 mm</strong></p>
+<p align="center"><strong>Ø<sub>C,out,min</sub> = 21.130 mm</strong></p>
 
 The selected outside diameter is:
 
 <p align="center"><strong>Ø<sub>C,out</sub> = 34.000 mm</strong></p>
 
-### 4.7 Coupler Wall Thickness
+### 4.6 Coupler Wall Thickness
 
 For the motor-side bore:
 
-<p align="center">t<sub>CM</sub> = (Ø<sub>C,out</sub> - Ø<sub>CM,in</sub>) / 2</p>
+<p align="center">t<sub>CM</sub> = (Ø<sub>C,out</sub> − Ø<sub>CM,in</sub>) / 2</p>
 
-<p align="center">t<sub>CM</sub> = (34.000 - 18.000) / 2</p>
+<p align="center">t<sub>CM</sub> = (34.000 − 18.000) / 2</p>
 
 <p align="center"><strong>t<sub>CM</sub> = 8.000 mm</strong></p>
 
 For the leadscrew-side bore:
 
-<p align="center">t<sub>CS</sub> = (Ø<sub>C,out</sub> - Ø<sub>CS,in</sub>) / 2</p>
+<p align="center">t<sub>CS</sub> = (Ø<sub>C,out</sub> − Ø<sub>CS,in</sub>) / 2</p>
 
-<p align="center">t<sub>CS</sub> = (34.000 - 15.875) / 2</p>
+<p align="center">t<sub>CS</sub> = (34.000 − 15.875) / 2</p>
 
-<p align="center"><strong>t<sub>CS</sub> ≈ 9.063 mm</strong></p>
+<p align="center"><strong>t<sub>CS</sub> = 9.063 mm</strong></p>
 
-The motor-side section has the thinner wall and governs the nominal torsional shear calculation.
+The thinner motor-side section governs the nominal torsional shear analysis.
 
-### 4.8 Coupler Torsional Stress
+### 4.7 Coupler Torsional Stress
 
 For the motor-side section:
 
-<p align="center">J<sub>CM</sub> = (π / 32) · (34.000<sup>4</sup> - 18.000<sup>4</sup>)</p>
+<p align="center">J<sub>CM</sub> = π(34.000<sup>4</sup> − 18.000<sup>4</sup>) / 32</p>
 
 The polar section modulus is:
 
 <p align="center">Z<sub>CM</sub> = 2J<sub>CM</sub> / Ø<sub>C,out</sub></p>
 
-<p align="center"><strong>Z<sub>CM</sub> ≈ 7111.087 mm<sup>3</sup></strong></p>
+<p align="center"><strong>Z<sub>CM</sub> = 7,111.087 mm<sup>3</sup></strong></p>
 
 The maximum nominal torsional shear stress is:
 
-<p align="center">τ<sub>C,max</sub> = [16 · 27400.000 · 34.000] / [π · (34.000<sup>4</sup> - 18.000<sup>4</sup>)]</p>
+<p align="center">τ<sub>C,max</sub> = 27,400.000 / 7,111.087...</p>
 
-<p align="center"><strong>τ<sub>C,max</sub> ≈ 3.853 MPa</strong></p>
+<p align="center"><strong>τ<sub>C,max</sub> = 3.853 MPa</strong></p>
 
-### 4.9 Coupler Safety Factor
+### 4.8 Coupler Safety Factor
 
-The nominal torsional safety factor is:
+The nominal pure-torsion safety factor is:
 
 <p align="center">SF<sub>C,actual</sub> = τ<sub>YC</sub> / τ<sub>C,max</sub></p>
 
 Using unrounded intermediate values:
 
-<p align="center"><strong>SF<sub>C,actual</sub> ≈ 32.441 ≥ 4.000</strong></p>
+<p align="center"><strong>SF<sub>C,actual</sub> = 32.441 ≥ 4.000</strong></p>
 
-The selected diameter satisfies the simplified nominal pure-torsion requirement.
+The selected coupler satisfies the assigned preliminary pure-torsion requirement.
 
-![Coupler equations and numerical analysis](images/A11-6.jpg)
+![Coupler torsional analysis](images/A11-6.jpg)
 
-*Figure 7. Coupler torsional equations, minimum outside diameter calculation, material properties, selected dimensions, and nominal safety factor.*
+*Figure 8. Coupler governing equations, allowable shear stress, minimum outside diameter, selected dimensions, and nominal torsional safety factor.*
 
-### 4.10 Coupler SOLIDWORKS Model
+### 4.9 Coupler SOLIDWORKS Development
 
-The preliminary coupler was modeled using:
+The coupler was modeled with:
 
-1. A cylindrical outer body.
-2. Two different-diameter internal bores.
-3. A motor-side keyway.
-4. An M5 set-screw hole.
-5. Appropriate engagement depths for both shafts.
+- Ø34.000 mm cylindrical outer body.
+- Two stepped internal bores.
+- Motor-side keyway.
+- Motor-side set-screw hole.
+- Appropriate shaft insertion depths.
 
-The completed assembly includes the motor-side parallel key and set screw.
+The CAD assembly includes a motor-side parallel key and an M5 × 0.800 × 6.000 mm set screw.
 
-| CAD Feature | Selected dimension |
-| --- | --- |
-| Outside diameter | 34.000 mm |
-| Overall length | 60.000 mm |
-| Motor-side bore | 18.000 mm |
-| Leadscrew-side bore | 15.875 mm |
-| Motor shaft engagement | 25.000 mm |
-| Leadscrew engagement | 25.000 mm |
-| Shaft-tip gap | 10.000 mm |
-| Motor-side set screw | M5 × 0.800 × 6.000 mm |
+The coupler and leadscrew were positioned concentrically during assembly development.
 
-The motor-side key and keyway were mated to the imported gearmotor geometry. The set screw was also modeled and positioned in the corresponding tapped hole.
+**Scope limitation:** The individual A11 coupler assignment requires a coupling selection or design supported by torsional shear-stress analysis. That calculation and the preliminary coupling model are complete.
 
-The actual leadscrew is a threaded 5/8"-8 Acme component. The CAD model establishes the nominal axial geometry, but the final physical torque-transfer and axial-retention method at the leadscrew end remains to be specified and verified.
-
-**[TODO: Insert coupler part screenshot]**
-
-*Figure 8. Stepped-bore coupler with motor-side keyway and set-screw feature.*
-
-**[TODO: Insert motor shaft and coupler assembly screenshot]**
-
-*Figure 9. Coupler assembled to the geared motor with key and set screw.*
+A fabrication-ready leadscrew-side torque-transfer and retention connection is a separate system-level implementation detail. The floating and thrust bearings support the shaft but do not independently provide a torque-transmitting connection.
 
 ---
 
-## 5. Motor, Coupler, Bracket, and Leadscrew CAD Assembly — Jason Corum
+## 5. Motor Mounting Assembly and Frame Integration — Jason Corum and Gavin Sanchez
 
-### 5.1 CAD Development Process
+### 5.1 SOLIDWORKS Assembly Development
 
-The SOLIDWORKS assembly was developed progressively to verify component placement and fit.
+The motor mounting assembly was developed progressively using the manufacturer's motor geometry, the selected Acme leadscrew, and the custom bracket and coupler.
 
-The main assembly stages were:
+The main development sequence was:
 
-1. Import the manufacturer motor and gearbox models.
-2. Create and mate the stepped-bore coupler.
-3. Position the motor-side key and set screw.
-4. Insert and align the selected leadscrew.
-5. Create the bracket plate and mounting-hole patterns.
-6. Insert the motor bracket into the assembly.
-7. Create the gearbox locating-boss clearance opening.
-8. Insert two temporary 40-4080 frame extrusion sections.
-9. Revise frame mounting-hole spacing to improve service access.
-10. Add the four bracket-to-frame bolts.
-11. Add the four motor-to-bracket bolts.
-12. Check the remaining nut and washer envelopes.
+1. Import the manufacturer motor and gearhead CAD.
+2. Model the custom stepped-bore coupler.
+3. Mate the coupler to the gearbox output shaft.
+4. Add the motor-side key and set screw.
+5. Insert and align the selected leadscrew.
+6. Model the motor mounting bracket.
+7. Add the four-hole motor mounting pattern.
+8. Add the frame mounting-hole pattern.
+9. Create the gearbox locating-boss clearance opening.
+10. Insert trial 40-4080 frame members.
+11. Revise the bracket to improve fastener accessibility.
+12. Add motor and frame mounting screws.
+13. Evaluate nominal washer and nut clearances.
+14. Replace the trial supports with the final 80 mm tapped support arrangement.
+15. Integrate the motor support arrangement with the overall upper frame.
 
-### 5.2 Gearbox Clearance Hole
+### 5.2 Permanent Motor Support Configuration
 
-The initial bracket was positioned against the gearbox mounting face before the central clearance opening was created.
+During initial CAD verification, two 200 mm extrusion sections were used to test the bracket-to-frame interface.
 
-Inspection of the manufacturer geometry established the following:
+Following further work by Jason and Gavin, these temporary members were replaced with final **80 mm** sections and incorporated into the permanent motor mounting assembly.
 
-| Feature | Value |
+Each motor mounting bracket attaches to two 40-4080 extrusion sections.
+
+The complete two-motor system therefore uses four support members.
+
+| Parameter | Final value |
 | --- | --- |
-| Gearbox locating-boss diameter | 39.000 mm |
-| Selected clearance-hole diameter | 40.000 mm |
-| Radial clearance | 0.500 mm |
-| Hole center offset | 18.000 mm |
-| Bracket thickness | 6.350 mm |
+| Manufacturer | 80/20 |
+| Profile | 40-4080 |
+| Profile cross section | 40.000 × 80.000 mm |
+| Member length | 80.000 mm |
+| Members per motor bracket | 2 |
+| Total quantity | 4 |
+| End machining | Two M8 × 1.250 tapped holes |
+| Selected tap depth | 31.750 mm |
+| Mounting location | Motor bracket to upper structural frame |
 
-A through-all Ø40.000 mm cut was created at the actual output-shaft axis.
+These members are now permanent components, not temporary interface-verification parts.
 
-CAD comparison confirmed that this removed the original gearbox locating-boss interference without intersecting the eight bracket mounting holes.
+[80/20 — 40-4080 Profile](https://8020.net/40-4080.html)
 
-**[TODO: Insert clearance-hole CAD screenshot]**
+### 5.3 Motor Mounting Fasteners
 
-*Figure 10. Ø40.000 mm gearbox clearance opening in the motor mounting bracket.*
+The motor mounting assembly uses the following principal fasteners.
 
-### 5.3 Frame Mounting Interface
+| Connection | Quantity per motor | Fastener |
+| --- | ---: | --- |
+| Motor/gearhead to bracket | 4 | M8 × 1.250 × 90.000 mm socket-head cap screws |
+| Bracket to tapped extrusion ends | 4 | M8 × 1.250 × 25.000 mm button-head screws |
+| Motor-side coupler retention | 1 | M5 × 0.800 × 6.000 mm flat-point set screw |
 
-The trial supporting members are 80/20 heavy-duty **40-4080 T-slotted aluminum extrusions**.
-
-Each has a nominal cross section of:
-
-<p align="center"><strong>40.000 × 80.000 mm</strong></p>
-
-The bracket attaches to the **end faces** of the upright extrusions rather than using side-mounted T-slot nuts.
-
-Each extrusion uses two core holes aligned with the frame mounting-hole pattern.
-
-The intended manufacturing connection requires M8 × 1.250 tapped ends.
-
-The temporary CAD extrusion length used for the interface check is 200.000 mm. These sections are not the final complete frame.
-
-The initial frame arrangement interfered with the motor mounting fastener access. The updated bracket and frame spacing resolved the nominal fastener-envelope interference.
-
-**[TODO: Insert bracket-to-frame assembly screenshot]**
-
-*Figure 11. Updated mounting bracket positioned on the two 40-4080 frame uprights.*
-
-### 5.4 Frame Mounting Fasteners
-
-The frame mounting connection uses four M8 fasteners.
-
-| Specification | Value |
-| --- | --- |
-| Quantity | 4 |
-| Thread | M8 × 1.250 |
-| Length | 25.000 mm |
-| Head style | Low-profile/button-head |
-| Nominal head diameter | 14.000 mm |
-| Nominal head height | 4.400 mm |
-| Bracket through-hole diameter | 9.000 mm |
-| Nominal threaded engagement | 18.650 mm |
-
-The four bolts were inserted into the CAD assembly and aligned with the extrusion core holes.
-
-The nominal engagement length is:
-
-<p align="center">L<sub>e</sub> = L<sub>b</sub> - t<sub>MB</sub></p>
-
-<p align="center">L<sub>e</sub> = 25.000 - 6.350</p>
-
-<p align="center"><strong>L<sub>e</sub> = 18.650 mm</strong></p>
-
-The core holes are represented without detailed helical internal threads. Their apparent solid overlap with nominal M8 shanks is expected in the simplified CAD representation, provided that the physical extrusion ends are correctly tapped.
-
-### 5.5 Motor Mounting Fasteners
-
-The motor-to-bracket connection uses four M8 socket-head cap screws.
-
-| Specification | Value |
-| --- | --- |
-| Quantity | 4 |
-| Thread | M8 × 1.250 |
-| Length | 90.000 mm |
-| Head diameter | 13.000 mm |
-| Head height | 8.000 mm |
-| Gearhead thickness in grip path | 58.000 mm |
-| Motor mounting flange thickness | 10.000 mm |
-| Bracket thickness | 6.350 mm |
-| Total grip length | 74.350 mm |
-| Nominal projection below bracket | 15.650 mm |
-
-The complete grip length is:
+The 90 mm motor mounting screws were selected based on the measured axial grip length.
 
 <p align="center">L<sub>grip</sub> = 58.000 + 10.000 + 6.350</p>
 
 <p align="center"><strong>L<sub>grip</sub> = 74.350 mm</strong></p>
 
-The nominal bolt projection is:
+The nominal screw projection below the bracket is:
 
-<p align="center">L<sub>projection</sub> = 90.000 - 74.350</p>
+<p align="center">L<sub>projection</sub> = 90.000 − 74.350</p>
 
 <p align="center"><strong>L<sub>projection</sub> = 15.650 mm</strong></p>
 
-### 5.6 Nut and Washer Selection
+The proposed nut and washer stack was checked using simplified dimensional envelopes.
 
-The motor mounting hardware was also checked using virtual representations of standard washer and nut dimensions.
+The final installation details, fastener tolerances, and manufacturer's assembly instructions remain applicable for any physical construction.
 
-The preliminary hardware stack uses:
+### 5.4 Frame Mounting Screw Engagement
 
-| Component | Quantity | Specification |
-| --- | ---: | --- |
-| Small-pattern head-side washer | 4 | M8 ISO 7092, Ø15.000 mm OD |
-| Spring washer | 4 | M8 DIN 127 |
-| Underside flat washer | 4 | M8 ISO 7089, Ø16.000 mm OD |
-| Underside hex nut | 4 | M8 ISO 4032 |
+Each bracket connects to the two tapped 40-4080 support members using four M8 × 25.000 mm fasteners.
 
-The estimated axial space used by the washer and nut arrangement is:
+With a bracket thickness of 6.350 mm, the nominal engagement beyond the bracket is:
 
-<p align="center">L<sub>hardware</sub> = 1.600 + 2.000 + 1.600 + 6.800</p>
+<p align="center">L<sub>e</sub> = L<sub>b</sub> − t<sub>MB</sub></p>
 
-<p align="center"><strong>L<sub>hardware</sub> = 12.000 mm</strong></p>
+<p align="center">L<sub>e</sub> = 25.000 − 6.350</p>
 
-The remaining nominal projection is:
+<p align="center"><strong>L<sub>e</sub> = 18.650 mm</strong></p>
 
-<p align="center">L<sub>remaining</sub> = L<sub>projection</sub> - L<sub>hardware</sub></p>
+The selected 31.750 mm tapped depth provides sufficient nominal thread depth for this engagement length.
 
-<p align="center">L<sub>remaining</sub> = 15.650 - 12.000</p>
+The detailed thread-strength calculation is not included in the simplified bracket bearing-stress analysis.
 
-<p align="center"><strong>L<sub>remaining</sub> = 3.650 mm</strong></p>
+### 5.5 Assembly Geometry Verification
 
-The smaller head-side washer was selected because a nominal Ø16.000 mm washer showed slight interference with the gearbox housing.
+The original motor mounting assembly was checked for nominal alignment and geometric interference.
 
-The nuts and washers were checked using simplified geometric envelopes, not inserted as separate parts in the STEP assembly.
-
-Their final tolerances, actual thread engagement, washer compression, fastener grade, and installation torque still require hardware-level verification.
-
-### 5.7 CAD Geometry Verification
-
-The latest STEP export was inspected to verify the main motor assembly, bracket, frame interfaces, and fasteners.
-
-| Verification | Result |
+| Verification Item | Result |
 | --- | --- |
-| Motor and gearbox alignment | Passed geometric check |
-| Motor shaft and coupler concentricity | Passed geometric check |
-| Motor-side key placement | Passed geometric check |
-| Motor-side set-screw placement | Passed geometric check |
-| Leadscrew nominal concentricity | Passed geometric check |
-| Motor bracket dimensions | Passed geometric check |
-| Ø40.000 mm gearbox clearance opening | Passed geometric check |
-| Frame mounting-hole alignment | Passed geometric check |
-| Revised frame spacing | Passed geometric check |
-| Motor-bolt shank clearance | Passed geometric check |
-| Motor-bolt head-to-frame clearance | Passed nominal envelope check |
-| Frame mounting bolts | Positioned and checked |
-| Motor mounting bolts | Positioned and checked |
-| Motor-side nuts and washers | Virtual geometry checked |
-| Complete physical leadscrew-side retention | Not yet verified |
-| Complete-machine frame analysis | Team work pending |
-| Final controller synchronization | Team integration pending |
+| Gearbox output and coupler concentricity | Checked |
+| Leadscrew nominal concentricity | Checked |
+| Motor-side key position | Checked |
+| Motor-side set-screw position | Checked |
+| Motor mounting-hole alignment | Checked |
+| Bracket-to-frame hole alignment | Checked |
+| Gearbox locating-boss clearance | Checked |
+| Revised bracket service clearance | Checked |
+| Principal motor mounting fasteners | Checked |
+| Principal frame mounting fasteners | Checked |
+| Nut and washer envelopes | Checked virtually |
+| Final 80 mm support integration | Updated jointly by Jason and Gavin |
+| Complete tensile tester structural verification | Team responsibility |
 
-These checks establish nominal CAD geometry and clearances, not a manufactured, assembled, or experimentally validated mechanism.
+The earlier geometric inspection established nominal component fit. The subsequently revised 80 mm support assembly was updated in SOLIDWORKS and uploaded to GitHub by the student.
 
+The latest uploaded native package has not been independently subjected to a new complete-machine stress, motion, or interference verification in this portfolio.
 
-### 5.8 Native SOLIDWORKS Assembly Files
+### 5.6 Native SOLIDWORKS Assembly
 
-The motor mounting assembly and its individual components are available below.
+**[Download the updated Complete Motor Mount Assembly (.zip)](files/Complete_Motor_Mount_Assembly.zip)**
 
-**Main Assembly:**
+The updated native assembly ZIP was uploaded to the team GitHub repository after the final 80 mm support revision.
 
-- [Complete Motor Mount Assembly](cad/blmr5100k-100-b___blvd-krd.SLDASM)
+The ZIP should be used in preference to the previous preliminary assembly containing the temporary 200 mm supports.
 
-**Individual Components:**
+This package is intended to preserve the SOLIDWORKS assembly and its dependent components, including the selected motor, bracket, coupler, leadscrew, permanent support members, and mounting hardware.
 
-- [Motor Component 1](cad/blmr5100k-100-b___blvd-krd_01.SLDPRT)
-- [Motor Component 2](cad/blmr5100k-100-b___blvd-krd_02.SLDPRT)
-- [Motor Mounting Bracket](cad/Bracket.SLDPRT)
-- [Shaft Coupler](cad/A11_Shaft_Coupler.SLDPRT)
-- [Acme Leadscrew](cad/98935A914_Carbon%20Steel%20Acme%20Lead%20Screw.SLDPRT)
-- [40-4080 Frame Extrusion](cad/8020-40-4080%20X%20200.SLDPRT)
-- [Parallel Key](cad/parallel_din.sldprt)
-- [Frame Mounting Screws](cad/socket%20button%20head%20cap%20screw_am.sldprt)
-- [Motor Mounting Screws](cad/socket%20head%20cap%20screw_iso.sldprt)
-- [Coupler Set Screw](cad/socket%20set%20screw%20flat%20point_am.sldprt)
-
-The native SOLIDWORKS files preserve the original component
-names and editable geometry. All components should be downloaded
-into the same folder before opening the parent assembly.
-
-
-**[TODO: Insert the final complete motor mounting assembly screenshot]**
-
-*Figure 12. Completed preliminary motor, gearbox, coupler, leadscrew, bracket, frame interfaces, and mounting-bolt assembly.*
+The completed overall tensile tester assembly will be documented by the team after the remaining frame and bearing-support work is integrated.
 
 ---
 
-## 6. Summary of Motor, Bracket, and Coupler Results — Jason Corum
+## 6. Bill of Materials and Engineering Costs — Jason Corum
 
-| Parameter | Final preliminary result |
+The following bill of materials documents the costs associated with Jason's selected motors, mounting brackets, couplers, permanent support members, and mounting hardware.
+
+The quantities cover two identical motor stations.
+
+Published supplier prices and fabrication estimates are identified separately. Prices represent the investigated listings and order screenshots rather than guaranteed future purchase quotes.
+
+The external DC power supply, optional communication equipment, and additional electronic control accessories are excluded from the present assignment BOM scope. The required driver power cables remain included.
+
+### 6.1 Motors, Gearheads, Drivers, and Power Cables
+
+The selected Oriental Motor configuration is sold as a complete motor, gearhead, and driver package at $1,032.00 per station.
+
+The individual component prices are listed separately for the bill of materials.
+
+| Item | Component | Qty. | Unit Cost | Total |
+| --- | --- | ---: | ---: | ---: |
+| 1 | Oriental Motor BLMR5100K-GFV-B | 2 | $337.00 | $674.00 |
+| 2 | Oriental Motor GFV5G100 | 2 | $196.00 | $392.00 |
+| 3 | Oriental Motor BLVD-KRD driver | 2 | $499.00 | $998.00 |
+| 4 | Oriental Motor LC03D06A power cable | 2 | $34.00 | $68.00 |
+| | **Motor System Subtotal** | | | **$2,132.00** |
+
+The power cables connect the external DC supply to each driver.
+
+The manufacturer's motor connection cable is included with the motor package and is not counted as an additional purchase.
+
+**Source:** [Oriental Motor — Selected Motor Configuration](https://catalog.orientalmotor.com/en-us/item/100-120w-brushless-dc-motor-speed-control-systems/100w-blv-r-series-brushless-dc-motors/blmr5100k-gfv-b-gfv5g100-blvd-krd).
+
+### 6.2 Motor Mounting Bracket Material and Fabrication
+
+Two identical ASTM A36 motor mounting brackets are required.
+
+Each bracket has finished dimensions of 120.000 × 180.000 × 6.350 mm.
+
+A 6 × 8 × 0.250 in steel plate provides sufficient stock for each bracket.
+
+The preliminary fabrication estimate assumes:
+
+- 1.500 machining hours per bracket.
+- An estimated machine-shop rate of $75.00/hour.
+- Cutting, drilling/machining the holes, and deburring.
+
+The fabrication cost per bracket is:
+
+<p align="center">C<sub>MB,fab</sub> = t<sub>fab</sub>R<sub>shop</sub></p>
+
+<p align="center">C<sub>MB,fab</sub> = 1.500 × 75.00</p>
+
+<p align="center"><strong>C<sub>MB,fab</sub> = $112.50</strong></p>
+
+| Item | Component | Qty. | Unit Cost | Total |
+| --- | --- | ---: | ---: | ---: |
+| 5 | ASTM A36 plate, 6 × 8 × ¼ in | 2 | $18.64 | $37.28 |
+| 6 | Estimated bracket fabrication | 2 | $112.50 | $225.00 |
+| | **Bracket Subtotal** | | | **$262.28** |
+
+**Fabrication limitation:** The $225.00 machining allowance is a planning estimate, not an obtained machine-shop quotation.
+
+**Material source:** [A36 Steel Plate, 6 × 8 × ¼ in](https://business.walmart.com/ip/1-4-25-Hot-Rolled-Steel-Sheet-Plate-6-X-8-Flat-Bar-A36/844893475).
+
+### 6.3 Shaft Coupler Material and Fabrication
+
+Two custom ASTM A36 couplers are required.
+
+Each coupler has a selected outside diameter of 34.000 mm and an overall length of 60.000 mm.
+
+The selected raw material is one 1.500-inch-diameter, 12-inch-long ASTM A36 steel round bar.
+
+Its nominal stock dimensions are:
+
+<p align="center"><strong>Ø<sub>stock</sub> = 38.100 mm</strong></p>
+
+<p align="center"><strong>L<sub>stock</sub> = 304.800 mm</strong></p>
+
+The stock is large enough to fabricate both couplers with cutting and machining allowances.
+
+The estimated machining process includes:
+
+- Cutting the bar into two blanks.
+- Turning the outside diameters.
+- Machining the stepped internal bores.
+- Cutting the motor-side keyways.
+- Drilling and tapping the set-screw holes.
+- Finishing and deburring.
+
+The preliminary machining estimate assumes 2.000 hours per coupler at $75.00/hour.
+
+<p align="center">C<sub>C,fab</sub> = 2.000 × 75.00</p>
+
+<p align="center"><strong>C<sub>C,fab</sub> = $150.00 per coupler</strong></p>
+
+| Item | Component | Qty. | Unit Cost | Total |
+| --- | --- | ---: | ---: | ---: |
+| 7 | ASTM A36 round bar, Ø38.100 × 304.800 mm | 1 | $18.70 | $18.70 |
+| 8 | Estimated custom coupler machining | 2 | $150.00 | $300.00 |
+| | **Coupler Subtotal** | | | **$318.70** |
+
+The material cost is based on the supplier listing. The machining allowance is an estimate and not a formal supplier quotation.
+
+**Source:** [Online Metals — 1.5-inch A36 Hot-Rolled Round Bar](https://www.onlinemetals.com/en/buy/carbon-steel/1-5-carbon-steel-round-bar-a36-hot-rolled/pid/10250).
+
+### 6.4 Permanent 40-4080 Motor Support Members
+
+The final motor mounting arrangement uses four 80/20 40-4080 aluminum extrusion sections.
+
+Each member measures:
+
+<p align="center"><strong>40.000 × 80.000 × 80.000 mm</strong></p>
+
+The 80/20 order includes two M8 × 1.250 tapped holes at the selected end of each extrusion.
+
+The supplied order confirms:
+
+| Specification | Value |
 | --- | --- |
-| Selected motor | Oriental Motor BLMR5100K-GFV-B |
-| Selected gearhead | GFV5G100 |
-| Selected driver | BLVD-KRD |
-| Rated motor power | 100.000 W |
-| Gear reduction | 100:1 |
-| Rated gearbox output torque | 27.400 N·m |
-| Required leadscrew torque | 2.021 N·m per screw |
-| Torque target with SF = 4.000 | 8.085 N·m per motor |
+| Manufacturer | 80/20 |
+| Profile | 40-4080 |
+| Member length | 80.000 mm |
+| Quantity | 4 |
+| End machining | Two M8 × 1.250 tapped holes |
+| Tap depth | 31.750 mm |
+| Quoted unit price | $17.53 |
+| Quoted total | $70.12 |
+
+| Item | Component | Qty. | Unit Cost | Total |
+| --- | --- | ---: | ---: | ---: |
+| 9 | 80/20 40-4080, 80 mm, end-tapped | 4 | $17.53 | $70.12 |
+| | **Motor Support Subtotal** | | | **$70.12** |
+
+![80/20 motor support order](images/A11_08_8020_40-4080_Order_Quote.png)
+
+*Figure 9. 80/20 purchasing configuration for four 80 mm 40-4080 motor supports with the selected M8 end-tapping operation. Quoted total: $70.12.*
+
+**Source:** [80/20 — 40-4080 Profile](https://8020.net/40-4080.html).
+
+### 6.5 Motor Mounting Hardware
+
+The mounting hardware quantities cover two complete motor stations.
+
+The prices below represent the identified supplier listings and purchased-pack quantities where applicable.
+
+| Item | Component | Qty. Needed | Pricing Basis | Total |
+| --- | --- | ---: | --- | ---: |
+| 10 | M8 × 90 mm socket-head cap screws | 8 | $1.18 each | $9.44 |
+| 11 | M8 × 25 mm button-head screws | 8 | One 8-pack | $6.68 |
+| 12 | M8 small-OD flat washers | 8 | One 50-pack | $20.04 |
+| 13 | M8 DIN 127 split lock washers | 8 | $0.06 each | $0.48 |
+| 14 | M8 standard flat washers | 8 | $0.13 each | $1.04 |
+| 15 | M8 × 1.250 hex nuts | 8 | $0.10 each | $0.80 |
+| 16 | 6 × 6 × 25 mm parallel keys | 2 | $1.42 each | $2.84 |
+| 17 | M5 × 0.800 × 6 mm flat-point set screws | 2 | One 20-pack | $3.00 |
+| | **Hardware Subtotal** | | | **$44.32** |
+
+The complete purchased pack cost is included when a seller does not offer the exact required quantity.
+
+The hardware pricing also includes a standard DIN 934 M8 hex nut as a cost reference. The preliminary CAD envelope check used an ISO 4032 nut with a nominal 6.800 mm height; therefore, the final physical purchase must remain compatible with the actual clearances.
+
+The listed parallel keys are candidate purchased components. Their use assumes compatibility with the motor's supplied keyway and that they are not already included with the motor package.
+
+**Hardware sources:**
+
+1. [Bolt Depot — M8 × 90 mm Socket-Head Cap Screw](https://boltdepot.com/Product-Details?product=6574).
+2. [Home Depot — M8 × 25 mm Button-Head Screws](https://www.homedepot.com/p/204786396).
+3. [M8 Small-OD Washer Pack](https://www.walmart.com/ip/371996582).
+4. [Bolt Depot — M8 DIN 127 Split Lock Washers](https://boltdepot.com/Product-Details?product=4827).
+5. [Bolt Depot — M8 Flat Washers](https://boltdepot.com/Product-Details?product=7742).
+6. [Bolt Depot — M8 Hex Nuts](https://boltdepot.com/Product-Details?product=6884).
+7. [Maedler — Parallel Keys](https://maedlernorthamerica.com/height/6/).
+8. [Gavan Tools — M5 Flat-Point Set Screws](https://gavantools.com/products/20-pcs-m5-x-0-8-x-6mm-flat-point-socket-set-grub-screws-steel).
+
+### 6.6 Overall Structural Frame Connectors — Gavin Sanchez
+
+Gavin selected McMaster-Carr part **47065T799**, an anodized aluminum open-gusset corner bracket.
+
+These connectors are intended to attach the side members of the overall tensile tester frame to the top and bottom members.
+
+They are **not used to mount Jason's motor brackets**.
+
+The motor brackets use the four separate 40 × 80 × 80 mm supports described in Sections 5.2 and 6.4.
+
+| Specification | Value |
+| --- | --- |
+| Supplier | McMaster-Carr |
+| Part number | 47065T799 |
+| Connector type | Open-gusset corner bracket |
+| Material | Anodized aluminum |
+| Listed rail profile | Double/quad |
+| Listed rail height | 2.000 in |
+| Included fasteners | 4 per connector |
+| Included thread | ¼"-20 |
+| Unit cost | $15.10 |
+| Required quantity | [TODO: Gavin to confirm] |
+
+| Component | Qty. | Unit Cost | Total |
+| --- | ---: | ---: | ---: |
+| McMaster 47065T799 corner connector | [TODO] | $15.10 | [TODO] |
+
+![Gavin's frame connector](images/A11_07_McMaster_47065T799_Bracket_Quote.png)
+
+*Figure 10. Gavin's proposed overall-frame corner connector, manufacturer specifications, included hardware, and listed $15.10 unit price.*
+
+The connector quantity and compatibility with the final overall framing geometry remain part of the team's frame integration work.
+
+**Source:** [McMaster-Carr — 47065T799](https://www.mcmaster.com/47065T799/).
+
+### 6.7 Engineering Labor Cost
+
+The assignment specifies an entry-level mechanical engineering labor rate of:
+
+<p align="center"><strong>R<sub>L</sub> = $35.00/hour</strong></p>
+
+Jason's recorded A11 engineering time is:
+
+<p align="center"><strong>t<sub>Jason</sub> = 28.000 hours</strong></p>
+
+Engineering labor cost is:
+
+<p align="center">C<sub>L,Jason</sub> = R<sub>L</sub>t<sub>Jason</sub></p>
+
+<p align="center">C<sub>L,Jason</sub> = 35.00 × 28.000</p>
+
+<p align="center"><strong>C<sub>L,Jason</sub> = $980.00</strong></p>
+
+| Team Member | A11 Hours | Labor Cost |
+| --- | ---: | ---: |
+| Jason Corum | 28.000 | $980.00 |
+| Tai Podvojsky | [TODO] | [TODO] |
+| Gavin Sanchez | [TODO] | [TODO] |
+| **Team Total** | **[TODO]** | **[TODO]** |
+
+Engineering design labor is recorded separately from estimated fabrication-shop labor to avoid counting the same work twice.
+
+### 6.8 Individual Cost Summary — Jason Corum
+
+| Cost Group | Total |
+| --- | ---: |
+| Two motors, gearheads, drivers, and required cables | $2,132.00 |
+| Two bracket plates and estimated fabrication | $262.28 |
+| Two custom couplers and estimated machining | $318.70 |
+| Four permanent tapped 80 mm motor supports | $70.12 |
+| Motor mounting hardware | $44.32 |
+| Jason's engineering labor | $980.00 |
+| **Jason's Quantified Planning Total** | **$3,807.42** |
+
+The quantified subtotal includes:
+
+- Published or recorded supplier material and hardware prices.
+- The four 80 mm supports at their supplied order price.
+- Estimated bracket fabrication labor.
+- Estimated coupler fabrication labor.
+- Jason's 28.000 hours of engineering work.
+
+It excludes:
+
+- Taxes and shipping.
+- Teammates' structural-frame and bearing-support components.
+- Gavin's frame connector quantity and extended cost.
+- Teammates' engineering labor.
+- External electrical equipment outside the stated BOM scope.
+
+The **$3,807.42** value is the completed preliminary cost estimate for Jason's contribution, not the full team's final procurement total.
+
+The complete team cost will be calculated after the remaining structural and mechanical components and individual labor hours are added.
+
+---
+
+## 7. Remaining Team Design Sections
+
+The following sections are reserved for Tai and Gavin's assigned portions of A11.
+
+### 7.1 Structural Frame Design and Load Analysis
+
+**Responsible team member:** [TODO]
+
+[TODO: Insert initial frame knowns, unknowns, material selection, loads, constraints, free-body diagrams, and governing stress and deflection equations.]
+
+The frame analysis must consider the applied specimen load, leadscrew support reactions, motor assembly loads, and resulting forces transmitted through the top and vertical members.
+
+### 7.2 Frame Finite Element Analysis
+
+**Responsible team member:** [TODO]
+
+[TODO: Insert frame FEA screenshots and numerical results.]
+
+The final documentation should identify:
+
+- Assigned materials and material properties.
+- Applied forces and boundary conditions.
+- Mesh settings and any local refinements.
+- Maximum von Mises stress and its location.
+- Maximum displacement and its location.
+- Applicable factor of safety.
+- Mesh convergence or sensitivity findings.
+- Comparison with analytical expectations.
+- Design conclusions and remaining limitations.
+
+### 7.3 Clamp Analysis and Design
+
+**Responsible team member:** [TODO]
+
+[TODO: Insert selected clamp design, material, FBD, stress analysis, sizing equations, CAD model, and final selected dimensions.]
+
+### 7.4 Floating Leadscrew Bearing Mount
+
+**Responsible team member:** [TODO]
+
+[TODO: Insert the selected bearing, fit and mounting requirements, support geometry, calculations, CAD model, and results.]
+
+The bearing arrangement must support the rotating leadscrew while providing the intended axial freedom or restraint specified by the complete shaft-support design.
+
+### 7.5 Complete Tensile Tester Assembly
+
+**Responsible team member:** [TODO]
+
+[TODO: Insert the complete two-motor assembly, selected frame connectors, crosshead integration, clamp, bearing mounts, interference checks, and final system-level conclusions.]
+
+The assembled machine should establish the correct mechanical load path and maintain the relative alignment of the two rotating leadscrews.
+
+The motor support arrangement from Jason and Gavin's work is incorporated into this complete machine.
+
+---
+
+## 8. Summary of Jason's Engineering Results
+
+| Parameter | Selected or Calculated Result |
+| --- | --- |
+| Motor | Oriental Motor BLMR5100K-GFV-B |
+| Gearhead | GFV5G100 |
+| Driver | BLVD-KRD |
+| Rated power | 100.000 W |
+| Gear ratio | 100:1 |
 | Required leadscrew speed | 0.315–15.748 rpm |
-| Selected motor + gearbox mass | 2.400 kg |
-| Driver mass | 0.120 kg |
+| Required rotor-speed range | 31.496–1,574.803 rpm |
+| Required leadscrew torque | 2.021 N·m per motor |
+| Torque target with SF = 4 | 8.085 N·m per motor |
+| Permissible continuous gearbox torque | 27.400 N·m |
+| Maximum instantaneous gearbox torque | 40.000 N·m |
+| Nominal motor torque safety-factor ratio | 13.556 |
 | Bracket material | ASTM A36 steel |
 | Bracket dimensions | 120.000 × 180.000 × 6.350 mm |
-| Motor mounting pattern | 73.540 × 73.540 mm |
-| Frame mounting pattern | 40.000 × 140.000 mm |
-| Selected bracket thickness | 6.350 mm |
-| Bearing-only minimum thickness | 0.263 mm |
+| Motor hole pattern | 73.540 × 73.540 mm |
+| Frame hole pattern | 40.000 × 140.000 mm |
+| Minimum bracket thickness, bearing-only | 0.263 mm |
 | Governing nominal bracket bearing stress | 2.593 MPa |
 | Nominal bracket bearing safety factor | 96.410 |
 | Coupler material | ASTM A36 steel |
@@ -1033,417 +1197,251 @@ into the same folder before opening the parent assembly.
 | Coupler overall length | 60.000 mm |
 | Motor-side bore | 18.000 mm |
 | Leadscrew-side bore | 15.875 mm |
-| Minimum calculated coupler outside diameter | 21.130 mm |
-| Nominal coupler torsional shear | 3.853 MPa |
+| Minimum theoretical coupler outside diameter | 21.130 mm |
+| Nominal coupler torsional shear stress | 3.853 MPa |
 | Nominal coupler torsional safety factor | 32.441 |
-| Motor mounting bolts | 4 × M8 × 90.000 mm |
-| Frame mounting bolts | 4 × M8 × 25.000 mm |
-
-### 6.1 Preliminary Component Weights
-
-The following bracket and coupler masses were estimated from the modeled solid volumes using an assumed steel density of 7,850.000 kg/m<sup>3</sup>.
-
-| Component | Mass |
-| --- | ---: |
-| Motor and gearbox | 2.400 kg |
-| External driver | 0.120 kg |
-| Bracket, estimated | 0.990 kg |
-| Coupler, estimated | 0.346 kg |
-| Total excluding miscellaneous hardware | 3.856 kg |
-
-Using:
-
-<p align="center"><strong>g = 9.810 m/s<sup>2</sup></strong></p>
-
-the corresponding total weight magnitude is approximately:
-
-<p align="center">Σ<sub>T</sub>[|F⃗<sub>g</sub>|] = Σ<sub>T</sub>[m] · g</p>
-
-<p align="center">Σ<sub>T</sub>[|F⃗<sub>g</sub>|] ≈ 3.856 · 9.810</p>
-
-<p align="center"><strong>Σ<sub>T</sub>[|F⃗<sub>g</sub>|] ≈ 37.824 N</strong></p>
-
-The total includes the external driver for system-level mass accounting. If the driver is mounted separately, its weight must be applied at its actual frame mounting location rather than at the motor bracket.
-
-These values are preliminary and exclude additional fasteners, wiring, supports, and other unmodeled components.
+| Permanent motor support profile | 80/20 40-4080 |
+| Final support dimensions | 40.000 × 80.000 × 80.000 mm |
+| Number of support members | 4 |
+| Jason's engineering time | 28.000 hours |
+| Jason's engineering labor cost | $980.00 |
+| Jason's quantified planning cost | $3,807.42 |
 
 ---
 
-## 7. Structural Frame Design and FEA — [Team Member: To Be Confirmed]
+## 9. Engineering Lessons Learned
 
-**Status: Awaiting teammate's calculations, CAD, and FEA results.**
+### 9.1 Jason Corum — Motor Selection
 
-### 7.1 Frame Requirements and Material Selection
+Selecting the appropriate motor required examining much more than the maximum torque rating.
 
-[TODO: Insert the responsible teammate's initial knowns, unknowns, assumptions, selected aluminum extrusion specifications, and material properties.]
+The unusually low required leadscrew speed eliminated several otherwise promising motor and gearbox candidates.
 
-### 7.2 Frame Free-Body Diagrams
+Manufacturer documentation was essential because a general motor specification could not establish whether the complete motor and gearbox assembly would operate across the required speed range.
 
-[TODO: Insert the frame FBDs showing the specimen force, leadscrew support reactions, motor assembly weight, torque reactions, and support constraints.]
+The final Oriental Motor selection demonstrated the importance of distinguishing motor-shaft torque, gearbox output torque, continuous permissible torque, and maximum instantaneous torque.
 
-**[TODO: Insert frame FBD image]**
+### 9.2 Jason Corum — Motor Mounting Bracket
 
-*Figure 13. Structural frame free-body diagram and applied loads.*
+The simplified bearing-stress analysis produced a theoretical minimum plate thickness much smaller than the selected practical thickness.
 
-### 7.3 Governing Equations
+This demonstrated the difference between a preliminary calculation based on one failure mode and the practical dimensions needed for structural stiffness, manufacturability, installation, and service access.
 
-[TODO: Insert the teammate's equations for frame bending, deflection, torsion, axial stress, and other required failure modes.]
+The first bracket assembly also revealed insufficient clearance for motor mounting hardware.
 
-### 7.4 Numerical Analysis
+Increasing the bracket length and changing the frame mounting-hole spacing resolved the nominal geometric interference and improved accessibility.
 
-[TODO: Insert calculated loads, reactions, stresses, deflections, and factors of safety.]
+### 9.3 Jason Corum — Shaft Coupler
 
-### 7.5 SOLIDWORKS Frame Model
+The coupler analysis demonstrated how the polar second moment of area governs torsional stress in a hollow circular shaft.
 
-[TODO: Insert frame geometry, dimensions, selected T-slot connections, CAD screenshots, and native component file links.]
+The minimum outside diameter required solving a nonlinear equation rather than a simple linear relationship.
 
-**[TODO: Insert frame CAD screenshot]**
+The final 34.000 mm outside diameter provided a substantial nominal pure-torsion safety-factor margin.
 
-*Figure 14. Selected frame configuration and mounting interfaces.*
+The CAD assembly also illustrated the difference between dimensional alignment, analytical strength, and a fabrication-ready shaft connection.
 
-### 7.6 Frame Finite Element Analysis
+### 9.4 Jason Corum and Gavin Sanchez — Assembly Integration
 
-[TODO: Include material assignment, applied loads, fixtures, mesh settings, convergence checks, stress results, deformation plots, and resulting factors of safety.]
+Initially, the 40-4080 extrusion sections were used only to verify the motor bracket interface.
 
-**[TODO: Insert FEA stress plot]**
+Later assembly work incorporated the extrusion members as permanent supports connecting the motor mounting brackets to the upper structural frame.
 
-*Figure 15. Frame von Mises stress distribution.*
+The support lengths were revised from the preliminary 200 mm sections to the final 80 mm tapped members.
 
-**[TODO: Insert FEA displacement plot]**
+This demonstrated how component dimensions and purchasing requirements must be updated when preliminary CAD verification geometry becomes part of the actual design.
 
-*Figure 16. Frame displacement and deflection results.*
+### 9.5 Jason Corum — Bill of Materials
 
-### 7.7 Frame Design Conclusions
+Completing the bill of materials required distinguishing purchased components from custom-fabricated parts.
 
-[TODO: Summarize whether the proposed frame meets the assignment requirements, identify any limitations, and document changes needed before final assembly.]
+The costs of raw material, machining operations, standard fasteners, and engineering labor were separated to avoid double-counting.
 
----
+The process also demonstrated why standard hardware purchased in packs must be priced using the actual purchase quantity rather than only the number of pieces installed in the assembly.
 
-## 8. Floating Leadscrew Bearing and Support Design — [Team Member: To Be Confirmed]
+### 9.6 Tai Podvojsky
 
-**Status: Awaiting teammate's calculations and CAD.**
+[TODO: Insert Tai's engineering lessons learned and individual time spent.]
 
-### 8.1 Bearing Support Requirements
+### 9.7 Gavin Sanchez
 
-The remaining bearing system must support the leadscrew while allowing its intended rotation.
-
-The lower bearing arrangement should accommodate the required axial freedom or floating behavior so the shaft support system does not become unnecessarily overconstrained.
-
-[TODO: Insert specific requirements from the assigned bearing-support section.]
-
-### 8.2 Bearing Selection and Fit
-
-[TODO: Insert selected bearing, manufacturer, catalog number, bore diameter, housing dimensions, fit/tolerance requirements, and supporting sources.]
-
-### 8.3 Bearing FBD and Governing Equations
-
-[TODO: Insert applicable reaction forces, bearing loads, stress equations, and safety-factor calculations.]
-
-**[TODO: Insert bearing FBD]**
-
-*Figure 17. Floating leadscrew bearing and support free-body diagram.*
-
-### 8.4 Bearing Support CAD
-
-[TODO: Insert the bearing mount model, selected dimensions, mounting hardware, and installed location.]
-
-**[TODO: Insert bearing assembly screenshot]**
-
-*Figure 18. Lower floating bearing and mounting assembly.*
-
-### 8.5 Bearing Support Verification
-
-[TODO: Document alignment, axial freedom, appropriate fit, rotation, retention, and resulting verification conclusions.]
+[TODO: Insert Gavin's engineering lessons learned and individual time spent.]
 
 ---
 
-## 9. Complete Tensile Tester Assembly and Integration — Team
+## 10. Engineering Conclusions
 
-### 9.1 Integration of A10 and A11 Components
+### 10.1 Motor Selection
 
-The complete tensile tester must combine the A10 leadscrew and crosshead assembly with the A11 motor, gearbox, bracket, coupler, frame, and bearing supports.
+The selected Oriental Motor BLMR5100K-GFV-B, GFV5G100, and BLVD-KRD combination satisfies the preliminary numerical motor torque and speed requirements.
 
-The final assembly should establish a consistent mechanical load path and maintain coaxial alignment of the rotating elements.
+Its permissible continuous gearbox output torque of 27.400 N·m exceeds the required nominal 2.021 N·m leadscrew driving torque by a factor of approximately 13.556.
 
-[TODO: Insert the team member responsible for overall assembly integration.]
+The selected output-speed capability includes the required 0.315–15.748 rpm interval.
 
-### 9.2 Synchronization Requirement
+The manufacturer speed–torque curve and gearhead permissible-torque table are included as supporting evidence.
 
-The two leadscrews must rotate at the same nominal speed:
+The external electronic driver remains a documented deviation from the assignment's stated no-electronics constraint because instructor clarification was not received.
 
-<p align="center"><strong>n<sub>s1</sub> = n<sub>s2</sub></strong></p>
+### 10.2 Motor Mounting Bracket
 
-Unequal motion could cause the crosshead to tilt, bind, or experience eccentric loading.
+The final preliminary bracket dimensions are:
 
-Because the selected configuration uses separate motor drivers, the method used to synchronize the drives must be established during final system integration.
+<p align="center"><strong>120.000 × 180.000 × 6.350 mm</strong></p>
 
-[TODO: Document the approved synchronization arrangement and its compatibility with assignment constraints.]
+The simplified bolt-hole bearing-stress calculation gives:
 
-### 9.3 Mechanical Load Path
+<p align="center"><strong>σ<sub>MB,max</sub> = 2.593 MPa</strong></p>
 
-The motor delivers torque through the gearbox and coupler to the leadscrew.
+<p align="center"><strong>SF<sub>MB,actual</sub> = 96.410</strong></p>
 
-The leadscrew and nut convert rotational motion into linear crosshead motion.
+The nominal bearing-stress requirement is satisfied.
 
-Axial thrust should be transferred to the structural frame through the selected thrust bearing and bearing-support arrangement rather than imposed directly on the gearbox output shaft.
+The revised bracket geometry provides the required motor mounting-hole locations and improved access to the mounting hardware.
 
-[TODO: Insert the final mechanical load-path diagram and verify bearing and frame reactions.]
+The bearing-only analysis does not independently verify every structural failure mode or the final bracket stiffness.
 
-### 9.4 Final Assembly CAD
+### 10.3 Shaft Coupler
 
-**[TODO: Insert final complete tensile tester assembly screenshot.]**
+The selected custom coupler has an outside diameter of 34.000 mm and an overall length of 60.000 mm.
 
-*Figure 19. Complete A11 tensile tester assembly.*
+Its nominal torsional shear stress is:
 
-**[TODO: Add the final team SOLIDWORKS Pack and Go assembly link.]**
+<p align="center"><strong>τ<sub>C,max</sub> = 3.853 MPa</strong></p>
 
-### 9.5 Final Integration Checks
+The corresponding simplified torsional safety factor is:
 
-[TODO: Document assembly interference detection, leadscrew concentricity, crosshead travel, shaft support, motor orientation, service access, and final motion verification.]
+<p align="center"><strong>SF<sub>C,actual</sub> = 32.441</strong></p>
 
----
+The assigned preliminary coupler design and torsional analysis are complete.
 
-## 10. Bill of Materials and Cost Analysis — [Team Member: To Be Confirmed]
+### 10.4 Motor Support Integration
 
-### 10.1 Selected Components
+The completed preliminary motor mounting arrangement uses four permanent 80/20 40-4080 supports, each 80 mm long with the selected M8 end tapping.
 
-| Item | Component | Quantity | Supplier or Source | Cost |
-| --- | --- | ---: | --- | --- |
-| 1 | BLMR5100K-GFV-B motor | 2 | Oriental Motor | $674.00 |
-| 2 | GFV5G100 gearhead | 2 | Oriental Motor | $392.00 |
-| 3 | BLVD-KRD driver | 2 | Oriental Motor | $998.00 |
-| 4 | LC03D06A driver power cable | 2 | Oriental Motor | $68.00 |
-| 5 | ASTM A36 motor mounting bracket | 2 | Fabricated | $262.28 |
-| 6 | ASTM A36 shaft coupler | 2 | Fabricated | [TODO] |
-| 7 | M8 × 90.000 mm motor mounting bolts | 8 | Standard hardware | [TODO] |
-| 8 | M8 × 25.000 mm bracket/frame bolts | 8 | Standard hardware | [TODO] |
-| 9 | M8 washers and nuts | As required | Standard hardware | [TODO] |
-| 10 | Motor-side key and M5 set screw | 2 sets | Standard hardware | [TODO] |
-| 11 | 40-series T-slot frame members | [TODO] | 80/20 or equivalent | [TODO] |
-| 12 | Floating lower bearing supports | [TODO] | [TODO] | [TODO] |
-| 13 | Remaining structural hardware | [TODO] | [TODO] | [TODO] |
+The revised motor assembly was uploaded to the team GitHub repository.
 
-The counts above assume two identical motor stations. The final bill of materials should reconcile components already included in the A10 bill of materials to avoid double-counting.
+The structural behavior of the complete machine remains part of the team's frame and integration work.
 
-### 10.2 Fabrication Costs
+### 10.5 Individual Cost Estimate
 
-[TODO: Include material costs, machining requirements, fabrication methods, and any necessary purchased components.]
+The completed quantified planning estimate for Jason's contribution is:
 
-### 10.3 Engineering Labor Cost
+<p align="center"><strong>C<sub>Jason,total</sub> = $3,807.42</strong></p>
 
-The assigned engineering labor rate is:
+This includes the selected motor systems, brackets, couplers, permanent supports, mounting hardware, and 28.000 hours of engineering labor.
 
-<p align="center"><strong>R<sub>L</sub> = $35.000/hour</strong></p>
-
-For each member:
-
-<p align="center">C<sub>L,i</sub> = R<sub>L</sub> · t<sub>i</sub></p>
-
-For Jason Corum:
-
-<p align="center">C<sub>L,Jason</sub> = 35.000 · 28.000</p>
-
-<p align="center"><strong>C<sub>L,Jason</sub> = $980.000</strong></p>
-
-[TODO: Insert Tai's and Gavin's hours and calculated labor costs.]
-
-### 10.4 Total Cost
-
-[TODO: Insert the final material, purchased-component, fabrication, and labor cost tables.]
-
-Do not treat provisional estimates or unverified online prices as final procurement totals.
+The final complete-machine cost will incorporate the additional team components and labor.
 
 ---
 
-## 11. Engineering Lessons Learned
+## 11. References and Supplier Files
 
-### 11.1 Jason Corum — Motor Selection
-
-Selecting a suitable motor required more than comparing rated torque or maximum speed. The required operating range was unusually broad and included very low rotational speeds.
-
-Several promising motor and gearhead combinations were eliminated because they could not operate at the minimum required output speed or lacked sufficient manufacturer documentation to verify their suitability.
-
-The final selected Oriental Motor system demonstrated the importance of evaluating the complete motor, transmission, and driver combination rather than considering the motor alone.
-
-The selection process also revealed a design tradeoff between the assignment's purely mechanical restriction and the practical availability of controllable low-speed motor systems.
-
-### 11.2 Jason Corum — Motor Mounting Bracket
-
-The initial bracket calculations produced a very small theoretical minimum thickness under the simplified bolt-hole bearing-stress model.
-
-This demonstrated the difference between the minimum thickness predicted by a restricted analytical model and a practical plate thickness selected for fabrication, rigidity, and assembly.
-
-The first assembly also showed that satisfying bolt-hole spacing requirements did not necessarily provide enough space for fastener installation.
-
-Increasing the bracket length and frame mounting-hole spacing resolved the observed clearance problem and reinforced the importance of evaluating service access during CAD development.
-
-### 11.3 Jason Corum — Coupler Design
-
-The coupler analysis illustrated how the polar second moment of area affects the torsional stress in a hollow circular shaft.
-
-The governing diameter equation was nonlinear and required numerical root finding.
-
-The coupler CAD work also demonstrated the importance of distinguishing nominal geometric alignment from a complete physical torque-transfer connection. Shaft fit and concentricity alone do not establish that a coupling can securely transmit reversing torque.
-
-### 11.4 Tai Podvojsky — [TODO]
-
-[TODO: Insert Tai's engineering lessons learned, design difficulties, software experience, and solutions.]
-
-### 11.5 Gavin Sanchez — [TODO]
-
-[TODO: Insert Gavin's engineering lessons learned, design difficulties, software experience, and solutions.]
-
-### 11.6 Team — Assembly and Design Integration
-
-[TODO: Discuss interactions between the motor mounting brackets, complete frame, crosshead, support bearings, and synchronized drives.]
-
-### 11.7 Time Spent
-
-| Team Member | A11 Time |
-| --- | --- |
-| Jason Corum | 28.000 hours |
-| Tai Podvojsky | [TODO] |
-| Gavin Sanchez | [TODO] |
-| **Total** | **[TODO]** |
-
-Jason's recorded A11 labor cost is:
-
-<p align="center">C<sub>L,Jason</sub> = 28.000 hours · $35.000/hour</p>
-
-<p align="center"><strong>C<sub>L,Jason</sub> = $980.000</strong></p>
-
-The final team labor total will be completed once all individual time logs are available.
+1. [Oriental Motor — Selected BLMR5100K-GFV-B / GFV5G100 / BLVD-KRD Configuration](https://catalog.orientalmotor.com/en-us/item/100-120w-brushless-dc-motor-speed-control-systems/100w-blv-r-series-brushless-dc-motors/blmr5100k-gfv-b-gfv5g100-blvd-krd).
+2. [Oriental Motor — BLV Series R Type Operating Manual](https://www.orientalmotor.com/products/pdfs/opmanuals/HP-5140-8E.pdf).
+3. [Oriental Motor — BLV Series R Type Brochure, Speed–Torque Curves and Gearhead Specifications](https://www.orientalmotor.com/products/pdfs/2018-2019/569%20BLV-R%20Brochure.pdf).
+4. [Oriental Motor — LC03D06A Power Cable](https://catalog.orientalmotor.com/item/all-categories-accessories-peripherals/ac-motor-accessories/lc03d06a).
+5. [McMaster-Carr — Carbon Steel 5/8"-8 RH Acme Leadscrew, 98935A914](https://www.mcmaster.com/98935A914/).
+6. [80/20 — 40-4080 Heavy-Duty T-Slotted Profile](https://8020.net/40-4080.html).
+7. [McMaster-Carr — 47065T799 Gusset Corner Connector](https://www.mcmaster.com/47065T799/).
+8. [A36 Steel Plate, 6 × 8 × ¼ in — Supplier Listing](https://business.walmart.com/ip/1-4-25-Hot-Rolled-Steel-Sheet-Plate-6-X-8-Flat-Bar-A36/844893475).
+9. [Online Metals — A36 Round Bar, 1.5-inch Diameter](https://www.onlinemetals.com/en/buy/carbon-steel/1-5-carbon-steel-round-bar-a36-hot-rolled/pid/10250).
+10. [Bolt Depot — M8 × 90 mm Socket-Head Cap Screws](https://boltdepot.com/Product-Details?product=6574).
+11. [Home Depot — M8 × 25 mm Button-Head Screws](https://www.homedepot.com/p/204786396).
+12. [M8 Small-OD Flat Washer Pack](https://www.walmart.com/ip/371996582).
+13. [Bolt Depot — M8 Split Lock Washers](https://boltdepot.com/Product-Details?product=4827).
+14. [Bolt Depot — M8 Flat Washers](https://boltdepot.com/Product-Details?product=7742).
+15. [Bolt Depot — M8 Hex Nuts](https://boltdepot.com/Product-Details?product=6884).
+16. [Maedler — Parallel Keys](https://maedlernorthamerica.com/height/6/).
+17. [Gavan Tools — M5 Flat-Point Set Screws](https://gavantools.com/products/20-pcs-m5-x-0-8-x-6mm-flat-point-socket-set-grub-screws-steel).
+18. Oberg et al., *Machinery's Handbook*, 31st edition, Industrial Press, 2020.
+19. Oberg et al., *Machinery's Handbook*, 32nd edition.
+20. MEGR 2156 course lectures, assignment instructions, and instructor clarifications.
+21. [A10 Lead Screw Translating System — Team Portfolio](../A10/index.md).
+22. [TODO: Add Tai's frame and FEA references].
+23. [TODO: Add Gavin's frame connection, bearing support, and other references].
 
 ---
 
-## 12. Engineering Conclusions
+## 12. Final Documentation and Verification Checklist
 
-### 12.1 Motor Selection
+### Jason Corum — Motor Selection
 
-The selected Oriental Motor BLMR5100K-GFV-B, GFV5G100 gearhead, and BLVD-KRD driver provide a published speed and torque capability that satisfies the preliminary numerical motor-selection targets.
+- [x] Determine required torque and rotational speed.
+- [x] Research candidate motors and gearheads.
+- [x] Select the motor, gearhead, and driver.
+- [x] Document rated power, torque, speed, electrical specifications, and mounting interface.
+- [x] Verify nominal gearbox output-speed coverage.
+- [x] Verify nominal torque safety-factor margin.
+- [x] Obtain the manufacturer's speed–torque curve.
+- [x] Obtain the manufacturer's permissible gearhead torque table.
+- [x] Document the unresolved electronics restriction.
 
-The rated output torque exceeds the calculated per-leadscrew driving torque by a nominal ratio of 13.556.
+### Jason Corum — Motor Mounting Bracket
 
-Full operating-envelope verification and the original electronics/software restriction remain outstanding integration or instructor-approval matters.
-
-### 12.2 Bracket Design
-
-The preliminary ASTM A36 bracket has overall dimensions of:
-
-<p align="center"><strong>W<sub>MB</sub> × L<sub>MB</sub> × t<sub>MB</sub> = 120.000 × 180.000 × 6.350 mm</strong></p>
-
-The nominal bearing-stress calculation gives a governing stress of 2.593 MPa and a bearing-only safety factor of approximately 96.410.
-
-The revised mounting arrangement provides improved nominal fastener access and passed the available CAD geometric interference checks.
-
-The result does not independently prove stiffness, fatigue life, or all other structural failure modes.
-
-### 12.3 Coupler Design
-
-The selected coupler has:
-
-<p align="center"><strong>Ø<sub>C,out</sub> = 34.000 mm</strong></p>
-
-Its maximum nominal pure-torsion shear stress is approximately 3.853 MPa, with a calculated nominal torsional safety factor of 32.441.
-
-The motor-side key and set-screw arrangement has been modeled.
-
-The final leadscrew-side mechanical torque-transfer and axial-retention connection remains to be specified and verified.
-
-### 12.4 Remaining Team Work
-
-[TODO: Insert final frame stress and deflection conclusions, bearing support conclusions, complete assembly verification, bill of materials, and overall project assessment.]
-
----
-
-## 13. References and Supplier Files
-
-1. [Oriental Motor — BLMR5100K-GFV-B / GFV5G100 / BLVD-KRD](https://catalog.orientalmotor.com/en-us/item/100-120w-brushless-dc-motor-speed-control-systems/100w-blv-r-series-brushless-dc-motors/blmr5100k-gfv-b-gfv5g100-blvd-krd).
-2. [Oriental Motor — Official Website](https://www.orientalmotor.com/).
-3. [Oriental Motor — BLV Series R Type Operating Manual](https://www.orientalmotor.com/products/pdfs/opmanuals/HP-5140-8E.pdf).
-4. [80/20 — 40-4080 Heavy-Duty T-Slotted Profile](https://8020.net/40-4080.html).
-5. [McMaster-Carr — Carbon Steel 5/8"-8 Acme Leadscrew, 98935A914](https://www.mcmaster.com/98935A914/).
-6. Oberg et al., *Machinery's Handbook*, 31st edition, Industrial Press, 2020. Assigned reference.
-7. Oberg et al., *Machinery's Handbook*, 32nd edition. Additional thread and materials reference.
-8. MEGR 2156 course lecture presentations, assignment instructions, and instructor clarifications.
-9. [A10 Lead Screw Translating System — Team Portfolio](../A10/index.md).
-10. [TODO: Insert additional sources used by Tai for the frame analysis].
-11. [TODO: Insert additional sources used by Gavin for the bearing design].
-12. [TODO: Insert final purchased hardware specifications and manufacturer references].
-
----
-
-## 14. Final Documentation and Verification Checklist
-
-### Motor Selection — Jason Corum
-
-- [x] Identify required torque and rotational speed.
-- [x] Investigate motor and gearbox candidates.
-- [x] Select a motor, gearbox, and driver.
-- [x] Document motor rating, speed range, torque, voltage, current, mass, and mounting interface.
-- [x] Compare nominal rated torque against required leadscrew torque.
-- [x] Obtain motor and driver CAD files.
-- [ ] Confirm final controller configuration and continuous-load operation over the working range.
-- [ ] Resolve instructor approval of the electronic driver.
-
-### Motor Mounting Bracket — Jason Corum
-
-- [x] Select bracket material.
+- [x] Select bracket material and nominal yield strength.
 - [x] Develop motor-to-bracket and bracket-to-frame FBDs.
-- [x] Calculate nominal mounting-hole reactions.
-- [x] Calculate minimum bracket thickness under the bearing-stress model.
-- [x] Select a practical bracket thickness.
+- [x] Derive the nominal bolt-group reaction equations.
+- [x] Calculate mounting-bolt reaction forces.
+- [x] Determine nominal bearing stresses.
+- [x] Calculate the theoretical minimum plate thickness.
+- [x] Select a practical plate thickness.
 - [x] Create the bracket SOLIDWORKS model.
-- [x] Verify gearbox locating-boss clearance.
-- [x] Revise the frame mounting pattern for service access.
-- [x] Insert and geometrically check the principal mounting bolts.
-- [x] Verify nominal washer and nut clearances.
-- [ ] Document final physical installation details and fastener specifications.
-- [ ] Add final bracket CAD screenshots to this portfolio.
+- [x] Revise the mounting-hole pattern for bolt accessibility.
+- [x] Check principal CAD dimensions and clearances.
 
-### Shaft Coupler — Jason Corum
+### Jason Corum — Shaft Coupler
 
-- [x] Identify motor and leadscrew diameters.
-- [x] Select preliminary coupler material.
-- [x] Develop torsional FBD and equations.
+- [x] Identify motor and leadscrew shaft dimensions.
+- [x] Select coupler material.
+- [x] Develop the simplified torsional FBD.
+- [x] Derive the torsional stress equations.
 - [x] Calculate minimum outside diameter.
 - [x] Select final preliminary coupler dimensions.
-- [x] Calculate nominal torsional shear stress and safety factor.
-- [x] Model the coupler in SOLIDWORKS.
-- [x] Add the motor-side key and set screw.
-- [x] Check nominal assembly fit and alignment.
-- [ ] Finalize and verify the physical leadscrew-side torque-transfer and retention method.
-- [ ] Add final coupler CAD screenshots.
+- [x] Calculate nominal torsional shear stress.
+- [x] Verify nominal torsional safety factor.
+- [x] Model the stepped-bore coupler in SOLIDWORKS.
+- [x] Include the motor-side key and set screw.
+- [x] Check nominal CAD alignment.
 
-### Frame Design and FEA — Team
+### Jason Corum and Gavin Sanchez — Motor Assembly
 
-- [ ] Insert frame design equations and calculations.
-- [ ] Insert complete frame CAD.
-- [ ] Insert FEA stress and displacement results.
-- [ ] Verify appropriate frame stiffness, stability, and safety factors.
-- [ ] Document final frame fasteners and mounting details.
+- [x] Develop the preliminary motor mounting assembly.
+- [x] Check the bracket-to-frame interface.
+- [x] Revise the bracket for fastener accessibility.
+- [x] Select the final 80 mm 40-4080 supports.
+- [x] Specify two M8 tapped holes per support.
+- [x] Establish the total quantity of four supports.
+- [x] Incorporate the permanent supports into the motor assembly.
+- [x] Upload the updated native SOLIDWORKS archive to GitHub.
 
-### Floating Bearing Support — Team
+### Jason Corum — Bill of Materials
 
-- [ ] Insert bearing-selection calculations.
-- [ ] Insert bearing and mounting-component models.
-- [ ] Verify shaft alignment and permitted axial movement.
-- [ ] Document bearing support and mounting details.
+- [x] Price the selected motor systems.
+- [x] Include the required driver power cables.
+- [x] Estimate bracket material and fabrication costs.
+- [x] Estimate coupler material and fabrication costs.
+- [x] Price the four permanent 80 mm motor supports.
+- [x] Price the motor mounting fasteners and hardware.
+- [x] Record Gavin's selected overall-frame connector and unit cost.
+- [x] Calculate 28.000 hours of engineering labor.
+- [x] Calculate Jason's quantified individual planning total.
+- [x] Document pricing assumptions and estimated fabrication allowances.
 
-### Final Integration and Submission — Team
+### Remaining Team Contributions
 
-- [ ] Complete final two-motor tensile tester assembly.
-- [ ] Establish and verify synchronized leadscrew rotation.
-- [ ] Verify complete mechanical load path.
-- [ ] Confirm assembly and maintenance accessibility.
-- [ ] Resolve all final SOLIDWORKS mates and component references.
-- [ ] Complete interference and motion checks.
-- [ ] Create and verify the native SOLIDWORKS Pack and Go archive.
-- [ ] Upload required CAD, calculation images, and documentation files.
-- [ ] Complete final bill of materials and cost estimate.
-- [ ] Update individual time logs and lessons learned.
-- [ ] Confirm the portfolio satisfies all applicable MEGR 2156 Canvas submission requirements.
+- [ ] Add Tai's assigned calculations, CAD, and lessons learned.
+- [ ] Add Gavin's assigned calculations, CAD, and lessons learned.
+- [ ] Add overall frame strength and FEA results.
+- [ ] Add the clamp analysis and design.
+- [ ] Add floating bearing-support design and verification.
+- [ ] Confirm the quantity and compatibility of overall frame connectors.
+- [ ] Complete the full machine assembly and system-level verification.
+- [ ] Add the remaining structural and bearing-support costs.
+- [ ] Add Tai's and Gavin's engineering labor hours.
+- [ ] Calculate the final complete-project cost.
+- [ ] Confirm final GitHub file links and Canvas submission requirements.
 
 ---
 
-**Final Project Status:** Jason's motor selection, nominal bracket analysis, coupler torsion analysis, and main CAD assembly geometry are complete at the preliminary design level. Remaining physical connection details and team-level integration checks are identified above rather than treated as fully verified.
+**Final Individual Status:** Jason's assigned motor-selection calculations, preliminary motor mounting bracket analysis, shaft coupler torsion analysis, main CAD development, and quantified individual BOM are documented. Remaining team-level design, verification, and cost contributions are reserved for the responsible teammates. The selected electronic driver and fabrication-level joint details remain documented limitations rather than claims of completed physical validation.
