@@ -1209,18 +1209,19 @@ Axial thrust should be transferred to the structural frame through the selected 
 
 | Item | Component | Quantity | Supplier or Source | Cost |
 | --- | --- | ---: | --- | --- |
-| 1 | BLMR5100K-GFV-B motor | 2 | Oriental Motor | [TODO] |
-| 2 | GFV5G100 gearhead | 2 | Oriental Motor | [TODO] |
-| 3 | BLVD-KRD driver | 2 | Oriental Motor | [TODO] |
-| 4 | ASTM A36 motor mounting bracket | 2 | Fabricated | [TODO] |
-| 5 | ASTM A36 shaft coupler | 2 | Fabricated | [TODO] |
-| 6 | M8 × 90.000 mm motor mounting bolts | 8 | Standard hardware | [TODO] |
-| 7 | M8 × 25.000 mm bracket/frame bolts | 8 | Standard hardware | [TODO] |
-| 8 | M8 washers and nuts | As required | Standard hardware | [TODO] |
-| 9 | Motor-side key and M5 set screw | 2 sets | Standard hardware | [TODO] |
-| 10 | 40-series T-slot frame members | [TODO] | 80/20 or equivalent | [TODO] |
-| 11 | Floating lower bearing supports | [TODO] | [TODO] | [TODO] |
-| 12 | Remaining structural hardware | [TODO] | [TODO] | [TODO] |
+| 1 | BLMR5100K-GFV-B motor | 2 | Oriental Motor | $674.00 |
+| 2 | GFV5G100 gearhead | 2 | Oriental Motor | $392.00 |
+| 3 | BLVD-KRD driver | 2 | Oriental Motor | $998.00 |
+| 4 | LC03D06A driver power cable | 2 | Oriental Motor | $68.00 |
+| 5 | ASTM A36 motor mounting bracket | 2 | Fabricated | $262.28 |
+| 6 | ASTM A36 shaft coupler | 2 | Fabricated | [TODO] |
+| 7 | M8 × 90.000 mm motor mounting bolts | 8 | Standard hardware | [TODO] |
+| 8 | M8 × 25.000 mm bracket/frame bolts | 8 | Standard hardware | [TODO] |
+| 9 | M8 washers and nuts | As required | Standard hardware | [TODO] |
+| 10 | Motor-side key and M5 set screw | 2 sets | Standard hardware | [TODO] |
+| 11 | 40-series T-slot frame members | [TODO] | 80/20 or equivalent | [TODO] |
+| 12 | Floating lower bearing supports | [TODO] | [TODO] | [TODO] |
+| 13 | Remaining structural hardware | [TODO] | [TODO] | [TODO] |
 
 The counts above assume two identical motor stations. The final bill of materials should reconcile components already included in the A10 bill of materials to avoid double-counting.
 
